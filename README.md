@@ -1,24 +1,49 @@
-# README
+# **AJIHEN**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## **サイト概要**
 
-Things you may want to cover:
+全国各地の調味料に関する情報を共有するサイト
 
-* Ruby version
+---
 
-* System dependencies
+### **サイトテーマ**
 
-* Configuration
+情報共有のためのレビューサイト
 
-* Database creation
+---
 
-* Database initialization
+### **テーマを選んだ理由**
 
-* How to run the test suite
+料理をする中で味がマンネリ化してきた、いつもの食事にちょっと変化を加えたい•••、という方は少なからずいると思います。そんなときに強い味方となるのは調味料だと思います。<br>
+一つのサイトで味や値段、売っているお店などの情報を取得でき、料理をする方や食べることが好きな方の新しい味との出会いのきっかけになるようなサイトが欲しいと思いました。
 
-* Services (job queues, cache servers, search engines, etc.)
+---
 
-* Deployment instructions
+### **ターゲットユーザ**
 
-* ...
+料理をする人・食べることが好きな人
+
+---
+
+### **主な利用シーン**
+
+新しい味を求めたいとき、どんな調味料があるのかを調べる
+
+---
+
+## **チャレンジ要素一覧**
+
+https://docs.google.com/spreadsheets/d/1Sako9ecZ1TpxnJS2dOfR_CFcob2ylp4ESxv_vnGEuBk/edit?usp=sharing
+
+---
+
+## **開発環境**
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+---
+
