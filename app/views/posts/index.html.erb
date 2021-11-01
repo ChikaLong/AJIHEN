@@ -1,2 +1,34 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<%= link_to "タグ一覧", tags_path %>
+<%= link_to "カテゴリ一覧", categories_path %>
+
+<h2>レビュー一覧</h2>
+
+<% if user_signed_in? %>
+  <%= link_to '新規投稿', new_post_path %>
+<% else %>
+  <%= link_to '新規投稿', new_user_session_path %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= link_to post_path(post.id) do%>
+    <%= attachment_image_tag post, :image, :fill,200,200 %>
+    <%= post.item_name %>
+  <% end %>
+
+  <div>
+    <div id="star-rate-<%= post.id %>"></div>
+    <script>
+      $('#star-rate-<%= post.id %>').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        half: true,
+        score: <%= post.rate %>,
+      });
+    </script>
+  </div>
+
+  <%= post.user.name %>
+<% end %>
