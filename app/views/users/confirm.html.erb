@@ -1,2 +1,8 @@
-<h1>Users#confirm</h1>
-<p>Find me in app/views/users/confirm.html.erb</p>
+<h2>退会確認</h2>
+
+<p>退会すると投稿内容や気になるリスト、コメントなどが全て削除されます</p>
+<p>退会後上記内容の復元はできません</p>
+<h4><strong>本当に退会しますか？</strong></h4>
+
+<p><%= link_to "マイページに戻る", user_path(@user) %></p>
+<p><%= link_to "退会する", user_path(@user), method: :delete, "data-confirm" => "退会します" %></p>
