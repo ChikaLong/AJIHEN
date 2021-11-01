@@ -1,4 +1,8 @@
-<h2>マイページ</h2>
+<% if @user.id == current_user.id %>
+  <h2>マイページ</h2>
+<% else %>
+  <h2><%= @user.name %>さんのページ</h2>
+<% end %>
 
 <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "110x100" %>
 
@@ -10,11 +14,43 @@
     <td><%= @user.profile %></td>
   </tr>
   <tr>
-    <td><%= link_to "編集", edit_user_path(@user) %></td>
+    <td>
+      <% if @user.id == current_user.id %>
+        <%= link_to "編集", edit_user_path(@user) %>
+      <% end %>
+    </td>
   </tr>
 </table>
 
-<%= link_to "退会する", confirm_path %>
+<% if @user.id == current_user.id %>
+  <%= link_to "退会する", confirm_path %>
+<% end %>
+
+
+<% @user.posts.each do |post| %>
+  <%= link_to post_path(post.id) do%>
+    <%= attachment_image_tag post, :image, :fill,200,200 %>
+    <%= post.item_name %>
+  <% end %>
+
+  <div>
+    <div id="star-rate-<%= post.id %>"></div>
+    <script>
+      $('#star-rate-<%= post.id %>').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        half: true,
+        score: <%= post.rate %>,
+      });
+    </script>
+  </div>
+
+  <%= post.user.name %>
+<% end %>
+
 
 <!--投稿一覧-->
 

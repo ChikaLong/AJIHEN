@@ -1,2 +1,62 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h2>新規投稿</h2>
+
+<%= form_with model: @post, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :image, "商品画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :item_name, "商品名" %>
+    <%= f.text_field :item_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :review, "レビュー" %>
+    <%= f.text_area :review %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :country, "原産国" %>
+    <%= f.text_field :country %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :place,"購入場所" %>
+    <%= f.text_field :place %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, "購入時の値段" %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category, "カテゴリ" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "--選択してください--"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tag, "タグ(1つ以上選択)" %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+  </div>
+
+  <div class="form-group" id="star">
+    <%= f.label :rate, "総合評価" %><p>※総合評価は後から変更できません</p>
+    <%= f.hidden_field :rate, id: :review_star %>
+    <script>
+      $('#star').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'post[rate]',
+        half: true,
+      });
+    </script>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '投稿' %>
+  </div>
+<% end %>
