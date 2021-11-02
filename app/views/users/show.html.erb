@@ -1,4 +1,4 @@
-<% if @user.id == current_user.id %>
+<% if (user_signed_in?) && (@user.id == current_user.id) %>
   <h2>マイページ</h2>
 <% else %>
   <h2><%= @user.name %>さんのページ</h2>
@@ -15,14 +15,14 @@
   </tr>
   <tr>
     <td>
-      <% if @user.id == current_user.id %>
+      <% if (user_signed_in?) && (@user.id == current_user.id) %>
         <%= link_to "編集", edit_user_path(@user) %>
       <% end %>
     </td>
   </tr>
 </table>
 
-<% if @user.id == current_user.id %>
+<% if (user_signed_in?) && (@user.id == current_user.id) %>
   <%= link_to "退会する", confirm_path %>
 <% end %>
 

@@ -9,7 +9,11 @@
   <% end %>
 <% end %>
 
-<%= form_with(model:[post, comment], local: true) do |f| %>
-  <%= f.text_area :comment, placeholder: "コメント" %>
-  <%= f.submit "コメント" %>
+<% if user_signed_in? %>
+  <%= form_with(model:[post, comment], local: true) do |f| %>
+    <%= f.text_area :comment, placeholder: "コメント" %>
+    <%= f.submit "コメント" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "ログイン", new_user_session_path %>するとコメントできます</p>
 <% end %>
