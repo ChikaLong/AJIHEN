@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get '/about' => 'homes#about'
 
-  # 検索用ルーティング後ほど定義
+  get '/tag_search' => 'searches#tag_search'
+  get '/category_search' => 'searches#category_search'
+  get '/word_search' => 'searches#word_search'
 
   resources :users
   # 退会確認画面用ルーティング
