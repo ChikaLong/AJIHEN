@@ -1,0 +1,13 @@
+<h3>気になる！一覧</h3>
+
+<% if @favorite_posts.empty? %>
+  <p>まだ「気になる！」商品がありません</p>
+<% else %>
+  <% @favorite_posts.each do |post| %>
+    <%= link_to post_path(post.id) do %>
+      <%= attachment_image_tag post, :image, :fill, 200, 200 %>
+      <%= post.item_name %>
+    <% end %>
+    <%= post.user.name %>
+  <% end %>
+<% end %>
