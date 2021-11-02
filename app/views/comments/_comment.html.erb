@@ -5,12 +5,12 @@
   <%= comment.comment %>
   <%= comment.created_at.strftime('%Y/%m/%d') %>
   <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントを消しますか？" %>
+    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => "コメントを消しますか？" %>
   <% end %>
 <% end %>
 
 <% if user_signed_in? %>
-  <%= form_with(model:[post, comment], local: true) do |f| %>
+  <%= form_with(model:[post, comment]) do |f| %>
     <%= f.text_area :comment, placeholder: "コメント" %>
     <%= f.submit "コメント" %>
   <% end %>

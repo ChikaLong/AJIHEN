@@ -35,8 +35,12 @@
 <% end %>
 
 <!--お気に入り-->
-  <%= render 'favorites/favorite', post: @post, user: @user %>
+<div id="favorite_button_<%= @post.id %>">
+  <%= render 'favorites/favorite', post: @post %>
+</div>
 
 
 <!--コメント機能-->
-<%= render 'comments/comment', post: @post, comment: @comment %>
+<div id="comments_area_<%= @post.id %>">
+  <%= render 'comments/comment', post: @post, comment: @comment %>
+</div>
