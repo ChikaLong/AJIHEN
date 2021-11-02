@@ -1,5 +1,8 @@
 <header>
   <h3><%= link_to "AJIHEN", root_path %></h3>
+  <% if user_signed_in? %>
+    ようこそ<%= current_user.name %>さん
+  <% end %>
   <ul>
     <% if user_signed_in? %>
       <li><%= link_to "「AJIHEN」とは", about_path %></li>

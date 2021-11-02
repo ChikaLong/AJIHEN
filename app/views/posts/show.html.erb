@@ -32,10 +32,11 @@
 <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
   <%= link_to "編集", edit_post_path(@post) %>
   <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？（コメントなども全て削除されます）" %>
+<% end %>
 
 <!--お気に入り-->
-<%= render 'favorites/favorite', post: @post %>
-<% end %>
+  <%= render 'favorites/favorite', post: @post, user: @user %>
+
 
 <!--コメント機能-->
 <%= render 'comments/comment', post: @post, comment: @comment %>

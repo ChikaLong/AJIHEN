@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get '/category_search' => 'searches#category_search'
   get '/word_search' => 'searches#word_search'
 
-  resources :users
+  resources :users do
+    member do
+      get :favorites
+    end
+  end
   # 退会確認画面用ルーティング
   get '/confirm' => 'users#confirm'
 
