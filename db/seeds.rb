@@ -61,17 +61,3 @@ Category.create!(
     {name: 'その他'}
   ]
 )
-
-30.times do |n|
-  Post.create!(
-    user_id: 1,
-    category_id: 6,
-    image: File.open("#{Rails.root}/app/assets/images/icon_gray.png"),
-    item_name: "味噌",
-    review: "味噌汁に",
-    country: "日本",
-    place: "西友",
-    price: "500",
-    rate: "4"
-  )
-end
