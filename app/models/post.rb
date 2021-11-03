@@ -6,6 +6,11 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  scope :latest, -> { order(created_at: :desc) }
+  scope :rating, -> { order(rate: :desc) }
+  scope :many, -> { find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
+  scope :like, -> { find(Favorite.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
+
   attachment :image
 
   validates :image, presence: true
