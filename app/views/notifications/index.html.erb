@@ -1,0 +1,9 @@
+<%= link_to "通知を全て削除する", notification_path(@notifications), method: :delete, "data-confirm" => "通知を全て削除します" %>
+
+<% if @notifications.empty? %>
+  <p>通知はありません</p>
+<% else %>
+  <%= render @notifications %>
+<% end %>
+
+<%=paginate @notifications %>

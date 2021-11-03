@@ -24,5 +24,6 @@ Rails.application.routes.draw do
 
   resources :tags, only:[:index]
   resources :categories, only:[:index]
+  resources :notifications, only:[:index, :destroy]
 
 end
