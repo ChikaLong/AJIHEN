@@ -1,19 +1,7 @@
-<%= link_to "タグ一覧", tags_path %>
-<%= link_to "カテゴリ一覧", categories_path %>
+<h3>「AJIHEN」は主に調味料に関する情報共有のためのレビューサイトです</h3>
+<p>詳しくは<%= link_to "こちら", about_path %></p>
 
-<h2>レビュー一覧</h2>
-
-<% if user_signed_in? %>
-  <%= link_to '新規投稿', new_post_path %>
-<% else %>
-  <%= link_to '新規投稿', new_user_session_path %>
-<% end %>
-
-<%= link_to "新着順", posts_path(sort_create: "true") %> |
-<%= link_to "評価順", posts_path(sort_rate: "true") %> |
-<%= link_to "コメント多い順", posts_path(sort_comment: "true") %> |
-<%= link_to "いいね多い順", posts_path(sort_favorite: "true") %>
-
+<h4>新着投稿</h4>
 <% @posts.each do |post| %>
   <%= link_to post_path(post.id) do%>
     <%= attachment_image_tag post, :image, :fill,200,200 %>
@@ -41,8 +29,10 @@
   <p>コメント数：<%= post.comments.count %></p>
   <p>いいね数：<%= post.favorites.count %></p>
 <% end %>
+<%= link_to "全ての投稿を見る", posts_path %>
 
-<%= paginate @posts %>
+<h4>カテゴリ一覧</h4>
 
-
-<%= render 'posts/rank', today_ranks: @today_ranks, week_ranks: @week_ranks, month_ranks: @month_ranks %>
+<% @categories.each do |category| %>
+  <%= link_to category.name, category_search_path(category_id: category.id) %>
+<% end %>
