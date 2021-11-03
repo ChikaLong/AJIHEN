@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
     comment.save
+    @post.create_notification_by(current_user)
   end
 
   def destroy

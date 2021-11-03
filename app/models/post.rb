@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   scope :latest, -> { order(created_at: :desc) }
   scope :rating, -> { order(rate: :desc) }
@@ -32,5 +33,16 @@ class Post < ApplicationRecord
     else
       Post.all
     end
+  end
+
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id
+    )
+    if notification.visiter_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
   end
 end
