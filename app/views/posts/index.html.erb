@@ -9,6 +9,11 @@
   <%= link_to '新規投稿', new_user_session_path %>
 <% end %>
 
+<%= link_to "新着順", posts_path(sort_create: "true") %> |
+<%= link_to "評価順", posts_path(sort_rate: "true") %> |
+<%= link_to "コメント多い順", posts_path(sort_comment: "true") %> |
+<%= link_to "いいね多い順", posts_path(sort_favorite: "true") %>
+
 <% @posts.each do |post| %>
   <%= link_to post_path(post.id) do%>
     <%= attachment_image_tag post, :image, :fill,200,200 %>
@@ -31,6 +36,8 @@
   </div>
 
   <%= post.user.name %>
+  <p>コメント数：<%= post.comments.count %></p>
+  <p>いいね数：<%= post.favorites.count %></p>
 <% end %>
 
 <%= paginate @posts %>

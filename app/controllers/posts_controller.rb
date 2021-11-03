@@ -1,6 +1,20 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.page(params[:page]).per(20)
+    if params[:sort_create]
+      # 新着順
+      @posts = Post.latest.page(params[:page]).per(20)
+    elsif params[:sort_rate]
+      # 評価順
+      @posts = Post.rating.page(params[:page]).per(20)
+    elsif params[:sort_comment]
+      # コメント数順
+      @posts = Kaminari.paginate_array(Post.many).page(params[:page]).per(20)
+    elsif params[:sort_favorite]
+      # いいね数順
+      @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(20)
+    else
+      @posts = Post.page(params[:page]).per(20)
+    end
   end
 
   def show
