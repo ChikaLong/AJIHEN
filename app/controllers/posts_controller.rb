@@ -15,6 +15,9 @@ class PostsController < ApplicationController
     else
       @posts = Post.page(params[:page]).per(20)
     end
+    @today_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_day).order('count(post_id) desc').limit(3).pluck(:post_id))
+    @week_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(3).pluck(:post_id))
+    @month_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
   def show
