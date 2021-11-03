@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
 
+  def comments
+    @user = User.find(params[:id])
+    comments = Comment.where(user_id: @user.id).pluck(:post_id)
+    @comment_posts = Post.find(comments)
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :profile, :profile_image)
