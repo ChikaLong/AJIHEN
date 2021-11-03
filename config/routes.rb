@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :favorites
+      get :comments
     end
   end
   # 退会確認画面用ルーティング
