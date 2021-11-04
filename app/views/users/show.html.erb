@@ -4,8 +4,8 @@
   <h2><%= @user.name %>さんのページ</h2>
 <% end %>
 
+<!--ユーザ情報-->
 <%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "110x100" %>
-
 <table>
   <tr>
     <td><%= @user.name %></td>
@@ -21,39 +21,22 @@
     </td>
   </tr>
 </table>
-
 <% if (user_signed_in?) && (@user.id == current_user.id) %>
   <%= link_to "退会する", confirm_path %>
 <% end %>
 
-
-<% @user.posts.each do |post| %>
-  <%= link_to post_path(post.id) do%>
-    <%= attachment_image_tag post, :image, :fill,200,200 %>
-    <%= post.item_name %>
+<!--自分のレビュー一覧-->
+<h4>マイレビュー</h4>
+<% if @user.posts.empty? %>
+  <p>まだレビューの投稿がありません</p>
+<% else %>
+  <% @user.posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
   <% end %>
-
-  <div>
-    <div id="star-rate-<%= post.id %>"></div>
-    <script>
-      $('#star-rate-<%= post.id %>').raty({
-        size: 36,
-        starOff: '<%= asset_path('star-off.png') %>',
-        starOn: '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        readOnly: true,
-        half: true,
-        score: <%= post.rate %>,
-      });
-    </script>
-  </div>
-
-  <%= post.user.name %>
 <% end %>
 
-
 <!--お気に入り一覧リンク-->
-<%= link_to "気になる！一覧", favorites_user_path(@user) %>
+<%= link_to "マイ気になる！", favorites_user_path(@user) %>
 
 <!--コメントした投稿一覧リンク-->
-<%= link_to "コメントしたレビュー一覧", comments_user_path(@user) %>
+<%= link_to "コメントしたレビュー", comments_user_path(@user) %>
