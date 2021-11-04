@@ -1,5 +1,11 @@
 <%= form_with url: word_search_path, method: :get, local: true do |f| %>
-  <%= f.label "キーワード検索" %>
-  <%= f.text_field :keyword, placeholder: "商品名などを入力" %>
-  <%= f.submit "検索" %>
+  <div class="input-group">
+    <%= f.label "キーワード検索" %>
+    <%= f.text_field :keyword, placeholder: "商品名などを入力", class: "form-control" %>
+    <span class="input-group-append">
+      <%= button_tag type: 'submit', class: "btn btn-outline-secondary" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </span>
+  </div>
 <% end %>

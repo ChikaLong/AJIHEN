@@ -1,25 +1,43 @@
-<%= link_to post_path(post.id) do%>
-<%= attachment_image_tag post, :image, :fill,200,200 %>
-<%= post.item_name %>
-<% end %>
+<div class="card-deck">
+  <div class="card" style="width: 20rem;">
+    <%= link_to post_path(post.id) do%>
+      <%= attachment_image_tag post, :image, :fill,200,200, class: "card-img-top" %>
+      <h4 clas="card-title"><%= post.item_name %></h4>
+    <% end %>
 
-<div>
-<div id="star-rate-<%= post.id %>"></div>
-<script>
-  $('#star-rate-<%= post.id %>').empty();
-  $('#star-rate-<%= post.id %>').raty({
-    size: 36,
-    starOff: '<%= asset_path('star-off.png') %>',
-    starOn: '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    readOnly: true,
-    half: true,
-    score: <%= post.rate %>,
-  });
-</script>
-<%= post.rate %>
+    <div class="card-body">
+      <div id="star-rate-<%= post.id %>"></div>
+      <script>
+        $('#star-rate-<%= post.id %>').empty();
+        $('#star-rate-<%= post.id %>').raty({
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          half: true,
+          score: <%= post.rate %>,
+        });
+      </script>
+
+      <% post.tags.each do |tag| %>
+        <span class="badge badge-pill badge-light">
+        <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id) %>
+        </span>
+      <% end %>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <%= link_to user_path(post.user) do %>
+          <%= post.user.name %>さん
+        <% end %>
+        投稿日：<%= post.created_at.strftime('%Y/%m/%d') %>
+      </li>
+      <li class="list-group-item">
+        <i class="far fa-comment-alt"></i><%= post.comments.count %>コメント
+        <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
+      </li>
+    </ul>
+  </div>
 </div>
-
-<%= post.user.name %>
-<p>コメント数：<%= post.comments.count %></p>
-<p>いいね数：<%= post.favorites.count %></p>

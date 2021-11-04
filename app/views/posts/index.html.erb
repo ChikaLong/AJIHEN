@@ -1,5 +1,4 @@
-<%= link_to "タグ一覧", tags_path %>
-<%= link_to "カテゴリ一覧", categories_path %>
+<%= render 'searches/form' %>
 
 <h2>みんなのレビュー</h2>
 
@@ -12,11 +11,13 @@
 <%= link_to "新着順", posts_path(sort_create: "true") %> |
 <%= link_to "評価順", posts_path(sort_rate: "true") %> |
 <%= link_to "コメント多い順", posts_path(sort_comment: "true") %> |
-<%= link_to "いいね多い順", posts_path(sort_favorite: "true") %>
+<%= link_to "気になる！順", posts_path(sort_favorite: "true") %>
 
-<% @posts.each do |post| %>
-  <%= render 'posts/post', post: post %>
-<% end %>
+<div class="row">
+  <% @posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>
 
 <%= paginate @posts %>
 
