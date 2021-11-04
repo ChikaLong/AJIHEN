@@ -7,11 +7,6 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  scope :latest, -> { order(created_at: :desc) }
-  scope :rating, -> { order(rate: :desc) }
-  scope :many, -> { find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
-  scope :like, -> { find(Favorite.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
-
   attachment :image
 
   validates :image, presence: true
@@ -21,6 +16,18 @@ class Post < ApplicationRecord
   validates :place, presence: true
   validates :price, presence: true
   validates :rate, presence: true
+
+  # ソート機能用
+  scope :latest, -> { order(created_at: :desc) }
+  scope :rating, -> { order(rate: :desc) }
+  scope :many, -> { find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
+  scope :like, -> { find(Favorite.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
+
+  # ランキング表示用
+  scope :today, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_day).order('count(post_id) desc').limit(3).pluck(:post_id)) }
+  scope :week, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(3).pluck(:post_id)) }
+  scope :month, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(3).pluck(:post_id)) }
+
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

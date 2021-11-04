@@ -1,11 +1,15 @@
 <h5>今日の気になる！ランキング</h5>
-<% today_ranks.each.with_index(1) do |post, i| %>
-  <%= i %>位
-  <%= link_to post_path(post.id) do%>
-    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-    <%= post.item_name %>
+<% if today_ranks.empty? %>
+  <p>まだ気になる！されたレビューはありません</p>
+<% else %>
+  <% today_ranks.each.with_index(1) do |post, i| %>
+    <%= i %>位
+    <%= link_to post_path(post.id) do%>
+      <%= attachment_image_tag post, :image, :fill, 100, 100 %>
+      <%= post.item_name %>
+    <% end %>
+    <%= post.favorites.count %>気になる！
   <% end %>
-  総合評価:<%= post.rate %>
 <% end %>
 
 <h5>今週の気になる！ランキング</h5>
@@ -15,7 +19,7 @@
     <%= attachment_image_tag post, :image, :fill, 100, 100 %>
     <%= post.item_name %>
   <% end %>
-  総合評価:<%= post.rate %>
+  <%= post.favorites.count %>気になる！
 <% end %>
 
 <h5>今月の気になる！ランキング</h5>
@@ -25,5 +29,5 @@
     <%= attachment_image_tag post, :image, :fill, 100, 100 %>
     <%= post.item_name %>
   <% end %>
-  総合評価:<%= post.rate %>
+  <%= post.favorites.count %>気になる！
 <% end %>
