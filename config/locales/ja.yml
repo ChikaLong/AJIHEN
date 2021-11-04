@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: レビュー投稿
+    attributes:
+      user:
+        name: ニックネーム
+        email: Eメール
+        password: パスワード
+      post:
+        item_name: 商品名
+        image: 商品画像
+        review: レビュー内容
+        country: 原産国
+        place: 購入場所
+        price: 購入時の金額
+        category: カテゴリ
+        rate: 総合評価

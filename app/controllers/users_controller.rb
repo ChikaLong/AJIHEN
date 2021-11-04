@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except:[:confirm]
+  before_action :set_user, except:[:confirm, :thanks]
 
   def show
   end
@@ -17,11 +17,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: "ご利用ありがとうございました"
+    redirect_to thanks_path
   end
 
   def confirm
     @user = current_user
+  end
+
+  def thanks
   end
 
   def favorites

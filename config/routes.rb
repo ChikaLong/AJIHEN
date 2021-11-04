@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   # 退会確認画面用ルーティング
   get '/confirm' => 'users#confirm'
+  get '/thanks' => 'users#thanks'
 
   resources :posts do
     resources :comments, only:[:create, :destroy]
