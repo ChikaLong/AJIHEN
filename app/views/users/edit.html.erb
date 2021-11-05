@@ -1,4 +1,4 @@
-<h2>会員情報編集</h2>
+<h2>プロフィール編集</h2>
 
 <%= form_with model: @user, local: true do |f| %>
   <div class="form-group">
@@ -8,15 +8,15 @@
 
   <div class="form-group">
     <%= f.label :name, "ニックネーム" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :profile, "プロフィール" %>
-    <%= f.text_area :profile %>
+    <%= f.text_area :profile, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.submit '更新' %>
+    <%= f.submit '更新', class: "btn btn-primary" %>
   </div>
 <% end %>

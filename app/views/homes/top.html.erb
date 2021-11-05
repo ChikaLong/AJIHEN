@@ -1,12 +1,17 @@
-<h3>「AJIHEN」は主に調味料に関する情報共有のためのレビューサイトです</h3>
-<p>詳しくは<%= link_to "こちら", about_path %></p>
-
+<div class="top-visual">
+  <div class="text-center">
+    <h3>「AJIHEN」は主に調味料に関する情報共有のためのレビューサイトです</h3>
+    <p>詳しくは<%= link_to "こちら", about_path %></p>
+  </div>
+</div>
 <%= render 'searches/form' %>
 
 <h4>新着投稿</h4>
-<% @posts.each do |post| %>
-  <%= render 'posts/post', post: post %>
-<% end %>
+<div class="row">
+  <% @posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>
 <%= link_to "全ての投稿を見る", posts_path %>
 
 <h4>カテゴリ一覧</h4>

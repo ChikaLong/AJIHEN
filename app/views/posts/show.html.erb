@@ -1,48 +1,94 @@
 <%= render 'searches/form' %>
 
-<h2><%= @post.item_name %></h2>
-
-<%= attachment_image_tag @post, :image, :fill,200,200 %>
-<%= @post.review %>
-<%= @post.country %>
-<%= @post.price %>
-<%= @post.place %>
-<%= @post.category.name %>
-<% @post.tags.each do |tag| %>
-  <%= tag.name %>
-<% end %>
-
 <div>
-  <div id="star-rate-<%= @post.id %>"></div>
-  <script>
-    $('#star-rate-<%= @post.id %>').raty({
-      size: 36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn: '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      readOnly: true,
-      half: true,
-      score: <%= @post.rate %>,
-    });
-  </script>
+  <%= link_to user_path(@user) do %>
+    <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
+    <%= @post.user.name %>さん
+  <% end %>
 </div>
-<%= link_to user_path(@user) do %>
-  <%= @post.user.name %>
-<% end %>
-<%= @post.created_at.strftime('%Y/%m/%d') %>
 
-<% if (user_signed_in?) && (@post.user.id == current_user.id) %>
-  <%= link_to "編集", edit_post_path(@post) %>
-  <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？（コメントなども全て削除されます）" %>
-<% end %>
+<div class="row">
+  <div class="col-md-4">
+    <div><%= attachment_image_tag @post, :image, :fill,250,250 %></div>
+    <!--気になるボタン-->
+    <div class="mt-2 mb-2" id="favorite_button_<%= @post.id %>">
+      <%= render 'favorites/favorite', post: @post %>
+    </div>
+    <div>
+      <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
+        <%= link_to "レビューを編集", edit_post_path(@post), class: "btn btn-primary" %>
+        <%= link_to "レビューを削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？（コメントなども全て削除されます）", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
 
-<!--お気に入り-->
-<div id="favorite_button_<%= @post.id %>">
-  <%= render 'favorites/favorite', post: @post %>
+  <div class="col-md-8">
+    <table class="table table-borderless">
+      <tr>
+        <td>
+          <h2><%= @post.item_name %></h2>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="star-rate-<%= @post.id %>"></div>
+          <script>
+            $('#star-rate-<%= @post.id %>').empty();
+            $('#star-rate-<%= @post.id %>').raty({
+              size: 36,
+              starOff: '<%= asset_path('star-off.png') %>',
+              starOn: '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              readOnly: true,
+              half: true,
+              score: <%= @post.rate %>,
+            });
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td><%= @post.review %></td>
+      </tr>
+    </table>
+
+    <table class="table table-borderless">
+      <tr>
+        <th>原産国</th>
+        <td><%= @post.country %></td>
+      </tr>
+      <tr>
+        <th>購入時の値段</th>
+        <td><%= @post.price %></td>
+      </tr>
+      <tr>
+        <th>購入場所</th>
+        <td><%= @post.place %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id) %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">
+          <% @post.tags.each do |tag| %>
+            <span class="badge badge-pill badge-light">
+              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id) %>
+            </span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 
 <!--コメント機能-->
 <div id="comments_area_<%= @post.id %>">
-  <%= render 'comments/comment', post: @post, comment: @comment %>
+  <%= render 'comments/comment', post: @post, comment: @comment, user: @user %>
 </div>
+<%= paginate @comments %>

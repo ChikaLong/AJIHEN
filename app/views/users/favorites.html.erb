@@ -1,9 +1,11 @@
-<h3>気になる！一覧</h3>
+<h3>My気になる！</h3>
 
-<% if @favorite_posts.empty? %>
-  <p>まだ「気になる！」商品がありません</p>
-<% else %>
-  <% @favorite_posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
+<div class="row">
+  <% if @favorite_posts.empty? %>
+    <p>まだ「気になる！」商品がありません</p>
+  <% else %>
+    <% @favorite_posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

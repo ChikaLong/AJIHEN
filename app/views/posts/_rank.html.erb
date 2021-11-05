@@ -8,7 +8,7 @@
       <%= attachment_image_tag post, :image, :fill, 100, 100 %>
       <%= post.item_name %>
     <% end %>
-    <%= post.favorites.count %>気になる！
+    <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
   <% end %>
 <% end %>
 
@@ -19,7 +19,7 @@
     <%= attachment_image_tag post, :image, :fill, 100, 100 %>
     <%= post.item_name %>
   <% end %>
-  <%= post.favorites.count %>気になる！
+  <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
 <% end %>
 
 <h5>今月の気になる！ランキング</h5>
@@ -29,5 +29,5 @@
     <%= attachment_image_tag post, :image, :fill, 100, 100 %>
     <%= post.item_name %>
   <% end %>
-  <%= post.favorites.count %>気になる！
+  <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
 <% end %>

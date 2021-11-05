@@ -1,8 +1,10 @@
-<h2>退会確認</h2>
-
-<p>退会すると投稿したレビューや気になるリスト、コメントなどが全て削除されます</p>
-<p>退会後上記内容・アカウント情報の復元はできません</p>
-<h4><strong>本当に退会しますか？</strong></h4>
-
-<p><%= link_to "マイページに戻る", user_path(@user) %></p>
-<p><%= link_to "退会する", user_path(@user), method: :delete, "data-confirm" => "退会します" %></p>
+<div class="text-center">
+  <h2>退会確認</h2>
+  
+  <p>退会すると投稿したレビューや気になるリスト、コメントなどが全て削除されます</p>
+  <p>退会後上記内容・アカウント情報の復元はできません</p>
+  <h4><strong>本当に退会しますか？</strong></h4>
+  
+  <p><%= link_to "マイページに戻る", user_path(@user), class: "btn btn-success" %></p>
+  <p><%= link_to "退会する", user_path(@user), method: :delete, "data-confirm" => "退会します", class: "btn btn-danger" %></p>
+</div>

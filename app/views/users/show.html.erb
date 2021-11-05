@@ -4,39 +4,55 @@
   <h2><%= @user.name %>さんのページ</h2>
 <% end %>
 
-<!--ユーザ情報-->
-<%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "110x100" %>
-<table>
-  <tr>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <td><%= @user.profile %></td>
-  </tr>
-  <tr>
-    <td>
+<div class="row">
+  <div class="col-md-3">
+  <!--ユーザ情報-->
+    <table class="table">
+      <tr>
+        <td align="center"><%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "110x100", class: "rounded-circle" %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td><%= @user.profile %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= link_to "My気になる！", favorites_user_path(@user) %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= link_to "コメントしたレビュー", comments_user_path(@user) %></td>
+      </tr>
       <% if (user_signed_in?) && (@user.id == current_user.id) %>
-        <%= link_to "編集", edit_user_path(@user) %>
+        <tr>
+          <td align="center">
+            <% if unchecked_notifications.any? %>
+              <%= link_to "通知あり", notifications_path, class: "far fa-bell", style: "color: red" %>
+            <% else %>
+              <%= link_to "通知", notifications_path, class: "far fa-bell" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <%= link_to "プロフィール編集", edit_user_path(@user) %>
+          </td>
+        </tr>
       <% end %>
-    </td>
-  </tr>
-</table>
-<% if (user_signed_in?) && (@user.id == current_user.id) %>
-  <%= link_to "退会する", confirm_path %>
-<% end %>
+    </table>
+  </div>
 
-<!--自分のレビュー一覧-->
-<h4>マイレビュー</h4>
-<% if @user.posts.empty? %>
-  <p>まだレビューの投稿がありません</p>
-<% else %>
-  <% @user.posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
-  <% end %>
-<% end %>
-
-<!--お気に入り一覧リンク-->
-<%= link_to "マイ気になる！", favorites_user_path(@user) %>
-
-<!--コメントした投稿一覧リンク-->
-<%= link_to "コメントしたレビュー", comments_user_path(@user) %>
+  <div class="col-md-9">
+    <!--自分のレビュー一覧-->
+    <h4>マイレビュー</h4>
+    <div class="row">
+    <% if @user.posts.empty? %>
+      <p>まだレビューの投稿がありません</p>
+    <% else %>
+      <% @user.posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

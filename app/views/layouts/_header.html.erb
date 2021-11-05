@@ -1,5 +1,5 @@
 <header class="py-4">
-  <div class="containe text-center">
+  <div class="container text-center">
     <h3><%= link_to "AJIHEN", root_path %></h3>
   </div>
 </header>
@@ -19,7 +19,7 @@
         <li><%= link_to "タグ一覧", tags_path %></li>
       </ul>
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <div class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

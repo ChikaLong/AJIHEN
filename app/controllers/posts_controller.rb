@@ -20,7 +20,9 @@ class PostsController < ApplicationController
 
   def show
     @user = @post.user
+    @category = @post.category
     @comment = Comment.new
+    @comments = @post.comments.page(params[:page]).per(15)
   end
 
   def new
