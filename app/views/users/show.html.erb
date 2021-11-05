@@ -1,11 +1,15 @@
-<% if (user_signed_in?) && (@user.id == current_user.id) %>
-  <h2>マイページ</h2>
-<% else %>
-  <h2><%= @user.name %>さんのページ</h2>
-<% end %>
+<div class="offset-1">
+  <% if (user_signed_in?) && (@user.id == current_user.id) %>
+    <h2>マイページ</h2>
+  <% else %>
+    <h2><%= @user.name %>さんのページ</h2>
+  <% end %>
+</div>
+
+<%= render "posts/new_link" %>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="offset-1 col-md-3">
   <!--ユーザ情報-->
     <table class="table">
       <tr>
@@ -18,31 +22,31 @@
         <td><%= @user.profile %></td>
       </tr>
       <tr>
-        <td align="center"><%= link_to "My気になる！", favorites_user_path(@user) %></td>
+        <td align="center"><%= link_to "My気になる！", favorites_user_path(@user), class: "link" %></td>
       </tr>
       <tr>
-        <td align="center"><%= link_to "コメントしたレビュー", comments_user_path(@user) %></td>
+        <td align="center"><%= link_to "コメントしたレビュー", comments_user_path(@user), class: "link" %></td>
       </tr>
       <% if (user_signed_in?) && (@user.id == current_user.id) %>
         <tr>
           <td align="center">
             <% if unchecked_notifications.any? %>
-              <%= link_to "通知あり", notifications_path, class: "far fa-bell", style: "color: red" %>
+              <%= link_to "通知あり", notifications_path, class: "far fa-bell link", style: "color: red" %>
             <% else %>
-              <%= link_to "通知", notifications_path, class: "far fa-bell" %>
+              <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
             <% end %>
           </td>
         </tr>
         <tr>
           <td align="center">
-            <%= link_to "プロフィール編集", edit_user_path(@user) %>
+            <%= link_to "プロフィール編集", edit_user_path(@user), class: "link" %>
           </td>
         </tr>
       <% end %>
     </table>
   </div>
 
-  <div class="col-md-9">
+  <div class="offset-1 col-md-7">
     <!--自分のレビュー一覧-->
     <h4>マイレビュー</h4>
     <div class="row">

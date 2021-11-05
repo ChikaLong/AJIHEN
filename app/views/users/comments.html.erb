@@ -1,11 +1,13 @@
-<h3>コメントしたレビュー</h3>
+<h3 class="text-center">コメントしたレビュー</h3>
 
 <div class="row">
-  <% if @comment_posts.empty? %>
-    <p>まだレビューにコメントをしていません</p>
-  <% else %>
-    <% @comment_posts.each do |post| %>
-     <%= render 'posts/post', post: post %>
+  <div class="offset-2 col-8">
+    <% if @comment_posts.empty? %>
+      <p>まだレビューにコメントをしていません</p>
+    <% else %>
+      <% @comment_posts.each do |post| %>
+       <%= render 'posts/post', post: post %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

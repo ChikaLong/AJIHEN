@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.page(params[:page]).per(20)
     end
-    @today_ranks = Post.today
     @week_ranks = Post.week
     @month_ranks = Post.month
   end

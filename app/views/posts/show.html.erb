@@ -1,14 +1,16 @@
 <%= render 'searches/form' %>
 
+<%= render "posts/new_link" %>
+
 <div>
-  <%= link_to user_path(@user) do %>
+  <%= link_to user_path(@user), class: "link" do %>
     <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
     <%= @post.user.name %>さん
   <% end %>
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="offset-1 col-md-4">
     <div><%= attachment_image_tag @post, :image, :fill,250,250 %></div>
     <!--気になるボタン-->
     <div class="mt-2 mb-2" id="favorite_button_<%= @post.id %>">
@@ -22,7 +24,7 @@
     </div>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-6">
     <table class="table table-borderless">
       <tr>
         <td>
@@ -66,14 +68,14 @@
       </tr>
       <tr>
         <th></th>
-        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id) %></td>
+        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id), class: "link" %></td>
       </tr>
       <tr>
         <th></th>
         <td align="right">
           <% @post.tags.each do |tag| %>
             <span class="badge badge-pill badge-light">
-              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id) %>
+              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %>
             </span>
           <% end %>
         </td>

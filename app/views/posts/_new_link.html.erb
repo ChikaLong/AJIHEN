@@ -1,0 +1,7 @@
+<div>
+  <% if user_signed_in? %>
+    <%= link_to 'レビューを書く', new_post_path %>
+  <% else %>
+    <%= link_to 'レビューを書く', new_user_session_path %>
+  <% end %>
+</div>

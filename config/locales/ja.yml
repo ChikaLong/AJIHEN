@@ -17,3 +17,11 @@ ja:
         price: 購入時の金額
         category: カテゴリ
         rate: 総合評価
+
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."

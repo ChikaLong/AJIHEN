@@ -1,6 +1,6 @@
 <header class="py-4">
   <div class="container text-center">
-    <h3><%= link_to "AJIHEN", root_path %></h3>
+    <h2><%= link_to "AJIHEN", root_path %></h2>
   </div>
 </header>
 
@@ -12,11 +12,11 @@
 
     <div class="collapse navbar-collapse" id="navbar-content">
       <ul class="navbar-nav mr-auto">
-        <li><%= link_to "TOP　", root_path %></li>
-        <li><%= link_to "「AJIHEN」とは　", about_path %></li>
-        <li><%= link_to "みんなのレビュー　", posts_path %></li>
-        <li><%= link_to "カテゴリ一覧　", categories_path %></li>
-        <li><%= link_to "タグ一覧", tags_path %></li>
+        <li><%= link_to "TOP　", root_path, class: "link" %></li>
+        <li><%= link_to "「AJIHEN」とは　", about_path, class: "link" %></li>
+        <li><%= link_to "みんなのレビュー　", posts_path, class: "link" %></li>
+        <li><%= link_to "カテゴリ一覧　", categories_path , class: "link"%></li>
+        <li><%= link_to "タグ一覧", tags_path, class: "link" %></li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
@@ -26,21 +26,21 @@
               <%= current_user.name %>さん
             </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <div class="dropdown-item"><%= link_to "マイページ", user_path(current_user) %></div>
+              <div class="dropdown-item"><%= link_to "マイページ", user_path(current_user), class: "link" %></div>
               <div class="dropdown-item">
                 <% if unchecked_notifications.any? %>
-                  <%= link_to "通知あり", notifications_path, class: "far fa-bell", style: "color: red" %>
+                  <%= link_to "通知あり", notifications_path, class: "far fa-bell link", style: "color: red" %>
                 <% else %>
-                  <%= link_to "通知", notifications_path, class: "far fa-bell" %>
+                  <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
                 <% end %>
               </div>
-              <div class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
-              <div class="dropdown-item"><%= link_to "退会する", confirm_path %></div>
+              <div class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></div>
+              <div class="dropdown-item"><%= link_to "退会する", confirm_path, class: "link" %></div>
             </div>
           </li>
         <% else %>
-          <li><%= link_to "新規登録　", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "新規登録　", new_user_registration_path, class: "link" %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: "link" %></li>
         <% end %>
       </ul>
     </div>

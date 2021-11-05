@@ -1,22 +1,24 @@
-<h2>プロフィール編集</h2>
+<h2 class="text-center">プロフィール編集</h2>
 
-<%= form_with model: @user, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :profile_image, "プロフィール画像" %>
-    <%= f.attachment_field :profile_image %>
-  </div>
+<div class="offset-2 col-8">
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :profile_image, "プロフィール画像" %><br />
+      <%= f.attachment_field :profile_image %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :name, "ニックネーム" %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :name, "ニックネーム" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :profile, "プロフィール" %>
-    <%= f.text_area :profile, class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :profile, "プロフィール" %>
+      <%= f.text_area :profile, placeholder: "自己紹介を入力", class: "form-control" %>
+    </div>
 
-  <div class="form-group">
-    <%= f.submit '更新', class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-group text-center">
+      <%= f.submit '更新', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,13 @@
 <%= render 'searches/form' %>
 
-<h2>カテゴリ一覧</h2>
+<h2 class="text-center">カテゴリ一覧</h2>
 
-<% @categories.each do |category| %>
-  <%= link_to category.name, category_search_path(category_id: category.id) %>
-<% end %>
+<div class="offset-2 col-8">
+  <% @categories.each do |category| %>
+    <table class="table">
+      <tr align="center">
+        <td><%= link_to category.name, category_search_path(category_id: category.id), class: "link" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

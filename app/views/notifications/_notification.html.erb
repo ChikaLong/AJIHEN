@@ -1,15 +1,18 @@
 <% visiter = notification.visiter %>
 <% post = notification.post %>
-<ul>
-  <li>
-    <%= link_to user_path(visiter) do %>
-      <%= visiter.name %>
-    <% end %>
-    さんが
-    <%= link_to post_path(notification.post_id) do %>
-      <%= post.item_name.truncate(20) %>
-    <% end %>
-    にコメントしました。
-    <%= "(#{time_ago_in_words(notification.created_at)}前)" %>
-  </li>
-</ul>
+
+<table class="table">
+  <tr>
+    <td>
+      ・<%= link_to user_path(visiter), class: "link" do %>
+        <%= visiter.name %>
+      <% end %>
+      さんが
+      <%= link_to post_path(notification.post_id), class: "link" do %>
+        <%= post.item_name.truncate(20) %>
+      <% end %>
+      にコメントしました。
+      <%= "(#{time_ago_in_words(notification.created_at)}前)" %>
+    </td>
+  </tr>
+</table>
