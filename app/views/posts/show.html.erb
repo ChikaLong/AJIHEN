@@ -1,8 +1,6 @@
 <%= render 'searches/form' %>
 
-<%= render "posts/new_link" %>
-
-<div>
+<div class="offset-1 mb-3">
   <%= link_to user_path(@user), class: "link" do %>
     <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
     <%= @post.user.name %>さん
@@ -10,21 +8,44 @@
 </div>
 
 <div class="row">
-  <div class="offset-1 col-md-4">
-    <div><%= attachment_image_tag @post, :image, :fill,250,250 %></div>
+  <div class="offset-1 col-lg-3">
+    <div><%= attachment_image_tag @post, :image, :fill,300,300 %></div>
     <!--気になるボタン-->
-    <div class="mt-2 mb-2" id="favorite_button_<%= @post.id %>">
+    <div class="mt-2 mb-3 ml-1" id="favorite_button_<%= @post.id %>">
       <%= render 'favorites/favorite', post: @post %>
     </div>
     <div>
       <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
-        <%= link_to "レビューを編集", edit_post_path(@post), class: "btn btn-primary" %>
-        <%= link_to "レビューを削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？（コメントなども全て削除されます）", class: "btn btn-danger" %>
+        <%= link_to "レビューを編集", edit_post_path(@post), class: "btn btn-primary m-1" %>
+        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">
+          レビューを削除
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">レビューの削除</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                レビューをを削除しますか？<br />
+                コメントなども全て削除されます。
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
+                <%= link_to "レビューを削除", post_path(@post), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="offset-1 col-lg-6">
     <table class="table table-borderless">
       <tr>
         <td>
@@ -53,7 +74,7 @@
       </tr>
     </table>
 
-    <table class="table table-borderless">
+    <table class="table">
       <tr>
         <th>原産国</th>
         <td><%= @post.country %></td>
@@ -91,6 +112,6 @@
 
 <!--コメント機能-->
 <div id="comments_area_<%= @post.id %>">
-  <%= render 'comments/comment', post: @post, comment: @comment, user: @user %>
+  <%= render 'comments/comment', post: @post, comment: @comment, user: @user, comments: @comments %>
 </div>
-<%= paginate @comments %>
+

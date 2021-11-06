@@ -1,13 +1,25 @@
-<h3 class="text-center">My気になる！</h3>
+<div class="offset-1">
+  <% if (user_signed_in?) && (@user.id == current_user.id) %>
+    <h2>マイページ</h2>
+  <% else %>
+    <h2><%= @user.name %>さんのページ</h2>
+  <% end %>
+</div>
 
 <div class="row">
-  <div class="offset-2 col-8">
-    <% if @favorite_posts.empty? %>
-      <p>まだ「気になる！」レビューがありません</p>
-    <% else %>
-      <% @favorite_posts.each do |post| %>
-        <%= render 'posts/post', post: post %>
+  <%= render 'users/user', user: @user %>
+
+  <div class="offset-1 col-lg-6">
+    <h4>My気になる！</h4>
+    <div class="row">
+      <% if @favorite_posts.empty? %>
+        <p>まだ「気になる！」レビューがありません</p>
+      <% else %>
+        <% @favorite_posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+        <div class="offset-1 col-10"><%= paginate @favorite_posts %></div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

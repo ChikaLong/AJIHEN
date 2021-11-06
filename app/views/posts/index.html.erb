@@ -12,16 +12,16 @@
 </div>
 
 <div class="row">
-  <div class="offset-1 col-md-6">
+  <div class="offset-1 col-lg-6">
     <div class="row">
       <% @posts.each do |post| %>
         <%= render 'posts/post', post: post %>
       <% end %>
-      <%= paginate @posts %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-lg-4">
     <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
   </div>
 </div>

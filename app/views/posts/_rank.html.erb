@@ -12,9 +12,12 @@
             <%= i %>位<br />
             <%= link_to post_path(post.id), class: "link" do %>
               <%= attachment_image_tag post, :image, :fill, 100, 100 %><br />
-              <%= post.item_name %><br />
+              <strong><%= truncate(post.item_name, length: 11) %></strong><br />
             <% end %>
-            <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
+            <%= link_to user_path(post.user), class: "link" do %>
+              <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25", class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -32,9 +35,12 @@
             <%= i %>位<br />
             <%= link_to post_path(post.id), class: "link" do%>
               <%= attachment_image_tag post, :image, :fill, 100, 100 %><br />
-              <%= post.item_name %><br />
+              <strong><%= truncate(post.item_name, length: 11) %></strong><br />
             <% end %>
-            <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
+            <%= link_to user_path(post.user), class: "link" do %>
+              <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25", class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            <% end %>
           </td>
         </tr>
       <% end %>
