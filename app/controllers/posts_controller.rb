@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @category = @post.category
     @comment = Comment.new
-    @comments = @post.comments.page(params[:page]).per(10)
+    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

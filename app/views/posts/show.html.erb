@@ -17,10 +17,8 @@
     <div>
       <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
         <%= link_to "レビューを編集", edit_post_path(@post), class: "btn btn-primary m-1" %>
-        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">
-          レビューを削除
-        </button>
-        <!-- Modal -->
+        <!--削除確認bootstrapモーダル-->
+        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">レビューを削除</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -30,10 +28,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                レビューをを削除しますか？<br />
-                コメントなども全て削除されます。
-              </div>
+              <div class="modal-body">レビューをを削除しますか？<br />コメントなども全て削除されます。</div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
                 <%= link_to "レビューを削除", post_path(@post), method: :delete, class: "btn btn-danger" %>
@@ -48,9 +43,7 @@
   <div class="offset-1 col-lg-6">
     <table class="table table-borderless">
       <tr>
-        <td>
-          <h2><%= @post.item_name %></h2>
-        </td>
+        <td><h2><%= @post.item_name %></h2></td>
       </tr>
       <tr>
         <td>
@@ -67,6 +60,7 @@
               score: <%= @post.rate %>,
             });
           </script>
+          <%= link_to "総合評価の目安", about_path, class: "link", style: "text-decoration: underline" %>
         </td>
       </tr>
       <tr>
@@ -109,9 +103,8 @@
   </div>
 </div>
 
-
 <!--コメント機能-->
-<div id="comments_area_<%= @post.id %>">
-  <%= render 'comments/comment', post: @post, comment: @comment, user: @user, comments: @comments %>
+<div class="offset-1 col-10" id="comments_area_<%= @post.id %>">
+  <%= render 'comments/comment', post: @post, comment: @comment, comments: @comments %>
 </div>
 

@@ -31,6 +31,9 @@
             <%= link_to "プロフィール編集", edit_user_path(user), class: "link" %>
           </td>
         </tr>
+        <tr>
+          <td align="center"><%= render "posts/new_link" %></td>
+        </tr>
       <% end %>
     </table>
   </div>

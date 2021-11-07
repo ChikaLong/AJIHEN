@@ -1,7 +1,5 @@
-<div>
-  <% if user_signed_in? %>
-    <%= link_to 'レビューを書く', new_post_path %>
-  <% else %>
-    <%= link_to 'レビューを書く', new_user_session_path %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <%= link_to 'レビューを書く', new_post_path, class: "btn btn-outline-success" %>
+<% else %>
+  <%= link_to 'レビューを書く', new_user_session_path, class: "btn btn-outline-success" %>
+<% end %>

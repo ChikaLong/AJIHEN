@@ -1,4 +1,4 @@
-<p>コメント全<%= comments.count %>件</p>
+<p>コメント全<%= comments.total_count %>件</p>
 <table class="table">
   <% comments.each do |comment| %>
     <tr>
@@ -8,13 +8,13 @@
           <%= comment.user.name %>
         <% end %>
       </th>
-      <td>
-        <%= comment.comment %>
-      </td>
+      <td><%= comment.comment %></td>
       <td>
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
-          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => "コメントを消しますか？" %>
+          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-outline-danger" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </td>
     </tr>

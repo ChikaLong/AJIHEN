@@ -22,6 +22,10 @@
   color: #696969;
 }
 
+.navbar-nav .link{
+  text-decoration: none;
+}
+
 .card{
   width: 600px;
 }
@@ -45,3 +49,8 @@
 .pagination>li>a {
   color: #808080;
 }
+
+.navbar{
+  background-color: lightgreen;
+}
+
