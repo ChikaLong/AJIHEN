@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only:[:show, :edit, :update, :destroy]
 
   def index
+    # ソート機能用
     if params[:sort_create]
       @posts = Post.latest.page(params[:page]).per(20)
     elsif params[:sort_rate]
@@ -13,14 +14,16 @@ class PostsController < ApplicationController
     else
       @posts = Post.page(params[:page]).per(20)
     end
-    @today_ranks = Post.today
+    # ランキング表示用
     @week_ranks = Post.week
     @month_ranks = Post.month
   end
 
   def show
     @user = @post.user
+    @category = @post.category
     @comment = Comment.new
+    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

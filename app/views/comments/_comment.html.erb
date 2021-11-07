@@ -1,19 +1,34 @@
-<p>コメント全<%= post.comments.count %>件</p>
-<% post.comments.each do |comment| %>
-  <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "icon_gray.png", size: "50x50" %>
-  <%= comment.user.name %>
-  <%= comment.comment %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %>
-  <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => "コメントを消しますか？" %>
+<p>コメント全<%= comments.total_count %>件</p>
+<table class="table">
+  <% comments.each do |comment| %>
+    <tr>
+      <th>
+        <%= link_to user_path(comment.user), class: "link" do %>
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
+          <%= comment.user.name %>
+        <% end %>
+      </th>
+      <td><%= comment.comment %></td>
+      <td>
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+        <% if comment.user == current_user %>
+          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-outline-danger" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-<% end %>
+</table>
+<%= paginate comments %>
 
 <% if user_signed_in? %>
   <%= form_with(model:[post, comment]) do |f| %>
-    <%= f.text_area :comment, placeholder: "コメント" %>
-    <%= f.submit "コメント" %>
+    <div class="form-group">
+      <%= f.text_area :comment, placeholder: "コメント", class: "form-control" %>
+      <%= f.submit "コメント" %>
+    </div>
   <% end %>
 <% else %>
-  <p><%= link_to "ログイン", new_user_session_path %>するとコメントできます</p>
+  <p><%= link_to "ログイン", new_user_session_path, class: "link" %>するとコメントできます</p>
 <% end %>

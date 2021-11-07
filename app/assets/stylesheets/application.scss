@@ -17,3 +17,40 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.link {
+  color: #696969;
+}
+
+.navbar-nav .link{
+  text-decoration: none;
+}
+
+.card{
+  width: 600px;
+}
+
+.rank-table{
+  border: 3px pink solid;
+}
+
+.fa-crown{
+  color: gold;
+}
+
+.fa-star{
+  color: orange;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  color: #808080;
+}
+
+.navbar{
+  background-color: lightgreen;
+}
+

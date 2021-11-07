@@ -1,25 +1,49 @@
-<%= link_to post_path(post.id) do%>
-<%= attachment_image_tag post, :image, :fill,200,200 %>
-<%= post.item_name %>
-<% end %>
+<div class="card m-2">
+  <div class="row">
+    <div class="col-5">
+      <%= link_to post_path(post.id), class: "link" do %>
+        <%= attachment_image_tag post, :image, :fill,200,200, class: "card-img-top" %>
+      <% end %>
+    </div>
 
-<div>
-<div id="star-rate-<%= post.id %>"></div>
-<script>
-  $('#star-rate-<%= post.id %>').empty();
-  $('#star-rate-<%= post.id %>').raty({
-    size: 36,
-    starOff: '<%= asset_path('star-off.png') %>',
-    starOn: '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    readOnly: true,
-    half: true,
-    score: <%= post.rate %>,
-  });
-</script>
-<%= post.rate %>
+    <div class="col-7">
+      <div class="card-body">
+        <%= link_to post_path(post.id), class: "link" do%>
+          <h4 clas="card-title"><%= truncate(post.item_name, length: 11) %></h4>
+        <% end %>
+        <div id="star-rate-<%= post.id %>"></div>
+        <script>
+          $('#star-rate-<%= post.id %>').empty();
+          $('#star-rate-<%= post.id %>').raty({
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            readOnly: true,
+            half: true,
+            score: <%= post.rate %>,
+          });
+        </script>
+
+        <div><%= truncate(post.review, length: 25) %></div>
+
+        <div class="row p-2">
+          <div>
+            <%= link_to user_path(post.user), class: "link" do %>
+              <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25", class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            <% end %>
+          </div>
+          <div class="ml-auto">投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></div>
+        </div>
+
+        <div class="row">
+          <div class="ml-auto">
+            <i class="far fa-comment-alt"></i><%= post.comments.count %>コメント
+            <i class="fas fa-star"></i><%= post.favorites.count %>気になる！
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= post.user.name %>
-<p>コメント数：<%= post.comments.count %></p>
-<p>いいね数：<%= post.favorites.count %></p>

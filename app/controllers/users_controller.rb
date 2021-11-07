@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except:[:confirm, :thanks]
 
   def show
+    @posts = @user.posts.page(params[:page]).per(10)
   end
 
   def edit
@@ -30,11 +31,13 @@ class UsersController < ApplicationController
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
   end
 
   def comments
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
     @comment_posts = Post.find(comments)
+    @comment_posts = Kaminari.paginate_array(@comment_posts).page(params[:page]).per(10)
   end
 
   private

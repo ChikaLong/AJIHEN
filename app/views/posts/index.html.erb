@@ -1,24 +1,27 @@
-<%= link_to "タグ一覧", tags_path %>
-<%= link_to "カテゴリ一覧", categories_path %>
+<%= render 'searches/form' %>
 
-<h2>みんなのレビュー</h2>
+<div class="offset-1 mb-3"><%= render "posts/new_link" %></div>
 
-<% if user_signed_in? %>
-  <%= link_to '新規レビュー', new_post_path %>
-<% else %>
-  <%= link_to '新規レビュー', new_user_session_path %>
-<% end %>
+<h2 class="offset-1">みんなのレビュー</h2>
 
-<%= link_to "新着順", posts_path(sort_create: "true") %> |
-<%= link_to "評価順", posts_path(sort_rate: "true") %> |
-<%= link_to "コメント多い順", posts_path(sort_comment: "true") %> |
-<%= link_to "いいね多い順", posts_path(sort_favorite: "true") %>
+<div class="offset-1">
+  <%= link_to "新着順", posts_path(sort_create: "true"), class: "link" %> |
+  <%= link_to "評価順", posts_path(sort_rate: "true"), class: "link" %> |
+  <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link" %> |
+  <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link" %>
+</div>
 
-<% @posts.each do |post| %>
-  <%= render 'posts/post', post: post %>
-<% end %>
+<div class="row">
+  <div class="offset-1 col-lg-6">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
 
-<%= paginate @posts %>
-
-
-<%= render 'posts/rank', today_ranks: @today_ranks, week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  <div class="col-lg-4">
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  </div>
+</div>

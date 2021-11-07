@@ -1,0 +1,39 @@
+<div class="offset-1 col-lg-3">
+  <!--ユーザ情報-->
+    <table class="table">
+      <tr>
+        <td align="center"><%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "100x100", class: "rounded-circle" %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= user.name %></td>
+      </tr>
+      <tr>
+        <td><%= @user.profile %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= link_to "My気になる！", favorites_user_path(user), class: "link" %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= link_to "コメントしたレビュー", comments_user_path(user), class: "link" %></td>
+      </tr>
+      <% if (user_signed_in?) && (user.id == current_user.id) %>
+        <tr>
+          <td align="center">
+            <% if unchecked_notifications.any? %>
+              <%= link_to "通知あり", notifications_path, class: "far fa-bell link", style: "color: red" %>
+            <% else %>
+              <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <%= link_to "プロフィール編集", edit_user_path(user), class: "link" %>
+          </td>
+        </tr>
+        <tr>
+          <td align="center"><%= render "posts/new_link" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>

@@ -1,14 +1,34 @@
-<h3>「AJIHEN」は主に調味料に関する情報共有のためのレビューサイトです</h3>
-<p>詳しくは<%= link_to "こちら", about_path %></p>
+<div class="top-visual">
+  <div class="text-center">
+    <h3>「AJIHEN」は主に調味料に関する情報共有のためのレビューサイトです</h3>
+    <p>詳しくは<%= link_to "こちら", about_path %></p>
+  </div>
+</div>
+<%= render 'searches/form' %>
 
-<h4>新着投稿</h4>
-<% @posts.each do |post| %>
-  <%= render 'posts/post', post: post %>
-<% end %>
-<%= link_to "全ての投稿を見る", posts_path %>
+<div class="row">
+  <div class="offset-1 col-lg-6">
+    <h4>新着投稿</h4>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+    </div>
+    <div class="text-right"><%= link_to "全ての投稿を見る＞", posts_path, class: "link" %></div>
+  </div>
 
-<h4>カテゴリ一覧</h4>
-
-<% @categories.each do |category| %>
-  <%= link_to category.name, category_search_path(category_id: category.id) %>
-<% end %>
+  <div class="offset-1 col-lg-3">
+    <div>
+      <h4>カテゴリ一覧</h4>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, category_search_path(category_id: category.id), class: "link", style: "text-decoration: underline" %> |
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <h4>タグ一覧</h4>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline" %> |
+      <% end %>
+    </div>
+  </div>
+</div>

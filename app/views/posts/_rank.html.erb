@@ -1,33 +1,49 @@
-<h5>今日の気になる！ランキング</h5>
-<% if today_ranks.empty? %>
-  <p>まだ気になる！されたレビューはありません</p>
-<% else %>
-  <% today_ranks.each.with_index(1) do |post, i| %>
-    <%= i %>位
-    <%= link_to post_path(post.id) do%>
-      <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-      <%= post.item_name %>
-    <% end %>
-    <%= post.favorites.count %>気になる！
-  <% end %>
-<% end %>
+<div>
+  <table class="table table-borderless rank-table">
+    <thead>
+      <tr align="center">
+        <th><i class="fas fa-crown"></i>週間気になる！ランキング<i class="fas fa-crown"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% week_ranks.each.with_index(1) do |post, i| %>
+        <tr>
+          <td align="center">
+            <%= i %>位<br />
+            <%= link_to post_path(post.id), class: "link" do %>
+              <%= attachment_image_tag post, :image, :fill, 100, 100 %><br />
+              <strong><%= truncate(post.item_name, length: 11) %></strong><br />
+            <% end %>
+            <%= link_to user_path(post.user), class: "link" do %>
+              <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25", class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
 
-<h5>今週の気になる！ランキング</h5>
-<% week_ranks.each.with_index(1) do |post, i| %>
-  <%= i %>位
-  <%= link_to post_path(post.id) do%>
-    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-    <%= post.item_name %>
-  <% end %>
-  <%= post.favorites.count %>気になる！
-<% end %>
-
-<h5>今月の気になる！ランキング</h5>
-<% month_ranks.each.with_index(1) do |post, i| %>
-  <%= i %>位
-  <%= link_to post_path(post.id) do%>
-    <%= attachment_image_tag post, :image, :fill, 100, 100 %>
-    <%= post.item_name %>
-  <% end %>
-  <%= post.favorites.count %>気になる！
-<% end %>
+    <thead>
+      <tr align="center">
+        <th><i class="fas fa-crown"></i>月間気になる！ランキング<i class="fas fa-crown"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% month_ranks.each.with_index(1) do |post, i| %>
+        <tr>
+          <td align="center">
+            <%= i %>位<br />
+            <%= link_to post_path(post.id), class: "link" do%>
+              <%= attachment_image_tag post, :image, :fill, 100, 100 %><br />
+              <strong><%= truncate(post.item_name, length: 11) %></strong><br />
+            <% end %>
+            <%= link_to user_path(post.user), class: "link" do %>
+              <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25", class: "rounded-circle" %>
+              <%= post.user.name %>さん
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

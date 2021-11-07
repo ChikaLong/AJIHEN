@@ -1,11 +1,22 @@
-"<%= @keyword %>"の検索結果
+<%= render 'searches/form' %>
 
-<% if @posts.empty? %>
-  該当する商品はありません
-<% else %>
-  <% @posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
-  <% end %>
-<% end %>
+<h2 class="offset-1">"<%= @keyword %>"を含むレビュー</h2>
 
-<%= paginate @posts %>
+<div class="row">
+  <div class="offset-1 col-md-6">
+    <div class="row">
+      <% if @posts.empty? %>
+        該当するレビューはありません
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  </div>
+</div>

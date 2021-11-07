@@ -1,42 +1,32 @@
-<% if (user_signed_in?) && (@user.id == current_user.id) %>
-  <h2>マイページ</h2>
-<% else %>
-  <h2><%= @user.name %>さんのページ</h2>
-<% end %>
-
-<!--ユーザ情報-->
-<%= attachment_image_tag @user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "110x100" %>
-<table>
-  <tr>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <td><%= @user.profile %></td>
-  </tr>
-  <tr>
-    <td>
-      <% if (user_signed_in?) && (@user.id == current_user.id) %>
-        <%= link_to "編集", edit_user_path(@user) %>
-      <% end %>
-    </td>
-  </tr>
-</table>
-<% if (user_signed_in?) && (@user.id == current_user.id) %>
-  <%= link_to "退会する", confirm_path %>
-<% end %>
-
-<!--自分のレビュー一覧-->
-<h4>マイレビュー</h4>
-<% if @user.posts.empty? %>
-  <p>まだレビューの投稿がありません</p>
-<% else %>
-  <% @user.posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
+<div class="offset-1">
+  <% if (user_signed_in?) && (@user.id == current_user.id) %>
+    <h2>マイページ</h2>
+  <% else %>
+    <h2><%= @user.name %>さんのページ</h2>
   <% end %>
-<% end %>
+</div>
 
-<!--お気に入り一覧リンク-->
-<%= link_to "マイ気になる！", favorites_user_path(@user) %>
+<div class="row">
+  <%= render 'users/user', user: @user %>
 
-<!--コメントした投稿一覧リンク-->
-<%= link_to "コメントしたレビュー", comments_user_path(@user) %>
+  <div class="offset-1 col-lg-6">
+    <!--自分のレビュー一覧-->
+    <% if (user_signed_in?) && (@user.id == current_user.id) %>
+      <h4>マイレビュー</h4>
+    <% else %>
+      <h4><%= @user.name %>さんのレビュー</h4>(全<%= @user.posts.count %>件)
+    <% end %>
+
+
+    <div class="row">
+      <% if @posts.empty? %>
+        <p>まだレビューの投稿がありません</p>
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+</div>

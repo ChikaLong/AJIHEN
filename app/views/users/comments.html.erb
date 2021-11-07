@@ -1,9 +1,25 @@
-<h3>コメントしたレビュー一覧</h3>
-
-<% if @comment_posts.empty? %>
-  <p>まだレビューにコメントをしていません</p>
-<% else %>
-  <% @comment_posts.each do |post| %>
-   <%= render 'posts/post', post: post %>
+<div class="offset-1">
+  <% if (user_signed_in?) && (@user.id == current_user.id) %>
+    <h2>マイページ</h2>
+  <% else %>
+    <h2><%= @user.name %>さんのページ</h2>
   <% end %>
-<% end %>
+</div>
+
+<div class="row">
+  <%= render 'users/user', user: @user %>
+
+  <div class="offset-1 col-lg-6">
+    <h4>コメントしたレビュー</h4>
+    <div class="row">
+      <% if @comment_posts.empty? %>
+        <p>まだレビューにコメントをしていません</p>
+      <% else %>
+        <% @comment_posts.each do |post| %>
+         <%= render 'posts/post', post: post %>
+        <% end %>
+        <div class="offset-1 col-10"><%= paginate @comment_posts %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -13,10 +13,14 @@
     <%= render 'layouts/header' %>
 
     <main>
-      <p class="notice"><%= notice %></p>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
 
-      <%= render 'searches/form' %>
-      <%= yield %>
+        <%= yield %>
+      </div>
     </main>
+
+    <footer style="height: 100px;">
+    </footer>
   </body>
 </html>

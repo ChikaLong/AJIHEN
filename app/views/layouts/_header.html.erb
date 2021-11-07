@@ -1,26 +1,48 @@
-<header>
-  <h3><%= link_to "AJIHEN", root_path %></h3>
-  <% if user_signed_in? %>
-    ようこそ<%= current_user.name %>さん
-  <% end %>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to "「AJIHEN」とは", about_path %></li>
-      <li><%= link_to "みんなのレビュー", posts_path %></li>
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      <li><%= link_to "マイページ", user_path(current_user) %></li>
-      <li>
-        <% if unchecked_notifications.any? %>
-          <%= link_to "通知", notifications_path, style: "color: red" %>
-        <% else %>
-          <%= link_to "通知", notifications_path %>
-        <% end %>
-      </li>
-    <% else %>
-      <li><%= link_to "「AJIHEN」とは", about_path %></li>
-      <li><%= link_to "みんなのレビュー", posts_path %></li>
-      <li><%= link_to "新規登録", new_user_registration_path %></li>
-      <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
-  </ul>
+<header class="py-4">
+  <div class="container text-center">
+    <h2><%= link_to "AJIHEN", root_path, class: "link" %></h2>
+  </div>
 </header>
+
+<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-content">
+      <ul class="navbar-nav mr-auto">
+        <li><%= link_to "TOP　", root_path, class: "link" %></li>
+        <li><%= link_to "「AJIHEN」とは　", about_path, class: "link" %></li>
+        <li><%= link_to "みんなのレビュー　", posts_path, class: "link" %></li>
+        <li><%= link_to "カテゴリ一覧　", categories_path , class: "link"%></li>
+        <li><%= link_to "タグ一覧", tags_path, class: "link" %></li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <div class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>さん
+            </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-item"><%= link_to "マイページ", user_path(current_user), class: "link" %></div>
+              <div class="dropdown-item">
+                <% if unchecked_notifications.any? %>
+                  <%= link_to "通知あり", notifications_path, class: "far fa-bell link", style: "color: red" %>
+                <% else %>
+                  <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
+                <% end %>
+              </div>
+              <div class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></div>
+              <div class="dropdown-item"><%= link_to "退会する", confirm_path, class: "link" %></div>
+            </div>
+          </li>
+        <% else %>
+          <li><%= link_to "新規登録　", new_user_registration_path, class: "link" %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: "link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

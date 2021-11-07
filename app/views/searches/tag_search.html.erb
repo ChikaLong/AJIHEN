@@ -1,11 +1,23 @@
-<h3><%= @tag.name %>一覧</h3>
+<%= render 'searches/form' %>
 
-<% if @posts.empty? %>
-  <p>該当の商品がありません</p>
-<% else %>
-  <% @posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
-  <% end %>
-<% end %>
+<h3 class="offset-1">"<%= @tag.name %>"タグのレビュー</h3>
 
-<%= paginate @posts %>
+<div class="row">
+  <div class="offset-1 col-md-6">
+    <div class="row">
+      <% if @posts.empty? %>
+        <p>該当のレビューがありません</p>
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  </div>
+</div>
+

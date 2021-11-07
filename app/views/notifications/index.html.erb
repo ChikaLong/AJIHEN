@@ -1,9 +1,15 @@
-<%= link_to "通知を全て削除する", notification_path(@notifications), method: :delete, "data-confirm" => "通知を全て削除します" %>
+<h2 class="offset-2">通知</h2>
 
-<% if @notifications.empty? %>
-  <p>通知はありません</p>
-<% else %>
-  <%= render @notifications %>
-<% end %>
+<div class="offset-8">
+  <%= link_to "通知を全て削除する", notification_path(@notifications), method: :delete, "data-confirm" => "通知を全て削除します" %>
+</div>
 
-<%=paginate @notifications %>
+<div class="offset-1 col-10">
+  <% if @notifications.empty? %>
+    <p>通知はありません</p>
+  <% else %>
+    <%= render @notifications %>
+  <% end %>
+
+  <%=paginate @notifications %>
+</div>
