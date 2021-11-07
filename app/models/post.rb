@@ -34,15 +34,6 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  # 検索フォームにて商品名、レビュー内容、原産国、購入場所などで部分一致検索をかけられるようにする
-  def self.search(search)
-    if search != ""
-      Post.where(['item_name LIKE ? OR review LIKE ? OR country LIKE ? OR place LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
-    else
-      Post.all
-    end
-  end
-
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,
