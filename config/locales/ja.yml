@@ -6,7 +6,7 @@ ja:
     attributes:
       user:
         name: ニックネーム
-        email: Eメール
+        email: メールアドレス
         password: パスワード
       post:
         item_name: 商品名

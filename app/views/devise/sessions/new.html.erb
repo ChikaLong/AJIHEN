@@ -3,7 +3,7 @@
 <div class="offset-2 col-8">
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class="form-group">
-      <%= f.label :email, "Eメール" %><br />
+      <%= f.label :email, "メールアドレス" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
 
