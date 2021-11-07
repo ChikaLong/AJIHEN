@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/header', user: @user %>
 
     <main>
       <div class="container">
-        <p class="notice"><%= notice %></p>
+        <div class="offset-1"><p class="notice"><%= notice %></p></div>
 
         <%= yield %>
       </div>

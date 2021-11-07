@@ -34,6 +34,7 @@
                   <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
                 <% end %>
               </div>
+              <div class="dropdown-item"><%= link_to "登録情報編集", edit_user_registration_path(user), class: "link" %></div>
               <div class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "link" %></div>
               <div class="dropdown-item"><%= link_to "退会する", confirm_path, class: "link" %></div>
             </div>

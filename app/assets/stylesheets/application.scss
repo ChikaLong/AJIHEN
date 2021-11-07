@@ -18,6 +18,14 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+#error_explanation{
+  color: red;
+}
+
+.notice{
+  color: green;
+}
+
 .link {
   color: #696969;
 }
