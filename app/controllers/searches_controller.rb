@@ -12,8 +12,12 @@ class SearchesController < ApplicationController
   end
 
   def word_search
-    @posts = Post.search(params[:keyword]).page(params[:page]).per(20)
-    @keyword = params[:keyword]
+    @keywords = params[:keyword]
+    @posts = Post.page(params[:page]).per(20)
+    split_keywords = @keywords.split(/[[:blank:]]+/)
+    split_keywords.each do |word|
+      @posts = @posts.where(['item_name LIKE ? OR review LIKE ? OR country LIKE ? OR place LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
+    end
   end
 
   private
