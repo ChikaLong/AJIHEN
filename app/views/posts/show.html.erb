@@ -43,11 +43,11 @@
   <div class="offset-1 col-lg-6">
     <table class="table table-borderless">
       <tr>
-        <td><h2><%= @post.item_name %></h2></td>
+        <td><h3><strong><%= @post.item_name %></strong></h3></td>
       </tr>
       <tr>
         <td>
-          <div id="star-rate-<%= @post.id %>"></div>
+          <span id="star-rate-<%= @post.id %>"></span>
           <script>
             $('#star-rate-<%= @post.id %>').empty();
             $('#star-rate-<%= @post.id %>').raty({
@@ -60,7 +60,8 @@
               score: <%= @post.rate %>,
             });
           </script>
-          <%= link_to "総合評価の目安", about_path, class: "link", style: "text-decoration: underline" %>
+          <span class="p-rate"><strong><%= @post.rate %></strong></span>
+          <%= link_to "総合評価の目安", about_path, class: "link ml-4", style: "text-decoration: underline" %>
         </td>
       </tr>
       <tr>

@@ -20,6 +20,16 @@
 //= require turbolinks
 //= require_tree .
 
+$(function() {
+  $('#back a').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 500);
+    event.preventDefault();
+  });
+});
+
+
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
