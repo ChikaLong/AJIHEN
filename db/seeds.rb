@@ -12,6 +12,13 @@ User.create!(
   password: '909090'
 )
 
+User.create!(
+  name: '管理人',
+  email: ENV["ADMIN_ADDRESS"],
+  password: ENV["ADMIN_PASSWORD"],
+  admin: true
+)
+
 Tag.create!(
   [
     {name: '和食に合う'},

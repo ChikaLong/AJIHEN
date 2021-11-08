@@ -28,8 +28,8 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create, :destroy]
   end
 
-  resources :tags, only:[:index]
-  resources :categories, only:[:index]
+  resources :tags, except:[:show, :destroy]
+  resources :categories, except:[:show, :destroy]
   resources :notifications, only:[:index, :destroy]
 
 end
