@@ -18,6 +18,17 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+#back{
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+
+.t-btn{
+  width: 40px;
+  height: 40px;
+}
+
 #error_explanation{
   color: red;
 }
@@ -39,7 +50,8 @@
 }
 
 .rank-table{
-  border: 3px pink solid;
+  border: 5px pink solid;
+  background-color: #FFFAFA;
 }
 
 .fa-crown{
@@ -59,7 +71,8 @@
 }
 
 header{
-  background-color: #90EE90;
+  background-color: #E6FFE9;
+  height: 130px;
 }
 
 .navbar{

@@ -9,9 +9,9 @@
     <div class="col-7">
       <div class="card-body">
         <%= link_to post_path(post.id), class: "link" do%>
-          <h4 clas="card-title"><%= truncate(post.item_name, length: 11) %></h4>
+          <h4 clas="card-title"><strong><%= truncate(post.item_name, length: 11) %></strong></h4>
         <% end %>
-        <div id="star-rate-<%= post.id %>"></div>
+        <span id="star-rate-<%= post.id %>"></span>
         <script>
           $('#star-rate-<%= post.id %>').empty();
           $('#star-rate-<%= post.id %>').raty({
@@ -24,6 +24,7 @@
             score: <%= post.rate %>,
           });
         </script>
+        <span class="p-rate"><strong><%= post.rate %></strong></span>
 
         <div><%= truncate(post.review, length: 25) %></div>
 

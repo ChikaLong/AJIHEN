@@ -18,6 +18,12 @@
 
         <%= yield %>
       </div>
+      <!--TOPに戻るボタン-->
+      <span id="back">
+        <a href="">
+          <%= image_tag asset_path('top_button.png'), data: {"turbolinks"=>false}, class: "t-btn" %>
+        </a>
+      </span>
     </main>
 
     <footer style="height: 100px;">
