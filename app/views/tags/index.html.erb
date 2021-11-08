@@ -3,11 +3,14 @@
 <h2 class="text-center">タグ一覧</h2>
 
 <div class="offset-2 col-8">
-  <% @tags.each do |tag| %>
-    <table class="table">
-      <tr align="center">
-        <td><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline" %></td>
+  <table class="table">
+    <% @tags.each do |tag| %>
+      <tr>
+        <td align="center"><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline;" %></td>
+        <% if (user_signed_in?) && current_user.admin? %>
+          <td align="center"><%= link_to "タグの編集", edit_tag_path(tag), class: "btn btn-outline-danger" %></td>
+        <% end %>
       </tr>
-    </table>
-  <% end %>
+    <% end %>
+  </table>
 </div>

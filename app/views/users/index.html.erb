@@ -1,0 +1,30 @@
+<h2 class="text-center">登録ユーザ一覧</h2>
+<div class="offset-1 col-10">
+  <table class="table">
+    <thead>
+      <tr align="center">
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user), class: "link" do %>
+              <%= attachment_image_tag user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
+              <%= user.name %>さん
+            <% end %>
+          </td>
+          <td><%= user.email %></td>
+          <td>
+            <% if current_user.admin? && !(current_user == user) %>
+              <%= link_to "退会させる", confirm_path, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

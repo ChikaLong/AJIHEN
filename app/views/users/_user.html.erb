@@ -5,7 +5,7 @@
         <td align="center"><%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "100x100", class: "rounded-circle" %></td>
       </tr>
       <tr>
-        <td align="center"><%= user.name %></td>
+        <td align="center"><%= link_to user.name, user_path(user), class: "link" %></td>
       </tr>
       <tr>
         <td><%= @user.profile %></td>
