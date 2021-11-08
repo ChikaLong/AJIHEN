@@ -1,13 +1,12 @@
 class TagsController < ApplicationController
   before_action :if_not_admin, except:[:index]
+  before_action :set_tag
 
   def index
-    @tags = Tag.all
   end
 
   def new
     @tag = Tag.new
-    @tags = Tag.all
   end
 
   def create
@@ -15,13 +14,13 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to tags_path, notice: "新規タグを登録しました"
     else
+      flash[:alert] = "タグの登録に失敗しました"
       render :new
     end
   end
 
   def edit
     @tag = Tag.find(params[:id])
-    @tags = Tag.all
   end
 
   def update
@@ -29,6 +28,7 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to tags_path, notice: "タグを編集しました"
     else
+      flash[:alert] = "タグの編集に失敗しました"
       render :edit
     end
   end
@@ -40,5 +40,9 @@ class TagsController < ApplicationController
 
   def if_not_admin
     redirect_to root_path unless (user_signed_in?) && current_user.admin?
+  end
+
+  def set_tag
+    @tags = Tag.all
   end
 end
