@@ -1,4 +1,4 @@
-<div class="offset-1">
+<div class="offset-lg-1">
   <% if (user_signed_in?) && (@user.id == current_user.id) %>
     <h2>マイページ</h2>
   <% else %>
@@ -9,7 +9,7 @@
 <div class="row">
   <%= render 'users/user', user: @user %>
 
-  <div class="offset-1 col-lg-6">
+  <div class="col-lg-6">
     <!--管理者のみアクセス可-->
     <% if (user_signed_in?) && (current_user.admin?) %>
       <div class="row mb-4">

@@ -10,24 +10,27 @@
   </head>
 
   <body>
-    <%= render 'layouts/header', user: @user %>
+    <div class="all-content">
+      <%= render 'layouts/header', user: @user %>
 
-    <main>
-      <div class="container">
-        <div class="offset-1"><p class="text-success"><%= notice %></p></div>
-        <div class="offset-1"><p class="text-danger"><%= alert %></p></div>
+      <main>
+        <div class="main-content">
+          <div class="container py-3">
+            <div class="offset-1"><p class="text-success"><%= notice %></p></div>
+            <div class="offset-1"><p class="text-danger"><%= alert %></p></div>
 
-        <%= yield %>
-      </div>
-      <!--TOPに戻るボタン-->
-      <span id="back">
-        <a href="">
-          <%= image_tag asset_path('top_button.png'), data: {"turbolinks"=>false}, class: "t-btn" %>
-        </a>
-      </span>
-    </main>
+            <%= yield %>
+          </div>
+          <!--TOPに戻るボタン-->
+          <span id="back">
+            <a href="">
+              <%= image_tag asset_path('top_button.png'), data: {"turbolinks"=>false}, class: "t-btn" %>
+            </a>
+          </span>
+        </div>
+      </main>
 
-    <footer style="height: 100px;">
-    </footer>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
 </html>
