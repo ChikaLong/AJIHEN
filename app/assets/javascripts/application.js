@@ -31,7 +31,7 @@ $(function() {
 });
 
 // トップ画像のスライドショー
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $("#images").skippr({
     transition: 'fade',
     speed: 1000,
