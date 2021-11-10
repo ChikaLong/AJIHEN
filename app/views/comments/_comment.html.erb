@@ -2,17 +2,17 @@
 <table class="table">
   <% comments.each do |comment| %>
     <tr>
-      <th>
+      <th style="width: 15%">
         <%= link_to user_path(comment.user), class: "link" do %>
           <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
           <%= comment.user.name %>
         <% end %>
       </th>
-      <td><%= comment.comment %></td>
-      <td>
+      <td style="width: 65%"><%= comment.comment %></td>
+      <td style="width: 20%">
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
-          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-outline-danger" do %>
+          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data:{ confirm: "コメントを削除しますか？" }, class: "btn btn-outline-danger" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
@@ -25,8 +25,10 @@
 <% if user_signed_in? %>
   <%= form_with(model:[post, comment]) do |f| %>
     <div class="form-group">
-      <%= f.text_area :comment, placeholder: "コメント", class: "form-control" %>
-      <%= f.submit "コメント" %>
+      <%= f.text_area :comment, placeholder: "レビューへのコメント、他に購入場所や調理法があれば教えてください。" , class: "form-control" %>
+    </div>
+    <div class="form-group text-right">
+      <%= f.submit "コメント", class: "btn btn-info" %>
     </div>
   <% end %>
 <% else %>

@@ -10,3 +10,42 @@ table tr,td{
   font-size: 23px;
   color: #FF4F02;
 }
+
+.card{
+  width: 600px;
+}
+
+.fa-tag{
+  color: #FF8C00;
+}
+
+// ランキング関連
+.rank{
+  background-color: rgba(255,255,255,0.6);
+  border: 5px orange solid;
+  padding: 3px;
+  text-align: center;
+}
+
+.rank-title{
+  background-color: #FFEEFF;
+}
+
+.rank-item-list{
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.ranking{
+  font-size: 20px;
+}
+
+@media screen and(max-width:992px){
+  .rank-item{
+    display: flex;
+  }
+
+  .rank-item-list{
+    margin: 0 auto;
+  }
+}

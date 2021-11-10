@@ -20,6 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
+// トップに戻るボタン
 $(function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
@@ -29,7 +30,23 @@ $(function() {
   });
 });
 
+// トップ画像のスライドショー
+$(document).ready(function(){
+  $("#images").skippr({
+    transition: 'fade',
+    speed: 1000,
+    easing: 'easeOutQuart',
+    navType: 'bubble',
+    childrenElementType: 'div',
+    arrows: true,
+    autoPlay: true,
+    autPlayDuration: 3000,
+    keyboardOnAlways: false,
+    hidePrevious: false
+  });
+});
 
+// 星評価用
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);

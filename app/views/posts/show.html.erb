@@ -1,6 +1,6 @@
 <%= render 'searches/form' %>
 
-<div class="offset-1 mb-3">
+<div class="offset-lg-1 mb-3">
   <%= link_to user_path(@user), class: "link" do %>
     <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
     <%= @post.user.name %>さん
@@ -8,10 +8,10 @@
 </div>
 
 <div class="row">
-  <div class="offset-1 col-lg-3">
+  <div class="offset-lg-1 col-lg-3">
     <div><%= attachment_image_tag @post, :image, :fill,300,300 %></div>
     <!--気になるボタン-->
-    <div class="mt-2 mb-3 ml-1" id="favorite_button_<%= @post.id %>">
+    <div class="my-2 ml-1" id="favorite_button_<%= @post.id %>">
       <%= render 'favorites/favorite', post: @post %>
     </div>
     <div>
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div class="offset-1 col-lg-6">
+  <div class="offset-lg-1 col-lg-6">
     <table class="table table-borderless">
       <tr>
         <td><h3><strong><%= @post.item_name %></strong></h3></td>
