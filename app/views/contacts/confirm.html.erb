@@ -1,0 +1,42 @@
+<h3 class="text-center">入力内容確認</h3>
+
+<div class="offset-1 col-10">
+  <table class="table">
+    <tr>
+      <th style="width: 30%">お名前</th>
+      <td style="width: 70%"><%= @contact.name %></td>
+    </tr>
+    <tr>
+      <th style="width: 30%">メールアドレス</th>
+      <td style="width: 70%"><%= @contact.email %></td>
+    </tr>
+    <tr>
+      <th style="width: 30%">件名</th>
+      <td style="width: 70%"><%= @contact.subject %></td>
+    </tr>
+    <tr>
+      <th style="width: 30%">お問い合わせ・ご要望</th>
+      <td style="width: 70%"><%= @contact.message %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="form-group text-center">
+  <%= form_with model: @contact, url: back_contacts_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :subject %>
+    <%= f.hidden_field :message %>
+    <%= f.submit '入力画面に戻る', class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<div class="form-group text-center">
+  <%= form_with model: @contact, url: {action: 'create'}, method: :post, local: true do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :subject %>
+    <%= f.hidden_field :message %>
+    <%= f.submit '送信', class: "btn btn-primary" %>
+  <% end %>
+</div>

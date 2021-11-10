@@ -31,5 +31,11 @@ Rails.application.routes.draw do
   resources :tags, except:[:show, :destroy]
   resources :categories, except:[:show, :destroy]
   resources :notifications, only:[:index, :destroy]
-
+  resources :contacts, only:[:new, :create] do
+    collection do
+      post :confirm
+      post :back
+      get :complete
+    end
+  end
 end
