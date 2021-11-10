@@ -11,7 +11,7 @@ class Post < ApplicationRecord
 
   validates :image, presence: true
   validates :item_name, presence: true, length: { maximum: 50 }
-  validates :review, presence: true, length: { maximum: 500 }
+  validates :review, presence: true, length: { maximum: 1000 }
   validates :country, presence: true
   validates :place, presence: true
   validates :price, presence: true
