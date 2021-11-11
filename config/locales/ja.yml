@@ -3,7 +3,7 @@ ja:
     models:
       user: ユーザー
       post: レビュー投稿
-      contact: お問い合わせ・要望
+      contact: お問い合わせ・ご要望
     attributes:
       user:
         name: ニックネーム
