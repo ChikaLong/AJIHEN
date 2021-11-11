@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       post: レビュー投稿
+      contact: お問い合わせ・ご要望
     attributes:
       user:
         name: ニックネーム
@@ -17,6 +18,11 @@ ja:
         price: 購入時の金額
         category: カテゴリ
         rate: 総合評価
+      contact:
+        name: お名前
+        email: メールアドレス
+        subject: 件名
+        message: お問い合わせ・ご要望
 
   views:
     pagination:
