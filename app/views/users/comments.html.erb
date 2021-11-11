@@ -10,8 +10,8 @@
   <%= render 'users/user', user: @user %>
 
   <div class="col-lg-6">
-    <h4>コメントしたレビュー</h4>
-    <div class="row">
+    <h4 class="text-center">コメントしたレビュー</h4>
+    <div class="row" style="justify-content: center;">
       <% if @comment_posts.empty? %>
         <p>まだレビューにコメントをしていません</p>
       <% else %>

@@ -2,19 +2,36 @@
 <table class="table">
   <% comments.each do |comment| %>
     <tr>
-      <th style="width: 15%">
+      <th style="width: 20%">
         <%= link_to user_path(comment.user), class: "link", style: "text-decoration: none;" do %>
           <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
           <%= comment.user.name %>
         <% end %>
       </th>
-      <td style="width: 65%"><%= comment.comment %></td>
+      <td style="width: 60%"><%= comment.comment %></td>
       <td style="width: 20%">
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
-          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data:{ confirm: "コメントを削除しますか？" }, class: "btn btn-outline-danger" do %>
+          <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
             <i class="fas fa-trash-alt"></i>
-          <% end %>
+          </button>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">コメントの削除</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">コメントを削除しますか？</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
+                  <%= link_to "削除する", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </td>
     </tr>
@@ -22,15 +39,17 @@
 </table>
 <%= paginate comments %>
 
-<% if user_signed_in? %>
-  <%= form_with(model:[post, comment]) do |f| %>
-    <div class="form-group">
-      <%= f.text_area :comment, placeholder: "レビューへのコメント、他に購入場所や調理法があれば教えてください。(500文字以内)" , class: "form-control" %>
-    </div>
-    <div class="form-group text-right">
-      <%= f.submit "コメント", class: "btn btn-info" %>
-    </div>
+<div class="mt-5">
+  <% if user_signed_in? %>
+    <%= form_with(model:[post, comment], local: true) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :comment, placeholder: "レビューへのコメント、他に購入場所や調理法があれば教えてください。(500文字以内)" , class: "form-control" %>
+      </div>
+      <div class="form-group text-center">
+        <%= f.submit "コメントする", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= link_to "ログイン", new_user_session_path, class: "link", style: "text-decoration: underline" %>するとコメントできます</p>
   <% end %>
-<% else %>
-  <p><%= link_to "ログイン", new_user_session_path, class: "link", style: "text-decoration: underline" %>するとコメントできます</p>
-<% end %>
+</div>

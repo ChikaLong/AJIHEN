@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     comment.post_id = @post.id
     comment.save
     @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
+    redirect_to post_path(@post)
     # コメント通知用
     @post.create_notification_by(current_user)
   end
@@ -15,6 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
     @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
     @comment.destroy
+    redirect_to post_path(@post)
   end
 
   private

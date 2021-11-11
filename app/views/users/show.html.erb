@@ -20,13 +20,15 @@
     <% end %>
 
     <!--自分のレビュー一覧-->
-    <% if (user_signed_in?) && (@user.id == current_user.id) %>
-      <h4>マイレビュー</h4>
-    <% else %>
-      <h4><%= @user.name %>さんのレビュー</h4>
-    <% end %>
+    <div class="text-center">
+      <% if (user_signed_in?) && (@user.id == current_user.id) %>
+        <h4>マイレビュー</h4>
+      <% else %>
+        <h4><%= @user.name %>さんのレビュー</h4>
+      <% end %>
+    </div>
 
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <% if @posts.empty? %>
         <p>まだレビューの投稿がありません</p>
       <% else %>

@@ -16,13 +16,13 @@
 
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <h4>新着レビュー</h4>
-    <div class="row">
+    <h4 class="text-center">新着レビュー</h4>
+    <div class="row" style="justify-content: center;">
       <% @posts.each do |post| %>
         <%= render 'posts/post', post: post %>
       <% end %>
     </div>
-    <div><%= link_to "全ての投稿を見る＞", posts_path, class: "link" %></div>
+    <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link" %></div>
   </div>
 
   <div class="col-lg-3">
