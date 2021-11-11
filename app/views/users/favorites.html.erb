@@ -10,8 +10,8 @@
   <%= render 'users/user', user: @user %>
 
   <div class="col-lg-6">
-    <h4>My気になる！</h4>
-    <div class="row">
+    <h4 class="text-center">My気になる！</h4>
+    <div class="row" style="justify-content: center;">
       <% if @favorite_posts.empty? %>
         <p>まだ「気になる！」レビューがありません</p>
       <% else %>
