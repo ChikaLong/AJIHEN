@@ -29,13 +29,13 @@
     <div>
       <h4>カテゴリ一覧</h4>
       <% @categories.each do |category| %>
-        <%= link_to category.name, category_search_path(category_id: category.id), class: "link", style: "text-decoration: underline" %> |
+        <%= link_to category.name, category_search_path(category_id: category.id), class: "link" %> |
       <% end %>
     </div>
     <div class="mt-5">
       <h4>タグ一覧</h4>
       <% @tags.each do |tag| %>
-        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline" %> |
+        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %> |
       <% end %>
     </div>
   </div>

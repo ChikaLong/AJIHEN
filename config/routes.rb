@@ -22,9 +22,7 @@ Rails.application.routes.draw do
   get '/thanks' => 'users#thanks'
 
   resources :posts do
-    resources :comments, only:[:create, :destroy] do
-      get 'page/:page', :action => :show, :on => :collection
-    end
+    resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]
   end
 
