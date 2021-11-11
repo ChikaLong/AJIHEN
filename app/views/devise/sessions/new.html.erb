@@ -4,7 +4,7 @@
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class: "form-control" %>
     </div>
 
     <div class="form-group">

@@ -16,8 +16,7 @@ class SearchesController < ApplicationController
     @posts = Post.page(params[:page]).per(20)
     split_keywords = @keywords.split(/[[:blank:]]+/)
     split_keywords.each do |word|
-      @posts = @posts.joins(:category).where(['item_name LIKE ? OR review LIKE ? OR country LIKE ? OR place LIKE ? OR categories.name LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
-      # @posts = @posts.joins([:category, :tags]).where(['item_name LIKE ? OR review LIKE ? OR country LIKE ? OR place LIKE ? OR categories.name LIKE ? OR tags.name LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
+      @posts = @posts.eager_load([:category, post_tags: :tag]).where(['item_name LIKE ? OR review LIKE ? OR country LIKE ? OR place LIKE ? OR categories.name LIKE ? OR tags.name LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%"])
     end
   end
 
