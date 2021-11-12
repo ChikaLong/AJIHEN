@@ -18,6 +18,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@500&family=Klee+One:wght@600&family=M+PLUS+1p:wght@500&family=Zen+Kurenaido&family=Zen+Maru+Gothic:wght@500&family=Zen+Old+Mincho&display=swap');
+
+*{
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
 html, body,{
   height: 100%;
 }
@@ -39,7 +45,15 @@ header{
 }
 
 .navbar{
-  background-color: #33CC66;
+  background-color: #4D9966;
+}
+
+.dropdown-menu{
+  background-color: #E6FFE9;
+}
+
+h2,h3{
+  border-bottom: 3px #12B348 solid;
 }
 
 // 必須の文字色
@@ -56,6 +70,11 @@ header{
   color: orange;
 }
 
+// profile-imageの形
+.rounded-circle{
+  object-fit: contain;
+}
+
 // トップに戻るボタン
 #back{
   position: fixed;
@@ -69,6 +88,17 @@ header{
   height: 40px;
 }
 
+// 新規レビューボタン
+.write{
+  background-color: #E6FFE9;
+  position: fixed;
+  left: 20px;
+  bottom: 25px;
+  z-index: 100;
+  border-radius: 50%;
+  border: 2px solid #005500;
+}
+
 // エラーメッセージ
 #error_explanation{
   color: red;
@@ -76,12 +106,21 @@ header{
 
 // リンクの色
 .link {
-  color: #696969;
-  text-decoration: underline;
+  color: #444444;
 }
 
-.navbar-nav .link{
+.link:hover{
+　text-decoration: underline;
+}
+
+.navbar-nav .link,
+.dropdown-toggle{
   text-decoration: none;
+  color: white;
+}
+
+.dropdown-item .link{
+  color: #696969;
 }
 
 // ページネーション

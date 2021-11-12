@@ -16,9 +16,11 @@
     </div>
     <div>
       <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
-        <%= link_to "レビューを編集", edit_post_path(@post), class: "btn btn-primary m-1" %>
+        <%= link_to edit_post_path(@post), class: "btn btn-primary m-1" do %>
+          <i class="fas fa-edit"></i>レビューを編集
+        <% end %>
         <!--削除確認bootstrapモーダル-->
-        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">レビューを削除</button>
+        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash-alt"></i>レビューを削除</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -61,7 +63,7 @@
             });
           </script>
           <span class="p-rate"><strong><%= @post.rate %></strong></span>
-          <%= link_to "総合評価の目安", about_path, class: "link ml-4" %>
+          <%= link_to "総合評価の目安", about_path, class: "link ml-4", style: "text-decoration: underline;" %>
         </td>
       </tr>
       <tr>
@@ -84,14 +86,14 @@
       </tr>
       <tr>
         <th></th>
-        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id), class: "link" %></td>
+        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id), class: "link", style: "text-decoration: underline;" %></td>
       </tr>
       <tr>
         <th></th>
         <td align="right">
           <% @post.tags.each do |tag| %>
             <span class="badge badge-pill badge-light">
-              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: none;" %>
+              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %>
             </span>
           <% end %>
         </td>

@@ -1,11 +1,9 @@
 <% if user_signed_in? %>
   <% if post.favorited_by?(current_user) %>
-    <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "btn btn-outline-warning" do %>
-      気になる！<i class="fas fa-star"></i><%= post.favorites.count %>
-    <% end %>
+    <%= link_to "気になる！", post_favorites_path(post), method: :delete, remote: true, class: "btn btn-outline-warning" %>
+    <i class="fas fa-star"></i><%= post.favorites.count %>
   <% else %>
-    <%= link_to post_favorites_path(post), method: :post, remote: true, class: "btn btn-outline-secondary" do %>
-      気になる！<i class="far fa-star"></i><%= post.favorites.count %>
-    <% end %>
+    <%= link_to "気になる？", post_favorites_path(post), method: :post, remote: true, class: "btn btn-outline-secondary" %>
+    <i class="fas fa-star"></i><%= post.favorites.count %>
   <% end %>
 <% end %>
