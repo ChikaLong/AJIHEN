@@ -1,10 +1,10 @@
 <%= render 'searches/form' %>
 
-<h3 class="offset-1">"<%= @category.name %>"カテゴリのレビュー</h3>
-
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <div class="row">
+    <h3 class="text-center">"<%= @category.name %>"カテゴリのレビュー</h3>
+
+    <div class="row" style="justify-content: center;">
       <% if @posts.empty? %>
         <p>該当のレビューがありません</p>
       <% else %>

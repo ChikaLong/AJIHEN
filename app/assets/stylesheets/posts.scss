@@ -2,10 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// 言語に関係なく表示範囲に合わせて改行
 table tr,td{
   word-break: break-all;
 }
 
+// 星評価数
 .p-rate{
   font-size: 23px;
   color: #FF4F02;
@@ -21,14 +23,14 @@ table tr,td{
 
 // ランキング関連
 .rank{
-  background-color: rgba(255,255,255,0.6);
-  border: 5px orange solid;
+  background-color: #D4EBDB;
+  border: 4px #88C29B solid;
   padding: 3px;
   text-align: center;
 }
 
 .rank-title{
-  background-color: #FFEEFF;
+  background-color: #88C29B;
 }
 
 .rank-item-list{

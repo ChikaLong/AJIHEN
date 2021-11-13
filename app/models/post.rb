@@ -20,15 +20,12 @@ class Post < ApplicationRecord
   # ソート機能用
   scope :latest, -> { order(created_at: :desc) }
   scope :rating, -> { order(rate: :desc) }
-  # scope :many, -> { find(Comment.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
-  # scope :like, -> { find(Favorite.group(:post_id).order('count(post_id) desc').pluck(:post_id)) }
   scope :many, -> { Post.joins("left join comments on posts.id=comments.post_id").group("posts.id").order("count(comments.id) desc") }
   scope :like, -> { Post.joins("left join favorites on posts.id=favorites.post_id").group("posts.id").order("count(favorites.id) desc") }
 
   # ランキング表示用
   scope :week, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(3).pluck(:post_id)) }
   scope :month, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(3).pluck(:post_id)) }
-
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

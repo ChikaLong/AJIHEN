@@ -4,11 +4,11 @@
 <table class="table">
   <tr>
     <td>
-      ・<%= link_to user_path(visiter), class: "link" do %>
+      ・<%= link_to user_path(visiter), class: "link", style: "text-decoration: underline;" do %>
         <%= visiter.name %>
       <% end %>
       さんが
-      <%= link_to post_path(notification.post_id), class: "link" do %>
+      <%= link_to post_path(notification.post_id), class: "link", style: "text-decoration: underline;" do %>
         <%= post.item_name.truncate(20) %>
       <% end %>
       にコメントしました。

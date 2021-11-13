@@ -1,10 +1,10 @@
 <%= render 'searches/form' %>
 
-<h2 class="offset-1">"<%= @keywords %>"を含むレビュー</h2>
-
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <div class="row">
+    <h2 class="text-center">"<%= @keywords %>"を含むレビュー</h2>
+
+    <div class="row" style="justify-content: center;">
       <% if @posts.empty? %>
         該当するレビューはありません
       <% else %>

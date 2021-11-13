@@ -1,5 +1,17 @@
-<% if user_signed_in? %>
-  <%= link_to 'レビューを書く', new_post_path, class: "btn btn-outline-success" %>
-<% else %>
-  <%= link_to 'レビューを書く', new_user_session_path, class: "btn btn-outline-success" %>
-<% end %>
+<div class="write">
+  <% if user_signed_in? %>
+   <div class="text-center">
+      <%= link_to new_post_path, class: "link", style: "text-decoration: none;" do %>
+        <%= image_tag('write.png', size: "40x40") %><br />
+        <span>レビューを<br />書く</span>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <%= link_to new_user_session_path, class: "link", style: "text-decoration: none;" do %>
+        <%= image_tag('write.png', size: "40x40") %><br />
+        <span>レビューを<br />書く</span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
