@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   private
+
   def set_favorite
     @post = Post.find(params[:post_id])
   end

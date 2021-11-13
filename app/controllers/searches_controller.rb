@@ -21,6 +21,7 @@ class SearchesController < ApplicationController
   end
 
   private
+
   def set_rank
     @week_ranks = Post.week
     @month_ranks = Post.month

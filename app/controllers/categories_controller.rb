@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :if_not_admin, except:[:index]
+  before_action :if_not_admin, except: [:index]
   before_action :set_category
 
   def index
@@ -34,12 +34,13 @@ class CategoriesController < ApplicationController
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name)
   end
 
   def if_not_admin
-    redirect_to root_path unless (user_signed_in?) && current_user.admin?
+    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 
   def set_category
