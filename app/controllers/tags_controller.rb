@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :if_not_admin, except:[:index]
+  before_action :if_not_admin, except: [:index]
   before_action :set_tag
 
   def index
@@ -34,12 +34,13 @@ class TagsController < ApplicationController
   end
 
   private
+
   def tag_params
     params.require(:tag).permit(:name)
   end
 
   def if_not_admin
-    redirect_to root_path unless (user_signed_in?) && current_user.admin?
+    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 
   def set_tag

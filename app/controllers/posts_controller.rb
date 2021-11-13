@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only:[:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     # ソート機能用
@@ -61,8 +61,9 @@ class PostsController < ApplicationController
   end
 
   private
+
   def set_post
-     @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def post_params

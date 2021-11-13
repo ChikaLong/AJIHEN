@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   devise_for :users, controllers: {
     sessions: "users/sessions",
-    registrations: "users/registrations"
+    registrations: "users/registrations",
   }
 
   get '/about' => 'homes#about'
@@ -22,14 +22,14 @@ Rails.application.routes.draw do
   get '/thanks' => 'users#thanks'
 
   resources :posts do
-    resources :comments, only:[:create, :destroy]
-    resource :favorites, only:[:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
-  resources :tags, except:[:show, :destroy]
-  resources :categories, except:[:show, :destroy]
-  resources :notifications, only:[:index, :destroy]
-  resources :contacts, only:[:new, :create] do
+  resources :tags, except: [:show, :destroy]
+  resources :categories, except: [:show, :destroy]
+  resources :notifications, only: [:index, :destroy]
+  resources :contacts, only: [:new, :create] do
     collection do
       post :confirm
       post :back
