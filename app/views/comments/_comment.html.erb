@@ -2,19 +2,17 @@
 <table class="table">
   <% comments.each do |comment| %>
     <tr>
-      <th style="width: 10%">
-        <%= link_to user_path(comment.user), class: "link user-name", style: "text-decoration: none;" do %>
+      <th style="width: 10%;">
+        <%= link_to user_path(comment.user), class: "link user-icon", style: "text-decoration: none;" do %>
           <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
-          <span><%= comment.user.name %></span>
+          <span class="user-name"><%= comment.user.name %></span>
         <% end %>
       </th>
-      <td style="width: 70%"><%= comment.comment %></td>
-      <td style="width: 20%">
+      <td style="width: 70%;"><%= comment.comment %></td>
+      <td style="width: 20%;">
         <%= comment.created_at.strftime('%Y/%m/%d') %>
         <% if comment.user == current_user %>
-          <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
-            <i class="fas fa-trash-alt"></i>
-          </button>
+          <button type="button" class="fas fa-trash-alt btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter"></button>
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
