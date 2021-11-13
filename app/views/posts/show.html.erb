@@ -16,11 +16,9 @@
     </div>
     <div>
       <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
-        <%= link_to edit_post_path(@post), class: "btn btn-primary m-1" do %>
-          <i class="fas fa-edit"></i>レビューを編集
-        <% end %>
+        <%= link_to "レビューを編集", edit_post_path(@post), class: "fas fa-edit btn btn-primary m-1" %>
         <!--削除確認bootstrapモーダル-->
-        <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash-alt"></i>レビューを削除</button>
+        <button type="button" class="fas fa-trash-alt btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">レビューを削除</button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -107,7 +105,7 @@
 </div>
 
 <!--コメント機能-->
-<div class="offset-1 col-10">
+<div class="offset-lg-1 col-lg-10">
   <%= render 'comments/comment', post: @post, comment: @comment, comments: @comments %>
 </div>
 

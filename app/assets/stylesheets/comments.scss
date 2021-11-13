@@ -3,7 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.user-name{
+.user-icon{
   display: inline-flex;
   flex-flow: column;
+}
+
+.user-name{
+  font-size: 13px;
 }
