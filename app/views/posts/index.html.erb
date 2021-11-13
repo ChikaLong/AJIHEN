@@ -1,6 +1,6 @@
 <%= render 'searches/form' %>
 
-<div class="offset-lg-1 mb-3"><%= render "posts/new_link" %></div>
+<%= render "posts/new_link" %>
 
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
@@ -8,10 +8,10 @@
     <h2 class="text-center">みんなのレビュー</h2>
 
     <div class="text-center">
-      <%= link_to "新着順", posts_path(sort_create: "true"), class: "link" %> |
-      <%= link_to "総合評価順", posts_path(sort_rate: "true"), class: "link" %> |
-      <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link" %> |
-      <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link" %>
+      <%= link_to "新着順", posts_path(sort_create: "true"), class: "link", style: "text-decoration: underline;" %> |
+      <%= link_to "総合評価順", posts_path(sort_rate: "true"), class: "link", style: "text-decoration: underline;" %> |
+      <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link", style: "text-decoration: underline;" %> |
+      <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link", style: "text-decoration: underline;" %>
     </div>
 
     <div class="row" style="justify-content: center;">

@@ -1,6 +1,6 @@
-<h2 class="text-center">新規登録</h2>
-
 <div class="offset-2 col-8">
+  <h2 class="text-center">新規登録</h2>
+
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -28,7 +28,7 @@
     </div>
 
     <div class="form-group text-center">
-      <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
+      <%= f.submit "新規登録", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 

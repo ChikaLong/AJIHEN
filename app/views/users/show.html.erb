@@ -1,8 +1,8 @@
 <div class="offset-lg-1">
   <% if (user_signed_in?) && (@user.id == current_user.id) %>
-    <h2>マイページ</h2>
+    <h1>マイページ</h1>
   <% else %>
-    <h2><%= @user.name %>さんのページ</h2>
+    <h1><%= @user.name %>さんのページ</h2>
   <% end %>
 </div>
 
@@ -11,7 +11,7 @@
 
   <div class="col-lg-6">
     <!--管理者のみアクセス可-->
-    <% if (user_signed_in?) && (current_user.admin?) %>
+    <% if (user_signed_in?) && (current_user.admin?) && (@user.id == current_user.id) %>
       <div class="row mb-4">
         <div class="col-4"><%= link_to "全登録ユーザ", users_path, class: "btn btn-info" %></div>
         <div class="col-4"><%= link_to "新規タグ追加", new_tag_path, class: "btn btn-info" %></div>
@@ -22,9 +22,9 @@
     <!--自分のレビュー一覧-->
     <div class="text-center">
       <% if (user_signed_in?) && (@user.id == current_user.id) %>
-        <h4>マイレビュー</h4>
+        <h3>マイレビュー</h3>
       <% else %>
-        <h4><%= @user.name %>さんのレビュー</h4>
+        <h3><%= @user.name %>さんのレビュー</h3>
       <% end %>
     </div>
 

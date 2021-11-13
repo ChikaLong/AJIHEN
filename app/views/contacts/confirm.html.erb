@@ -1,6 +1,5 @@
-<h3 class="text-center">入力内容確認</h3>
-
 <div class="offset-1 col-10">
+  <h3 class="text-center">入力内容確認</h3>
   <table class="table">
     <tr>
       <th style="width: 30%">お名前</th>
@@ -27,7 +26,7 @@
     <%= f.hidden_field :email %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :message %>
-    <%= f.submit '入力画面に戻る', class: "btn btn-success" %>
+    <%= f.submit '入力画面に戻る', class: "btn btn-primary" %>
   <% end %>
 </div>
 
@@ -37,6 +36,6 @@
     <%= f.hidden_field :email %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :message %>
-    <%= f.submit '送信', class: "btn btn-primary" %>
+    <%= f.submit '送信', class: "btn btn-success" %>
   <% end %>
 </div>

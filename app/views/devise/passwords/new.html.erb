@@ -1,6 +1,6 @@
-<h2 class="text-center">パスワード再設定</h2>
-
 <div class="offset-2 col-8">
+  <h2 class="text-center">パスワード再設定</h2>
+
   <%= form_with model: @user, url: user_password_path, class: 'registration-main', local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -11,7 +11,7 @@
 
     <div class="form-group text-center">
       <%= f.label "※入力されたアドレスにパスワード再設定メールを送信します" %></p>
-      <%= f.submit "送信", class: "btn btn-outline-secondary" %>
+      <%= f.submit "送信", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 

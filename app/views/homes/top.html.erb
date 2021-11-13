@@ -16,27 +16,31 @@
 
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <h4 class="text-center">新着レビュー</h4>
+    <h2 class="text-center">新着レビュー</h2>
     <div class="row" style="justify-content: center;">
       <% @posts.each do |post| %>
         <%= render 'posts/post', post: post %>
       <% end %>
     </div>
-    <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link" %></div>
+    <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link", style: "text-decoration: underline;" %></div>
+
+    <div class="text-center mt-5">
+      <h3>カテゴリ一覧</h3>
+      <% @categories.each do |category| %>
+        <%= link_to category.name, category_search_path(category_id: category.id), class: "link", style: "text-decoration: underline;" %> |
+      <% end %>
+    </div>
+    <div class="text-center my-5">
+      <h3>タグ一覧</h3>
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline;" %> |
+      <% end %>
+    </div>
   </div>
 
   <div class="col-lg-3">
-    <div>
-      <h4>カテゴリ一覧</h4>
-      <% @categories.each do |category| %>
-        <%= link_to category.name, category_search_path(category_id: category.id), class: "link" %> |
-      <% end %>
-    </div>
-    <div class="mt-5">
-      <h4>タグ一覧</h4>
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %> |
-      <% end %>
-    </div>
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
   </div>
 </div>
+
+<%= render "posts/new_link" %>
