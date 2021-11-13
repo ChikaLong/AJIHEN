@@ -23,7 +23,11 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <div class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.name %>さん
+              <% if unchecked_notifications.any? %>
+                <%= current_user.name %><span><i class="fas fa-circle fa-xs"></i></span>さん
+              <% else %>
+                <%= current_user.name %>さん
+              <% end %>
             </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <div class="dropdown-item"><%= link_to "マイページ", user_path(current_user), class: "link" %></div>
