@@ -1,6 +1,6 @@
-<h2 class="text-center">ログイン</h2>
-
 <div class="offset-2 col-8">
+  <h2 class="text-center">ログイン</h2>
+
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %><br />
@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="form-group text-center">
-      <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+      <%= f.submit "ログイン", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 

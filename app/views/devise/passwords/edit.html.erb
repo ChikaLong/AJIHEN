@@ -1,6 +1,6 @@
-<h2 class="text-center">パスワード再設定</h2>
-
 <div class="offset-2 col-8">
+  <h2 class="text-center">パスワード再設定</h2>
+
   <%= form_with model: @user, url: user_password_path, method: :patch, class: 'registration-main', local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.hidden_field :reset_password_token %>
@@ -20,7 +20,7 @@
 
     <div class="form-group text-center">
       <%= f.label "よろしければ変更ボタンを押してください" %>
-      <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+      <%= f.submit "変更", class: "btn btn-outline-success" %>
     </div>
   <% end %>
 </div>

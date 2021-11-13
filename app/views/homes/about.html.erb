@@ -22,7 +22,7 @@
     気になる商品をお気に入りにするなどできるようになります。
   </p>
 
-  <div class="offset-4 col-4">
+  <div class="offset-lg-3 col-lg-6">
     <table class="table table-borderless star-table">
       <tr><th colspan="2">レビューの総合評価の目安</th></tr>
       <tr><td><i class="fas fa-star">0.5~1</td><td>おすすめできない</td></tr>
@@ -35,8 +35,8 @@
 
 
   <% unless user_signed_in? %>
-    <p><%= link_to "会員登録する", new_user_registration_path %></p>
+    <p><%= link_to "会員登録する＞", new_user_registration_path %></p>
   <% end %>
-  <p><%= link_to "みんなのレビューを見る", posts_path %></p>
+  <p><%= link_to "みんなのレビューを見る＞", posts_path %></p>
 
 </div>

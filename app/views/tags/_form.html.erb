@@ -1,20 +1,16 @@
-<div>
-  <div class="offset-2 col-8">
-    <%= form_with model: tag, local: true do |f| %>
-      <div class="form-group">
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-
-      <div class="form-group text-center">
-        <%= f.submit btn_text, class: "btn btn-outline-secondary" %>
-      </div>
-    <% end %>
-
-    <div class="mt-5">
-      <h4><strong>現在登録されているタグ</strong></h4>
-      <% tags.each do |tag| %>
-        <%= tag.name %> |
-      <% end %>
-    </div>
+<%= form_with model: tag, local: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, class: "form-control" %>
   </div>
+
+  <div class="form-group text-center">
+    <%= f.submit btn_text, class: "btn btn-outline-success" %>
+  </div>
+<% end %>
+
+<div class="mt-5">
+  <h4><strong>現在登録されているタグ</strong></h4>
+  <% tags.each do |tag| %>
+    <%= tag.name %> |
+  <% end %>
 </div>
