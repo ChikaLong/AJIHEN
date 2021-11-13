@@ -21,10 +21,6 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         post.item_name = ''
         is_expected.to eq false
       end
-      it '50文字以下であること: 50文字可' do
-        post.item_name = Faker::Lorem.characters(number: 50)
-        is_expected.to eq true
-      end
       it '50文字以下であること: 51文字不可' do
         post.item_name = Faker::Lorem.characters(number: 51)
         is_expected.to eq false
@@ -35,10 +31,6 @@ RSpec.describe 'Postモデルのテスト', type: :model do
       it '空欄でないこと' do
         post.review = ''
         is_expected.to eq false
-      end
-      it '1000文字以下であること: 1000文字可' do
-        post.review = Faker::Lorem.characters(number: 1000)
-        is_expected.to eq true
       end
       it '1000文字以下であること: 1001文字不可' do
         post.review = Faker::Lorem.characters(number: 1001)

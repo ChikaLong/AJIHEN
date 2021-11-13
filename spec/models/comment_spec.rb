@@ -22,10 +22,6 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
         comment.comment = ''
         is_expected.to eq false
       end
-      it '500文字以下であること: 500文字可' do
-        comment.comment = Faker::Lorem.characters(number: 500)
-        is_expected.to eq true
-      end
       it '500文字以下であること: 501文字不可' do
         comment.comment = Faker::Lorem.characters(number: 501)
         is_expected.to eq false
