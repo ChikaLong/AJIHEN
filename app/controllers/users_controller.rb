@@ -23,7 +23,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to thanks_path
+    if user_signed_in? && current_user.admin?
+      redirect_to users_path
+    else
+      redirect_to thanks_path
+    end
   end
 
   def confirm
