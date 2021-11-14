@@ -18,8 +18,8 @@
       <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
         <%= link_to "レビューを編集", edit_post_path(@post), class: "fas fa-edit btn btn-primary m-1" %>
         <!--削除確認bootstrapモーダル-->
-        <button type="button" class="fas fa-trash-alt btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">レビューを削除</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="fas fa-trash-alt btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal<%= @post.id %>">レビューを削除</button>
+        <div class="modal fade" id="exampleModal<%= @post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
