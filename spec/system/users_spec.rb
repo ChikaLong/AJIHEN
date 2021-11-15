@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
-  let(:user){FactoryBot.create(:user)}
-
   describe 'ユーザー認証のテスト' do
+    let(:user){FactoryBot.create(:user)}
+
     describe 'ユーザー新規登録' do
       before do
         visit new_user_registration_path
@@ -53,6 +53,8 @@ RSpec.describe "Users", type: :system do
   end
 
   describe 'ユーザー関連機能のテスト' do
+    let(:user){FactoryBot.create(:user)}
+
     before do
       visit new_user_session_path
       fill_in 'メールアドレス', with: user.email
@@ -196,7 +198,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'ニックネーム', with: ""
           click_button '更新'
           expect(page).to have_content 'プロフィール更新に失敗しました'
-          expect(page).to have_content 'ニックネームが入力されていません'
+          expect(page).to have_content 'ニックネームを入力してください'
           expect(current_path).to eq user_path(user)
         end
       end
@@ -239,7 +241,7 @@ RSpec.describe "Users", type: :system do
           fill_in 'メールアドレス', with: 'test2@example.com'
           fill_in '現在のパスワード', with: user.password
           click_button '更新'
-          expect(page).to have_content '登録情報を変更しました'
+          expect(page).to have_content 'アカウント登録情報を変更しました。'
           expect(current_path).to eq user_path(user)
         end
 
@@ -312,6 +314,7 @@ RSpec.describe "Users", type: :system do
   end
 
   describe '管理者側のテスト' do
+    let!(:other_user){FactoryBot.create(:user)}
     let!(:user){ FactoryBot.create(:user, admin: true) }
 
     before do
@@ -325,16 +328,16 @@ RSpec.describe "Users", type: :system do
       it '全登録ユーザボタンが表示される' do
         expect(page).to have_content('全登録ユーザ')
       end
-      
+
       it '新規タグ追加ボタンが表示される' do
         expect(page).to have_content('新規タグ追加')
       end
-      
+
       it '新規カテゴリ追加ボタンが表示される' do
         expect(page).to have_content('新規カテゴリ追加')
       end
     end
-    
+
     describe '全登録ユーザ一覧のテスト' do
       context '遷移のテスト' do
         it 'ページ遷移ができる' do
@@ -342,26 +345,51 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq users_path
         end
       end
-      
+
       context '表示とリンクのテスト' do
         before do
           visit users_path
         end
-        
+
         it '登録ユーザ一覧と表示される' do
           expect(page).to have_content('登録ユーザ一覧')
         end
-        
+
         it 'ユーザ名とメールアドレスが表示される' do
           expect(page).to have_content user.name
           expect(page).to have_content user.email
         end
-        
+
         it '退会させるボタンがある' do
           expect(page).to have_content('退会させる')
         end
+
+        it '退会させる確認用のモーダルがある' do
+          expect(page).to have_selector('.modal', visible: false)
+        end
+
+        it 'モーダルが出力される' do
+          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '退会確認')
+        end
       end
-      
+    end
+
+    describe '新規タグ追加のテスト' do
+      context '遷移のテスト' do
+        it 'ページ遷移ができる' do
+          visit new_tag_path
+          expect(current_path).to eq new_tag_path
+        end
+      end
+    end
+
+    describe '新規カテゴリ追加のテスト' do
+      context '遷移のテスト' do
+        it 'ページ遷移ができる' do
+          visit new_category_path
+          expect(current_path).to eq new_category_path
+        end
+      end
     end
   end
 end
@@ -370,16 +398,4 @@ end
 # 正しく退会できるかのテスト
 
 # ※以下管理者のみ
-# 全登録ユーザへのリンクがある
-# 新規タグ追加のリンクがある
-# 新規カテゴリ追加のリンクがある
-
-# 全登録ユーザ画面のテスト
-# 全登録ユーザ画面へ遷移する
-# 管理者以外に退会ボタンが表示される
-
-# 新規タグ追加のテスト
-# 新規タグ追加画面へ遷移する
-
-# 新規カテゴリ追加のテスト
-# 新規カテゴリ追加の画面へ遷移する
+# 正しく退会させられる
