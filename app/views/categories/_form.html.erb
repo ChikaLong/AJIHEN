@@ -1,0 +1,16 @@
+<%= form_with model: category, local: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit btn_text, class: "btn btn-outline-success" %>
+  </div>
+<% end %>
+
+<div class="mt-5">
+  <h4><strong>＜現在登録されているカテゴリ＞</strong></h4>
+  <% categories.each do |category| %>
+    <%= category.name %> |
+  <% end %>
+</div>

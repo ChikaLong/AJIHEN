@@ -1,0 +1,36 @@
+<h1 class="text-center">通知</h1>
+
+<div class="row">
+  <div class="offset-1 mb-3">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">通知を全て削除する</button>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">通知の削除</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">通知を削除しますか？<br />(現在の通知全てが削除されます)</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
+            <%= link_to "削除する", notification_path(@notifications), method: :delete, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset-1 col-10">
+    <% if @notifications.empty? %>
+      <p>通知はありません</p>
+    <% else %>
+      <%= render @notifications %>
+    <% end %>
+
+    <%=paginate @notifications %>
+  </div>
+</div>

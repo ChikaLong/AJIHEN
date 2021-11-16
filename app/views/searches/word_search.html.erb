@@ -1,0 +1,22 @@
+<%= render 'searches/form' %>
+
+<div class="row">
+  <div class="offset-lg-1 col-lg-7">
+    <h2 class="text-center">"<%= @keywords %>"を含むレビュー</h2>
+
+    <div class="row" style="justify-content: center;">
+      <% if @posts.empty? %>
+        該当するレビューはありません
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  </div>
+</div>

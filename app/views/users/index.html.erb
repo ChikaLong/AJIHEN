@@ -1,0 +1,48 @@
+<div class="offset-1 col-10">
+  <h2 class="text-center">登録ユーザ一覧</h2>
+
+  <table class="table">
+    <thead>
+      <tr align="center">
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user), class: "link" do %>
+              <%= attachment_image_tag user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
+              <%= user.name %>さん
+            <% end %>
+          </td>
+          <td><%= user.email %></td>
+          <td>
+            <% if current_user.admin? && !(current_user == user) %>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<%= user.id %>">退会させる</button>
+              <div class="modal fade" id="exampleModal<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">退会確認</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body"><%= user.name %>さんを退会させますか？<br />(アカウント、投稿レビュー、コメント等全て削除します)</div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
+                      <%= link_to "退会させる", user, method: :delete, class: "btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

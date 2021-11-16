@@ -1,0 +1,22 @@
+<%= render 'searches/form' %>
+
+<div class="row">
+  <div class="offset-lg-1 col-lg-7">
+    <h3 class="text-center">"<%= @category.name %>"カテゴリのレビュー</h3>
+
+    <div class="row" style="justify-content: center;">
+      <% if @posts.empty? %>
+        <p>該当のレビューがありません</p>
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
+  </div>
+</div>

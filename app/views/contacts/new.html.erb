@@ -1,0 +1,38 @@
+<div class="text-center">
+  <h2 class="offset-2 col-8">お問い合わせ・ご要望フォーム</h2>
+  <div class="mb-3">サイトに関するご不明点やカテゴリ・タグ追加のご要望などございましたらお気軽にご連絡ください。</div>
+  <div class="mb-4">
+    ※ご要望は全てに対応できるわけではございません。ご了承ください。<br />
+    レビュー商品の情報に関するお問い合わせはご回答できません。
+  </div>
+</div>
+
+<div class="offset-2 col-8">
+  <%= render "contacts/error", contact: @contact %>
+
+  <%= form_with model: @contact, url: confirm_contacts_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'お名前' %><span class="badge input">必須</span>
+      <%= f.text_field :name, autofocus: true, placeholder: "2文字以上", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, 'メールアドレス' %><span class="badge input">必須</span>
+      <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :subject, '件名' %><span class="badge input">必須</span>
+      <%= f.text_field :subject, placeholder: "50文字以内で入力", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :message, 'お問い合わせ・ご要望' %><span class="badge input">必須</span>
+      <%= f.text_area :message, placeholder: "お問い合わせ・ご要望の内容を詳しく入力してください", class: "form-control" %>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.submit '入力内容確認', class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

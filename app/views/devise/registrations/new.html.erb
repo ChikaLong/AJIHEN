@@ -1,0 +1,38 @@
+<div class="offset-2 col-8">
+  <h2 class="text-center">新規登録</h2>
+
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :name, "ニックネーム" %><span class="badge input">必須</span><br />
+      <%= f.text_field :name, autofocus: true, placeholder: "2文字以上", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %><span class="badge input">必須</span><br />
+      <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %>
+      (<%= @minimum_password_length %> 文字以上)
+      <% end %><span class="badge input">必須</span><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "パスワード(確認用)" %><span class="badge input">必須</span><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="form-group text-center">
+      <%= f.submit "新規登録", class: "btn btn-outline-success" %>
+    </div>
+  <% end %>
+
+  <div class="text-center">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

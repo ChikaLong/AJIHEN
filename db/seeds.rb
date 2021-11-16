@@ -5,3 +5,66 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(
+  name: 'test2',
+  email: 'test@com',
+  password: '909090'
+)
+
+User.create!(
+  name: '管理人',
+  email: ENV["ADMIN_ADDRESS"],
+  password: ENV["ADMIN_PASSWORD"],
+  admin: true
+)
+
+Tag.create!(
+  [
+    {name: '和食に合う'},
+    {name: '洋食に合う'},
+    {name: '中華に合う'},
+    {name: '麺に合う'},
+    {name: 'パンに合う'},
+    {name: 'ご飯に合う'},
+    {name: '塩分控えめ'},
+    {name: '辛い'},
+    {name: '甘い'},
+    {name: '酸味がある'},
+    {name: '苦味がある'},
+    {name: '味濃いめ'},
+    {name: '味薄め'},
+    {name: 'ニンニク'},
+    {name: '多用途'},
+    {name: 'コスパ◎'},
+    {name: 'リピートしたい'},
+    {name: '隠し味に'},
+    {name: 'その他'}
+  ]
+)
+
+Category.create!(
+  [
+    {name: '砂糖'},
+    {name: 'シロップ'},
+    {name: '塩'},
+    {name: '酢'},
+    {name: '醤油'},
+    {name: '味噌'},
+    {name: 'たれ、つゆ'},
+    {name: '出汁'},
+    {name: '酒系'},
+    {name: 'ソース'},
+    {name: 'ケチャップ'},
+    {name: 'マヨネーズ'},
+    {name: 'マスタード'},
+    {name: 'ドレッシング'},
+    {name: '油脂'},
+    {name: '香辛料'},
+    {name: '薬味'},
+    {name: 'ハーブ'},
+    {name: 'ふりかけ'},
+    {name: '万能調味料'},
+    {name: 'その他'}
+  ]
+)

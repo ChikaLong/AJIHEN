@@ -1,0 +1,165 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@500&family=Klee+One:wght@600&family=M+PLUS+1p:wght@500&family=Zen+Kurenaido&family=Zen+Maru+Gothic:wght@500&family=Zen+Old+Mincho&display=swap');
+
+*{
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+html, body,{
+  height: 100%;
+}
+
+// 背景関連
+body{
+  background-image: image-url('green1.jpeg');
+  z-index: -1000;
+}
+
+main .container{
+  background-color: rgba(255,255,255,0.9);
+  min-height: 100vh;
+  z-index: -900;
+}
+
+header{
+  background-color: #E6FFE9;
+}
+
+.navbar{
+  background-color: #4D9966;
+}
+
+.dropdown-menu{
+  background-color: #E6FFE9;
+}
+
+// 見出し
+h2,h3{
+  border-bottom: 3px #12B348 solid;
+}
+
+h2,h3,h4{
+  margin-bottom: 1.5rem;
+}
+
+// 必須の文字色
+.input{
+  color: #DD0000;
+}
+
+// アイコン関連
+.fa-crown{
+  color: gold;
+}
+
+.fa-star{
+  color: orange;
+}
+
+.fa-circle{
+  position: absolute;
+  padding-left: 1.5rem;
+  padding-top: 0rem;
+  color: red;
+}
+
+// profile-imageの形
+.rounded-circle{
+  object-fit: contain;
+}
+
+// トップに戻るボタン
+#back{
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 100;
+}
+
+.t-btn{
+  width: 40px;
+  height: 40px;
+}
+
+// 新規レビューボタン
+.write{
+  background-color: #E6FFE9;
+  position: fixed;
+  left: 20px;
+  bottom: 25px;
+  z-index: 100;
+  border-radius: 50%;
+  border: 2px solid #005500;
+}
+
+// エラーメッセージ
+#error_explanation{
+  color: red;
+}
+
+// リンク関連
+.link {
+  color: #444444;
+}
+
+.link:hover{
+　text-decoration: underline;
+}
+
+.navbar-nav .link,
+.dropdown-toggle{
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown-item .link{
+  color: #696969;
+}
+
+// ページネーション
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  color: #808080;
+}
+
+// フッターを最下部に固定
+.all-content {
+  position: relative;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+}
+
+.main-content {
+  padding-bottom: 80px;
+}
+
+footer {
+  background-color: #E6FFE9;
+  width: 100%;
+  height: 80px;
+  position:absolute;
+  bottom:0;
+}

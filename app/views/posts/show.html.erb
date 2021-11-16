@@ -1,0 +1,111 @@
+<%= render 'searches/form' %>
+
+<div class="offset-lg-1 mb-3">
+  <%= link_to user_path(@user), class: "link", style: "text-decoration: none;" do %>
+    <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
+    <%= @post.user.name %>さん
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="offset-lg-1 col-lg-3">
+    <div><%= attachment_image_tag @post, :image, :fill,300,300 %></div>
+    <!--気になるボタン-->
+    <div class="my-2 ml-1" id="favorite_button_<%= @post.id %>">
+      <%= render 'favorites/favorite', post: @post %>
+    </div>
+    <div>
+      <% if (user_signed_in?) && (@post.user.id == current_user.id) %>
+        <%= link_to "レビューを編集", edit_post_path(@post), class: "fas fa-edit btn btn-primary m-1" %>
+        <!--削除確認bootstrapモーダル-->
+        <button type="button" class="fas fa-trash-alt btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal<%= @post.id %>">レビューを削除</button>
+        <div class="modal fade" id="exampleModal<%= @post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">レビューの削除</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">レビューをを削除しますか？<br />コメントなども全て削除されます。</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">やめる</button>
+                <%= link_to "レビューを削除", post_path(@post), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="offset-lg-1 col-lg-6">
+    <table class="table table-borderless">
+      <tr>
+        <td><h3><strong><%= @post.item_name %></strong></h3></td>
+      </tr>
+      <tr>
+        <td>
+          <span id="star-rate-<%= @post.id %>"></span>
+          <script>
+            $('#star-rate-<%= @post.id %>').empty();
+            $('#star-rate-<%= @post.id %>').raty({
+              size: 36,
+              starOff: '<%= asset_path('star-off.png') %>',
+              starOn: '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              readOnly: true,
+              half: true,
+              score: <%= @post.rate %>,
+            });
+          </script>
+          <span class="p-rate"><strong><%= @post.rate %></strong></span>
+          <%= link_to "総合評価の目安", about_path, class: "link ml-4", style: "text-decoration: underline;" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= @post.review %></td>
+      </tr>
+    </table>
+
+    <table class="table">
+      <tr>
+        <th>原産国</th>
+        <td><%= @post.country %></td>
+      </tr>
+      <tr>
+        <th>購入時の値段</th>
+        <td><%= @post.price %></td>
+      </tr>
+      <tr>
+        <th>購入場所</th>
+        <td><%= @post.place %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">カテゴリ：<%= link_to @post.category.name, category_search_path(category_id: @category.id), class: "link", style: "text-decoration: underline;" %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">
+          <% @post.tags.each do |tag| %>
+            <span class="badge badge-pill badge-light">
+              <i class="fas fa-tag"></i><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %>
+            </span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td align="right">投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!--コメント機能-->
+<div class="offset-lg-1 col-lg-10">
+  <%= render 'comments/comment', post: @post, comment: @comment, comments: @comments %>
+</div>
+

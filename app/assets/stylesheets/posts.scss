@@ -1,0 +1,59 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 言語に関係なく表示範囲に合わせて改行
+table tr,td{
+  word-break: break-all;
+}
+
+// 星評価数
+.p-rate{
+  font-size: 23px;
+  color: #FF4F02;
+}
+
+.card{
+  width: 600px;
+}
+
+.fa-tag{
+  color: #FF8C00;
+}
+
+// ランキング関連
+.rank{
+  background-color: #D4EBDB;
+  border: 4px #88C29B solid;
+  padding: 3px;
+  text-align: center;
+}
+
+.rank-title{
+  background-color: #88C29B;
+}
+
+.rank-item-list{
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.ranking{
+  font-size: 20px;
+}
+
+.no-rank{
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+@media screen and(max-width:992px){
+  .rank-item{
+    display: flex;
+  }
+
+  .rank-item-list{
+    margin: 0 auto;
+  }
+}

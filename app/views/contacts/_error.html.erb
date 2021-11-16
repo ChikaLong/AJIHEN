@@ -1,0 +1,10 @@
+<div id="error_explanation">
+  <% if contact.errors.any? %>
+    <h4>正しく入力してください</h4>
+    <% contact.errors.full_messages.each do |message| %>
+      <ul>
+        <li><%= message %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

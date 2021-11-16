@@ -1,0 +1,33 @@
+<div class="offset-lg-1">
+  <% if (user_signed_in?) && (@user.id == current_user.id) %>
+    <h1>マイページ</h1>
+  <% else %>
+    <h1><%= @user.name %>さんのページ</h2>
+  <% end %>
+</div>
+
+<div class="row">
+  <%= render 'users/user', user: @user %>
+
+  <div class="col-lg-6">
+    <!--自分のレビュー一覧-->
+    <div class="text-center">
+      <% if (user_signed_in?) && (@user.id == current_user.id) %>
+        <h3>マイレビュー</h3>
+      <% else %>
+        <h3><%= @user.name %>さんのレビュー</h3>
+      <% end %>
+    </div>
+
+    <div class="row" style="justify-content: center;">
+      <% if @posts.empty? %>
+        <p>まだレビューの投稿がありません</p>
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      <% end %>
+      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+  </div>
+</div>

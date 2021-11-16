@@ -1,0 +1,42 @@
+<div class="text-center">
+  <h1>AJIHENへようこそ</h1>
+
+  <p>「AJIHEN」は全国各地様々な調味料の情報を共有するためのレビューサイトです。</p>
+
+    <ul class="list-unstyled">
+      <li>日々の料理がマンネリ化してきた・・・</li>
+      <li>いつもの食事に変化を加えたい・・・</li>
+      <li>新しい味を求めたい・・・</li>
+    </ul>
+
+  <p>
+    こんなお悩みありませんか？
+    そんな時に新しい味との出会いになれるような場所になって欲しいです。<br />
+    これは調味料になるかな・・・？と思っても、このサイトのタイトル通り<strong>「味変」</strong>できるものは大歓迎！！<br />
+    皆様の「味変」を教えてください。
+  </p>
+
+  <p>
+    このサイトは会員登録しなくてもご覧いただけます。<br />
+    会員登録していただくと、レビューの投稿、レビューへのコメント、<br />
+    気になる商品をお気に入りにするなどできるようになります。
+  </p>
+
+  <div class="offset-lg-3 col-lg-6">
+    <table class="table table-borderless star-table">
+      <tr><th colspan="2">レビューの総合評価の目安</th></tr>
+      <tr><td><i class="fas fa-star">0.5~1</td><td>おすすめできない</td></tr>
+      <tr><td><i class="fas fa-star">1.5~2</td><td>あまりおすすめできない</td></tr>
+      <tr><td><i class="fas fa-star">2.5~3</td><td>おすすめできる</td></tr>
+      <tr><td><i class="fas fa-star">3.5~4</td><td>かなりおすすめ</td></tr>
+      <tr><td><i class="fas fa-star">4.5~5</td><td>絶対食べて欲しい！</td></tr>
+    </table>
+  </div>
+
+
+  <% unless user_signed_in? %>
+    <p><%= link_to "会員登録する＞", new_user_registration_path %></p>
+  <% end %>
+  <p><%= link_to "みんなのレビューを見る＞", posts_path %></p>
+
+</div>
