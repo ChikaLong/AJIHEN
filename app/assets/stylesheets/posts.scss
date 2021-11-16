@@ -42,6 +42,12 @@ table tr,td{
   font-size: 20px;
 }
 
+.no-rank{
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
 @media screen and(max-width:992px){
   .rank-item{
     display: flex;
