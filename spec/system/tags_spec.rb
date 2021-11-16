@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Tags", type: :system do
   describe 'タグ関連のテスト' do
-    let!(:tag){FactoryBot.create(:tag)}
+    let!(:tag){ FactoryBot.create(:tag)}
 
     describe 'タグ一覧画面のテスト' do
       it '遷移ができる' do

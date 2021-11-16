@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :post do
     user
+    category
     image_id { Faker::Lorem.characters(number: 10) }
     item_name { Faker::Lorem.characters(number: 50) }
     review { Faker::Lorem.characters(number: 1000) }

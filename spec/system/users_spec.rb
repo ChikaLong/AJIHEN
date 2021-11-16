@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   describe 'ユーザー認証のテスト' do
-    let(:user){FactoryBot.create(:user)}
+    let(:user){ FactoryBot.create(:user) }
 
     describe 'ユーザー新規登録' do
       before do
@@ -53,7 +53,7 @@ RSpec.describe "Users", type: :system do
   end
 
   describe 'ユーザー関連機能のテスト' do
-    let(:user){FactoryBot.create(:user)}
+    let(:user){ FactoryBot.create(:user) }
 
     before do
       visit new_user_session_path
@@ -314,7 +314,7 @@ RSpec.describe "Users", type: :system do
   end
 
   describe '管理者側のテスト' do
-    let!(:other_user){FactoryBot.create(:user)}
+    let!(:other_user){ FactoryBot.create(:user) }
     let!(:user){ FactoryBot.create(:user, admin: true) }
 
     before do
