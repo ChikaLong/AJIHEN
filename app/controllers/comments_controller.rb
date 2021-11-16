@@ -2,11 +2,15 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new
+    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
-    comment.save
-    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
-    redirect_to post_path(@post)
+    if comment.save
+      redirect_to post_path(@post)
+    else
+      flash[:alert] = "コメントが入力されていません"
+      redirect_to post_path(@post)
+    end
     # コメント通知用
     @post.create_notification_by(current_user)
   end

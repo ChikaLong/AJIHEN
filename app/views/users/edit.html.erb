@@ -1,6 +1,17 @@
-<h2 class="text-center">プロフィール編集</h2>
-
 <div class="offset-2 col-8">
+  <h2 class="text-center">プロフィール編集</h2>
+
+  <div id="error_explanation">
+    <% if @user.errors.any? %>
+      <h4>プロフィール更新に失敗しました</h4>
+      <% @user.errors.full_messages.each do |message| %>
+        <ul>
+          <li><%= message %></li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= form_with model: @user, local: true do |f| %>
     <div class="form-group">
       <%= f.label :profile_image, "プロフィール画像" %><br />
