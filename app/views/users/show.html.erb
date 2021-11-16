@@ -10,15 +10,6 @@
   <%= render 'users/user', user: @user %>
 
   <div class="col-lg-6">
-    <!--管理者のみアクセス可-->
-    <% if (user_signed_in?) && (current_user.admin?) && (@user.id == current_user.id) %>
-      <div class="row mb-4">
-        <div class="col-4"><%= link_to "全登録ユーザ", users_path, class: "btn btn-info" %></div>
-        <div class="col-4"><%= link_to "新規タグ追加", new_tag_path, class: "btn btn-info" %></div>
-        <div class="col-4"><%= link_to "新規カテゴリ追加", new_category_path, class: "btn btn-info" %></div>
-      </div>
-    <% end %>
-
     <!--自分のレビュー一覧-->
     <div class="text-center">
       <% if (user_signed_in?) && (@user.id == current_user.id) %>
