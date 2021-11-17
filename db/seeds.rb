@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-  name: 'test2',
-  email: 'test@com',
-  password: '909090'
+  name: 'test',
+  email: 'test@test.com',
+  password: '123456'
 )
 
 User.create!(
@@ -45,14 +45,15 @@ Tag.create!(
 
 Category.create!(
   [
-    {name: '砂糖'},
-    {name: 'シロップ'},
+    {name: '砂糖・甘味料'},
     {name: '塩'},
     {name: '酢'},
     {name: '醤油'},
+    {name: 'ポン酢'},
     {name: '味噌'},
     {name: 'たれ、つゆ'},
     {name: '出汁'},
+    {name: 'スープの素'},
     {name: '酒系'},
     {name: 'ソース'},
     {name: 'ケチャップ'},
