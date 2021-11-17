@@ -14,11 +14,11 @@
       <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link", style: "text-decoration: underline;" %>
     </div>
 
+    <div class="row" style="justify-content: center;" id="post-list">
+      <%= render 'posts/post' %>
+    </div>
     <div class="row" style="justify-content: center;">
-      <% @posts.each do |post| %>
-        <%= render 'posts/post', post: post %>
-      <% end %>
-      <div class="offset-1 col-10"><%= paginate @posts %></div>
+      <%= link_to_next_page @posts, "もっと見る", remote: true, id: "view_more", class: "more" %>
     </div>
   </div>
 
