@@ -24,8 +24,8 @@ class Post < ApplicationRecord
   scope :like, -> { Post.joins("left join favorites on posts.id=favorites.post_id").group("posts.id").order("count(favorites.id) desc") }
 
   # ランキング表示用
-  scope :week, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').limit(3).pluck(:post_id)) }
-  scope :month, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order('count(post_id) desc').limit(3).pluck(:post_id)) }
+  scope :week, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order(Arel.sql('count(post_id) desc')).limit(3).pluck(:post_id)) }
+  scope :month, -> { find(Favorite.group(:post_id).where(created_at: Time.current.all_month).order(Arel.sql('count(post_id) desc')).limit(3).pluck(:post_id)) }
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
