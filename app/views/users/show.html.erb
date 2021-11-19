@@ -23,9 +23,7 @@
       <% if @posts.empty? %>
         <p>まだレビューの投稿がありません</p>
       <% else %>
-        <% @posts.each do |post| %>
-          <%= render 'posts/post', post: post %>
-        <% end %>
+        <%= render 'posts/post' %>
       <% end %>
       <div class="offset-1 col-10"><%= paginate @posts %></div>
     </div>

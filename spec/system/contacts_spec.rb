@@ -41,17 +41,75 @@ RSpec.describe "Contacts", type: :system do
         end
       end
     end
+
+    describe '入力確認画面のテスト' do
+      before do
+        visit new_contact_path
+        fill_in 'お名前', with: "test"
+        fill_in 'メールアドレス', with: "test@example.com"
+        fill_in '件名', with: "問い合わせ"
+        fill_in 'お問い合わせ・ご要望', with: "sample_message"
+        click_button '入力内容確認'
+      end
+
+      context '表示の確認' do
+        it '入力内容確認と表示されている' do
+          expect(page).to have_content('入力内容確認')
+        end
+
+        it 'お名前が表示されている' do
+          expect(page).to have_content "test"
+        end
+
+        it 'メールアドレスが表示されている' do
+          expect(page).to have_content "test@example.com"
+        end
+
+        it '件名が表示されている' do
+          expect(page).to have_content "問い合わせ"
+        end
+
+        it 'お問い合わせ・ご要望が表示されている' do
+          expect(page).to have_content "sample_message"
+        end
+
+        it '入力画面に戻るボタンが表示されている' do
+          expect(page).to have_button '入力画面に戻る'
+        end
+
+        it '送信ボタンが表示されている' do
+          expect(page).to have_button '送信'
+        end
+      end
+
+      context '入力画面に戻った時のテスト' do
+        before do
+          click_button '入力画面に戻る'
+        end
+
+        it 'フォームに名前が表示されている' do
+          expect(page).to have_field 'お名前', with: "test"
+        end
+
+        it 'フォームにメールアドレスが表示されている' do
+          expect(page).to have_field 'メールアドレス', with: "test@example.com"
+        end
+
+        it 'フォームに件名が表示されている' do
+          expect(page).to have_field '件名', with: "問い合わせ"
+        end
+
+        it 'フォームに問い合わせ・要望内容が表示されている' do
+          expect(page).to have_field 'お問い合わせ・ご要望', with: "sample_message"
+        end
+      end
+
+      context '送信の確認' do
+        it '送信ボタンを押すと送信完了画面へ遷移する' do
+          click_button '送信'
+          expect(current_path).to eq complete_contacts_path
+        end
+      end
+    end
   end
 end
-
-
-
-
-# 入力確認画面のテスト
-# 入力確認画面と表示される
-# 入力内容が表示される
-
-# 入力画面に戻るボタンが表示される
-# 送信ボタンが表示される
-
-# 送信される

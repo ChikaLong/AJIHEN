@@ -1,18 +1,26 @@
 <%= render 'searches/form' %>
 
+<%= render "posts/new_link" %>
+
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <h2 class="text-center">"<%= @keywords %>"を含むレビュー</h2>
-
-    <div class="row" style="justify-content: center;">
-      <% if @posts.empty? %>
-        該当するレビューはありません
+    <h2 class="text-center">
+      <% if @keywords.empty? %>
+        全てのレビュー
       <% else %>
-        <% @posts.each do |post| %>
-          <%= render 'posts/post', post: post %>
-        <% end %>
+        "<%= @keywords %>"を含むレビュー
       <% end %>
-      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </h2>
+
+    <div class="row" style="justify-content: center;" id="post-list">
+      <% if @posts.empty? %>
+        <p>該当するレビューはありません</p>
+      <% else %>
+        <%= render 'posts/post' %>
+      <% end %>
+    </div>
+    <div class="row mb-4" style="justify-content: center;">
+      <%= link_to_next_page @posts, "もっと見る", remote: true, id: "view_more", class: "more" %>
     </div>
   </div>
 
