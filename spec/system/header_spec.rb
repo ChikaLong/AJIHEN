@@ -1,16 +1,90 @@
-# ヘッダーのテスト
-# タイトルクリックでトップページへ遷移する
+require 'rails_helper'
 
-# ナビバーにTOP、About、みんなのレビュー、タグ一覧、カテゴリ一覧のリンクがある
+describe 'ヘッダーのテスト' do
+  describe 'ログイン前のナビのテスト' do
+    context '表示の確認' do
+      before do
+        visit root_path
+      end
 
-# 未ログイン時、新規登録とログインのリンクがある
+      it 'ヘッダーのロゴのリンクが正しい' do
+        click_link 'AJIHEN'
+        expect(current_path).to eq root_path
+      end
 
-# ログイン時、ユーザネームが表示される
-# マイページへのリンクがある
-# 通知画面へのリンクがある
-# 登録情報編集画面のリンクがある
-# ログアウトボタンがある
-# 退会するボタンがある
+      it 'TOPと表示されており、リンク先が正しい' do
+        expect(page).to have_link 'TOP', href: root_path
+      end
 
-# フッターのテスト
-# お問い合わせフォームへのリンクがある
+      it '「AJIHEN」とはと表示されており、リンク先が正しい' do
+        expect(page).to have_link '「AJIHEN」とは', href: about_path
+      end
+
+      it 'みんなのレビューと表示されており、リンク先が正しい' do
+        expect(page).to have_link 'みんなのレビュー', href: posts_path
+      end
+
+      it 'カテゴリ一覧と表示されており、リンク先が正しい' do
+        expect(page).to have_link 'カテゴリ一覧', href: categories_path
+      end
+
+      it 'タグ一覧と表示されており、リンク先が正しい' do
+        expect(page).to have_link 'タグ一覧', href: tags_path
+      end
+
+      it '新規登録と表示されており、リンク先が正しい' do
+        expect(page).to have_link '新規登録', href: new_user_registration_path
+      end
+
+      it 'ログインと表示されており、リンク先が正しい' do
+        expect(page).to have_link 'ログイン', href: new_user_session_path
+      end
+    end
+  end
+
+  describe 'ログイン後のナビのテスト' do
+    context '表示の確認' do
+      let(:user){ FactoryBot.create(:user) }
+
+      before do
+        visit new_user_session_path
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: user.password
+        click_button 'ログイン'
+      end
+
+      it '新規登録のリンクが表示されない' do
+        expect(page).to have_no_link '新規登録'
+      end
+
+      it 'ログインのリンクが表示されない' do
+        expect(page).to have_no_link 'ログイン'
+      end
+
+      it 'ユーザ名が表示される' do
+        expect(page).to have_content user.name
+      end
+
+      it 'マイページへのリンクがあり、リンク先が正しい' do
+        expect(page).to have_link 'マイページ', href: user_path(user)
+      end
+
+      it '通知画面へのリンクがあり、リンク先が正しい' do
+        expect(page).to have_link '通知', href: notifications_path
+      end
+
+      it '登録情報編集へのリンクがあり、リンク先が正しい' do
+        expect(page).to have_link '登録情報編集', href: edit_user_registration_path(user)
+      end
+
+      it 'ログアウトのリンクがあり、リンク先が正しい' do
+        expect(page).to have_link 'ログアウト', href: destroy_user_session_path
+      end
+
+      it '退会のリンクがあり、リンク先が正しい' do
+        expect(page).to have_link '退会する', href: confirm_path
+      end
+    end
+  end
+end
+

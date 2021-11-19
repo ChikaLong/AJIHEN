@@ -39,14 +39,14 @@ class UsersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-    @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(10)
+    @posts = Post.find(favorites)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def comments
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
-    @comment_posts = Post.find(comments)
-    @comment_posts = Kaminari.paginate_array(@comment_posts).page(params[:page]).per(10)
+    @posts = Post.find(comments)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   private

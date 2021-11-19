@@ -1,5 +1,7 @@
 <%= render 'searches/form' %>
 
+<%= render "posts/new_link" %>
+
 <div class="offset-lg-1 mb-3">
   <%= link_to user_path(@user), class: "link", style: "text-decoration: none;" do %>
     <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50", class: "rounded-circle" %>
@@ -43,7 +45,7 @@
   <div class="offset-lg-1 col-lg-6">
     <table class="table table-borderless">
       <tr>
-        <td><h3><strong><%= @post.item_name %></strong></h3></td>
+        <td><h3 style= "display: inline-block;"><strong><%= @post.item_name %></strong></h3></td>
       </tr>
       <tr>
         <td>

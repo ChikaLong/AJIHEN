@@ -1,18 +1,20 @@
 <%= render 'searches/form' %>
 
+<%= render "posts/new_link" %>
+
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
     <h3 class="text-center">"<%= @tag.name %>"タグのレビュー</h3>
 
-    <div class="row" style="justify-content: center;">
+    <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
-        <p>該当のレビューがありません</p>
+        <p>該当レビューがありません</p>
       <% else %>
-        <% @posts.each do |post| %>
-          <%= render 'posts/post', post: post %>
-        <% end %>
+        <%= render 'posts/post' %>
       <% end %>
-      <div class="offset-1 col-10"><%= paginate @posts %></div>
+    </div>
+    <div class="row mb-4" style="justify-content: center;">
+      <%= link_to_next_page @posts, "もっと見る", remote: true, id: "view_more", class: "more" %>
     </div>
   </div>
 

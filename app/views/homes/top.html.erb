@@ -18,9 +18,7 @@
   <div class="offset-lg-1 col-lg-7">
     <h2 class="text-center">新着レビュー</h2>
     <div class="row" style="justify-content: center;">
-      <% @posts.each do |post| %>
-        <%= render 'posts/post', post: post %>
-      <% end %>
+      <%= render 'posts/post' %>
     </div>
     <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link", style: "text-decoration: underline;" %></div>
 
