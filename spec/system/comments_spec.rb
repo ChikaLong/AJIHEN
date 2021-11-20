@@ -50,8 +50,20 @@ RSpec.describe "Comments", type: :system do
           expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: 'コメントの削除')
         end
       end
+
+      context 'コメント削除ができる' do
+        before do
+          fill_in 'comment[comment]', with: comment.comment
+          click_button 'コメントする'
+        end
+
+        it 'コメントの削除に成功する' do
+          expect do
+            find('.modal', visible: false)
+            click_on "削除する"
+          end.to change{ Comment.count }.by(-1)
+        end
+      end
     end
   end
 end
-
-# 削除のテスト

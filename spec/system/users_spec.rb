@@ -293,6 +293,19 @@ RSpec.describe "Users", type: :system do
           expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '退会確認')
         end
       end
+
+      context '退会ができる' do
+        before do
+          visit confirm_path
+        end
+
+        it '退会に成功する' do
+          expect do
+            find('.modal', visible: false)
+            click_on "はい"
+          end.to change{ User.count }.by(-1)
+        end
+      end
     end
 
     describe 'ログアウトのテスト' do
@@ -372,6 +385,19 @@ RSpec.describe "Users", type: :system do
           expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '退会確認')
         end
       end
+
+      context '退会させる' do
+        before do
+          visit users_path
+        end
+
+        it 'ユーザを正しく退会させられる' do
+          expect do
+            find('.modal', visible: false)
+            click_on "はい"
+          end.to change{ User.count }.by(-1)
+        end
+      end
     end
 
     describe '新規タグ追加のテスト' do
@@ -393,9 +419,3 @@ RSpec.describe "Users", type: :system do
     end
   end
 end
-
-
-# 正しく退会できるかのテスト
-
-# ※以下管理者のみ
-# 正しく退会させられる
