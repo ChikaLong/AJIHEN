@@ -19,6 +19,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+/*global $*/
 
 // トップに戻るボタン
 $(function() {
@@ -43,6 +44,13 @@ $(document).on('turbolinks:load', function(){
     autPlayDuration: 3000,
     keyboardOnAlways: false,
     hidePrevious: false
+  });
+});
+
+$(document).on('turbolinks:load', function(){
+  $('.top-post').slick({
+    dots: true,
+    centerMode: true,
   });
 });
 
