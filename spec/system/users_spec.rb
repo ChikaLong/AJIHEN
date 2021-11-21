@@ -134,29 +134,6 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    describe '通知のテスト' do
-      context '通知画面へ遷移' do
-        it 'ページ遷移ができる' do
-          visit notifications_path
-          expect(current_path).to eq notifications_path
-        end
-      end
-
-      context '表示の確認' do
-        before do
-          visit notifications_path
-        end
-
-        it '通知と表示される' do
-          expect(page).to have_content('通知')
-        end
-
-        it '通知を全て削除するボタンが表示される' do
-          expect(page).to have_content('通知を全て削除する')
-        end
-      end
-    end
-
     describe 'プロフィール編集のテスト' do
       context 'プロフィール編集画面へ遷移' do
         it 'ページ遷移ができる' do
