@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :system do
+RSpec.describe "Posts", :type => :system do
   describe 'レビュー関連機能のテスト' do
     let!(:user){ FactoryBot.create(:user) }
     let!(:post){ FactoryBot.create(:post) }
@@ -21,7 +21,7 @@ RSpec.describe "Posts", type: :system do
         end
       end
 
-      context '投稿のテスト' do
+      context '投稿のテスト', js: true do
         before do
           visit new_post_path
         end
@@ -35,7 +35,7 @@ RSpec.describe "Posts", type: :system do
           fill_in '購入場所', with: post.place
           fill_in '購入時の値段', with: post.price
           find("#post_category_id").find("option[value='1']").select_option
-          find('#review_star', visible: false).set(3)
+          find("img[alt='3']").click
           click_button '投稿'
           expect(page).to have_content 'レビューを投稿しました'
         end
@@ -49,7 +49,6 @@ RSpec.describe "Posts", type: :system do
           fill_in '購入場所', with: ""
           fill_in '購入時の値段', with: ""
           find("#post_category_id").find("option[value='']").select_option
-          find('#review_star', visible: false).set("")
           click_button '投稿'
           expect(page).to have_content '件のエラーです'
         end
