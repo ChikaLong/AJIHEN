@@ -7,17 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-  name: 'test',
-  email: 'test@test.com',
-  password: '123456'
-)
-
-User.create!(
   name: '管理人',
   email: ENV["ADMIN_ADDRESS"],
   password: ENV["ADMIN_PASSWORD"],
   admin: true
 )
+
+15.times do |n|
+  User.create!(
+    name: "test#{n + 1}",
+    email: "test#{n + 1}@test.com",
+    password: "123456"
+  )
+end
 
 Tag.create!(
   [
@@ -69,3 +71,18 @@ Category.create!(
     {name: 'その他'}
   ]
 )
+
+20.times do
+  Post.create!(
+    user_id: 1,
+    category_id: 2,
+    image: File.open("#{Rails.root}/app/assets/images/logo.png"),
+    item_name: "塩",
+    review: "多用途で使える塩です",
+    country: "日本",
+    place: "スーパー",
+    price: "200円",
+    rate: "4.0",
+    tag_ids: [15,18],
+  )
+end

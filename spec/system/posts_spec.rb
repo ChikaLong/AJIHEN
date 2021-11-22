@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", :type => :system do
-  describe 'レビュー関連機能のテスト' do
+  describe '投稿関連機能のテスト' do
     let!(:user){ FactoryBot.create(:user) }
     let!(:post){ FactoryBot.create(:post) }
     let!(:category){ FactoryBot.create(:category) }
@@ -37,7 +37,7 @@ RSpec.describe "Posts", :type => :system do
           find("#post_category_id").find("option[value='1']").select_option
           find("img[alt='3']").click
           click_button '投稿'
-          expect(page).to have_content 'レビューを投稿しました'
+          expect(page).to have_content '投稿に成功しました'
         end
 
         it '投稿に失敗する' do
@@ -55,7 +55,7 @@ RSpec.describe "Posts", :type => :system do
       end
     end
 
-    describe 'レビュー編集に関するテスト'  do
+    describe '投稿編集に関するテスト'  do
       before do
         visit new_user_session_path
         fill_in 'メールアドレス', with: user.email
@@ -81,8 +81,8 @@ RSpec.describe "Posts", :type => :system do
           visit edit_post_path(post)
         end
 
-        it 'レビュー編集と表示される' do
-          expect(page).to have_content 'レビュー編集'
+        it '投稿編集と表示される' do
+          expect(page).to have_content '投稿編集'
         end
 
         it '商品名フォームに商品名が表示される' do
@@ -117,7 +117,7 @@ RSpec.describe "Posts", :type => :system do
           expect(page).to have_link post.item_name, maximum: 11, href: post_path(post)
         end
 
-        it '星評価が表示されている' do
+        it 'オススメ度が表示されている' do
           expect(page).to have_content post.rate
         end
 
@@ -158,7 +158,7 @@ RSpec.describe "Posts", :type => :system do
           expect(page).to have_content post.item_name
         end
 
-        it '星評価が表示されている' do
+        it 'オススメ度が表示されている' do
           expect(page).to have_content post.rate
         end
 
@@ -167,7 +167,7 @@ RSpec.describe "Posts", :type => :system do
         end
 
         it '総合評価への目安と表示されており、リンク先が正しい' do
-          expect(page).to have_link '総合評価の目安', href: about_path
+          expect(page).to have_link 'オススメ度の目安', href: about_path
         end
 
         it '原産国が表示されている' do
@@ -238,12 +238,12 @@ RSpec.describe "Posts", :type => :system do
           click_button '投稿'
         end
 
-        it 'レビュー編集ボタンが表示される' do
-          expect(page).to have_content 'レビューを編集'
+        it '投稿編集ボタンが表示される' do
+          expect(page).to have_content '投稿を編集'
         end
 
-        it 'レビュー削除ボタンが表示される' do
-          expect(page).to have_content 'レビューを削除'
+        it '投稿削除ボタンが表示される' do
+          expect(page).to have_content '投稿を削除'
         end
 
         it '削除確認用のモーダルが存在する' do
@@ -251,10 +251,10 @@ RSpec.describe "Posts", :type => :system do
         end
 
         it 'モーダルが出力される' do
-          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: 'レビューの削除')
+          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '投稿の削除')
         end
 
-        it 'レビューの削除ができる' do
+        it '投稿の削除ができる' do
           expect do
             find('.modal', visible: false)
             click_on "削除"

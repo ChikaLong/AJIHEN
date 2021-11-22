@@ -1,7 +1,7 @@
 <div class="offset-1 col-10 pt-3 mb-4">
   <%= form_with url: word_search_path, method: :get, local: true do |f| %>
     <div class="input-group">
-      <%= f.text_field :keyword, placeholder: "キーワードでレビューを検索", class: "form-control" %>
+      <%= f.text_field :keyword, placeholder: "商品名・投稿内容・原産国・購入場所・カテゴリ・タグで検索", class: "form-control" %>
       <span class="input-group-append">
         <%= button_tag type: 'submit', class: "btn btn-outline-secondary" do %>
           <i class="fas fa-search"></i>

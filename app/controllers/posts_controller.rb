@@ -4,15 +4,15 @@ class PostsController < ApplicationController
   def index
     # ソート機能用
     if params[:sort_create]
-      @posts = Post.latest.page(params[:page]).per(20)
+      @posts = Post.latest.page(params[:page]).per(10)
     elsif params[:sort_rate]
-      @posts = Post.rating.page(params[:page]).per(20)
+      @posts = Post.rating.page(params[:page]).per(10)
     elsif params[:sort_comment]
-      @posts = Kaminari.paginate_array(Post.many).page(params[:page]).per(20)
+      @posts = Kaminari.paginate_array(Post.many).page(params[:page]).per(10)
     elsif params[:sort_favorite]
-      @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(20)
+      @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(10)
     else
-      @posts = Post.page(params[:page]).per(20)
+      @posts = Post.page(params[:page]).per(10)
     end
     # ランキング表示用
     @week_ranks = Post.week
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post), notice: 'レビューを投稿しました'
+      redirect_to post_path(@post), notice: '投稿に成功しました'
     else
       render :new
     end
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: 'レビュー内容を更新しました'
+      redirect_to post_path(@post), notice: '投稿内容を更新しました'
     else
       render :edit
     end
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: 'レビューを削除しました'
+    redirect_to posts_path, notice: '投稿を削除しました'
   end
 
   private

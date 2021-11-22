@@ -7,7 +7,7 @@
       <tr>
         <td align="center"><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %></td>
         <% if (user_signed_in?) && current_user.admin? %>
-          <td align="center"><%= link_to "編集", edit_tag_path(tag), class: "btn btn-outline-danger" %></td>
+          <td align="center"><%= link_to "編集", edit_tag_path(tag), class: "fas fa-edit btn btn-outline-danger" %></td>
         <% end %>
       </tr>
     <% end %>

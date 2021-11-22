@@ -21,10 +21,10 @@ RSpec.describe "Searches", type: :system do
       end
 
       context 'キーワドを入力しなかった場合' do
-        it '全てのレビューが表示される' do
+        it '全ての投稿が表示される' do
           fill_in 'keyword', with: ""
           find('.btn-outline-secondary').click
-          expect(page).to have_content("全てのレビュー")
+          expect(page).to have_content("全ての投稿")
         end
       end
     end

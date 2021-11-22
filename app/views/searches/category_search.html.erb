@@ -4,11 +4,11 @@
 
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
-    <h3 class="text-center">"<%= @category.name %>"カテゴリのレビュー</h3>
+    <h3 class="text-center">"<%= @category.name %>"カテゴリの投稿</h3>
 
     <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
-        <p>該当するレビューがありません</p>
+        <p>該当する投稿がありません</p>
       <% else %>
         <%= render 'posts/post' %>
       <% end %>

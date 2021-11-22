@@ -40,6 +40,19 @@ table tr,td{
 
 .ranking{
   font-size: 20px;
+  font-weight: bold;
+}
+
+.rank-item-list:nth-child(1){
+  color: #C0B601;
+}
+
+.rank-item-list:nth-child(2){
+  color: #808080;
+}
+
+.rank-item-list:nth-child(3){
+  color: #CD853F;
 }
 
 .no-rank{

@@ -20,8 +20,8 @@ describe 'ヘッダーのテスト' do
         expect(page).to have_link '「AJIHEN」とは', href: about_path
       end
 
-      it 'みんなのレビューと表示されており、リンク先が正しい' do
-        expect(page).to have_link 'みんなのレビュー', href: posts_path
+      it 'みんなの投稿と表示されており、リンク先が正しい' do
+        expect(page).to have_link 'みんなの投稿', href: posts_path
       end
 
       it 'カテゴリ一覧と表示されており、リンク先が正しい' do

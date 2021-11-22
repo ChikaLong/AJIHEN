@@ -10,18 +10,18 @@
   <%= render 'users/user', user: @user %>
 
   <div class="col-lg-6">
-    <!--自分のレビュー一覧-->
+    <!--自分の投稿一覧-->
     <div class="text-center">
       <% if (user_signed_in?) && (@user.id == current_user.id) %>
-        <h3>マイレビュー</h3>
+        <h3>投稿した調味料</h3>
       <% else %>
-        <h3><%= @user.name %>さんのレビュー</h3>
+        <h3><%= @user.name %>さんの投稿</h3>
       <% end %>
     </div>
 
     <div class="row" style="justify-content: center;">
       <% if @posts.empty? %>
-        <p>まだレビューの投稿がありません</p>
+        <p>まだ投稿がありません</p>
       <% else %>
         <%= render 'posts/post' %>
       <% end %>
