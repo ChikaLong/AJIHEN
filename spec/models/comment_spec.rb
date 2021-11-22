@@ -6,9 +6,9 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { comment.valid? }
 
-    let(:user){FactoryBot.create(:user)}
-    let(:post){ build(:post, user_id: user.id) }
-    let!(:comment){ build(:comment, user_id: user.id, post_id: post.id) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:post) { build(:post, user_id: user.id) }
+    let!(:comment) { build(:comment, user_id: user.id, post_id: post.id) }
 
     context 'image_idカラム' do
       it '空欄でないこと' do
@@ -43,4 +43,3 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
     end
   end
 end
-

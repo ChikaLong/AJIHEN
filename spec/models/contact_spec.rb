@@ -6,7 +6,7 @@ RSpec.describe 'Contactモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { contact.valid? }
 
-    let(:contact){FactoryBot.create(:contact)}
+    let(:contact) { FactoryBot.create(:contact) }
 
     context 'nameカラム' do
       it '空欄でないこと' do

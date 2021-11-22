@@ -67,6 +67,16 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:image, :item_name, :review, :country, :place, :price, :rate, :category_id, { tag_ids: [] })
+    params.require(:post).permit(
+      :image,
+      :item_name,
+      :review,
+      :country,
+      :place,
+      :price,
+      :rate,
+      :category_id,
+      { tag_ids: [] }
+    )
   end
 end

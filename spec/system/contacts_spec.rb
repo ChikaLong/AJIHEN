@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Contacts", type: :system do
   describe 'お問い合わせフォームのテスト' do
-    let(:contact){ FactoryBot.create(:contact) }
+    let(:contact) { FactoryBot.create(:contact) }
 
     describe '遷移のテスト' do
       it '問い合わせフォームに遷移できる' do

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Posts", :type => :system do
   describe '投稿関連機能のテスト' do
-    let!(:user){ FactoryBot.create(:user) }
-    let!(:post){ FactoryBot.create(:post) }
-    let!(:category){ FactoryBot.create(:category) }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:post) { FactoryBot.create(:post) }
+    let!(:category) { FactoryBot.create(:category) }
 
     describe '新規投稿に関するテスト' do
       before do
@@ -55,7 +55,7 @@ RSpec.describe "Posts", :type => :system do
       end
     end
 
-    describe '投稿編集に関するテスト'  do
+    describe '投稿編集に関するテスト' do
       before do
         visit new_user_session_path
         fill_in 'メールアドレス', with: user.email
@@ -251,18 +251,16 @@ RSpec.describe "Posts", :type => :system do
         end
 
         it 'モーダルが出力される' do
-          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '投稿の削除')
+          expect(find('.modal', visible: false)).to have_selector('.modal-title', text: '投稿の削除')
         end
 
         it '投稿の削除ができる' do
           expect do
             find('.modal', visible: false)
             click_on "削除"
-          end.to change{ Post.count }.by(-1)
+          end.to change { Post.count }.by(-1)
         end
       end
     end
   end
 end
-
-

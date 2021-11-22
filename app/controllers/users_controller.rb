@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :confirm, :thanks]
-  before_action :if_not_admin, only: [:index]
 
   def index
-    @users = User.page(params[:page]).per(15)
+    if user_signed_in? && current_user.admin?
+      @users = User.page(params[:page]).per(15)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -53,10 +56,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def if_not_admin
-    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 
   def user_params

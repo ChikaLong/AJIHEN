@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Homes", type: :system do
-  let!(:category){ FactoryBot.create(:category) }
-  let!(:tag){ FactoryBot.create(:tag)}
+  let!(:category) { FactoryBot.create(:category) }
+  let!(:tag) { FactoryBot.create(:tag) }
 
   describe 'トップページのテスト' do
     before do
@@ -68,7 +68,7 @@ RSpec.describe "Homes", type: :system do
     end
 
     context '表示の確認：ログイン後' do
-      let(:user){ FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         visit new_user_session_path

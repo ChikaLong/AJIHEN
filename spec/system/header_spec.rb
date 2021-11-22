@@ -44,7 +44,7 @@ describe 'ヘッダーのテスト' do
 
   describe 'ログイン後のナビのテスト' do
     context '表示の確認' do
-      let(:user){ FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         visit new_user_session_path
@@ -87,4 +87,3 @@ describe 'ヘッダーのテスト' do
     end
   end
 end
-

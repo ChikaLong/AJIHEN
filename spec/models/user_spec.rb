@@ -6,8 +6,8 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { user.valid? }
 
-    let!(:other_user){FactoryBot.create(:user)}
-    let(:user){FactoryBot.create(:user)}
+    let!(:other_user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     context 'nameカラム' do
       it '空欄でないこと' do
@@ -68,4 +68,3 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 end
-
