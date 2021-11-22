@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.includes(:comments, :favorites).page(params[:page]).per(10)
   end
 
   def edit
@@ -39,13 +39,13 @@ class UsersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(favorites)
+    @posts = Post.includes(:user, :comments, :favorites).find(favorites)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def comments
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(comments)
+    @posts = Post.includes(:user, :comments, :favorites).find(comments)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 

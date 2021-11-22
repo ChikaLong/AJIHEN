@@ -4,15 +4,15 @@ class PostsController < ApplicationController
   def index
     # ソート機能用
     if params[:sort_create]
-      @posts = Post.latest.page(params[:page]).per(10)
+      @posts = Post.latest.includes(:user, :comments, :favorites).page(params[:page]).per(10)
     elsif params[:sort_rate]
-      @posts = Post.rating.page(params[:page]).per(10)
+      @posts = Post.rating.includes(:user, :comments, :favorites).page(params[:page]).per(10)
     elsif params[:sort_comment]
       @posts = Kaminari.paginate_array(Post.many).page(params[:page]).per(10)
     elsif params[:sort_favorite]
       @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(10)
     else
-      @posts = Post.page(params[:page]).per(10)
+      @posts = Post.includes(:user, :comments, :favorites).page(params[:page]).per(10)
     end
     # ランキング表示用
     @week_ranks = Post.week
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @category = @post.category
     @comment = Comment.new
-    @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
+    @comments = @post.comments.includes(user: :comments).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
