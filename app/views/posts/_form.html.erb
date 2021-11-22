@@ -40,9 +40,9 @@
   </div>
 
   <div class="form-group text-center" id="star">
-    <div><%= f.label :rate, "総合評価" %></div>
+    <div><%= f.label :rate, "オススメ度" %></div>
     <div>目安</div>
-    <div>（★0.5~1：おすすめできない、★1.5~2：少しおすすめ、★2.5~3：おすすめできる、★3.5~4：かなりおすすめ、★4.5~5：絶対食べて欲しい！）</div>
+    <div>（★0.5~1：オススメではない、★1.5~2：少しオススメ、★2.5~3：オススメできる、★3.5~4：かなりオススメ、★4.5~5：絶対食べて欲しい！）</div>
     <%= f.hidden_field :rate, id: :review_star %>
     <script>
       $('#star').raty({

@@ -75,24 +75,20 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content('マイ気になる！')
       end
 
-      it 'コメントしたレビューのリンクが表示される' do
-        expect(page).to have_content('コメントしたレビュー')
+      it 'コメントした投稿のリンクが表示される' do
+        expect(page).to have_content('コメントした投稿')
       end
 
       it '通知のリンクが表示される' do
         expect(page).to have_content('通知')
       end
 
-      it 'コメントしたレビューのリンクが表示される' do
-        expect(page).to have_content('コメントしたレビュー')
-      end
-
       it 'プロフィール編集のリンクが表示される' do
         expect(page).to have_content('プロフィール編集')
       end
 
-      it 'レビューを書くのリンクが表示される' do
-        expect(page).to have_content('レビューを書く')
+      it '投稿するのリンクが表示される' do
+        expect(page).to have_content('投稿する')
       end
     end
 
@@ -115,8 +111,8 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    describe 'コメントしたレビューのテスト' do
-      context 'コメントしたレビュー画面へ遷移' do
+    describe 'コメントした投稿のテスト' do
+      context 'コメントした投稿画面へ遷移' do
         it 'ページ遷移ができる' do
           visit comments_user_path(user)
           expect(current_path).to eq comments_user_path(user)
@@ -128,8 +124,8 @@ RSpec.describe "Users", type: :system do
           visit comments_user_path(user)
         end
 
-        it 'マイ気になる！と表示される' do
-          expect(page).to have_content('コメントしたレビュー')
+        it 'コメントした投稿と表示される' do
+          expect(page).to have_content('コメントした投稿')
         end
       end
     end

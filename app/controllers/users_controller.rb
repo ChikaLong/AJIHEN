@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :if_not_admin, only: [:index]
 
   def index
-    @users = User.page(params[:page]).per(20)
+    @users = User.page(params[:page]).per(15)
   end
 
   def show

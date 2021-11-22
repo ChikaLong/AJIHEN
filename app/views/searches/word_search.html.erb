@@ -6,15 +6,15 @@
   <div class="offset-lg-1 col-lg-7">
     <h2 class="text-center">
       <% if @keywords.empty? %>
-        全てのレビュー
+        全ての投稿
       <% else %>
-        "<%= @keywords %>"を含むレビュー
+        "<%= @keywords %>"を含む投稿
       <% end %>
     </h2>
 
     <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
-        <p>該当するレビューはありません</p>
+        <p>該当する投稿はありません</p>
       <% else %>
         <%= render 'posts/post' %>
       <% end %>
