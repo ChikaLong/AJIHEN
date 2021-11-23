@@ -40,7 +40,10 @@ class TagsController < ApplicationController
   end
 
   def if_not_admin
-    redirect_to root_path unless user_signed_in? && current_user.admin?
+    if user_signed_in? && current_user.admin?
+    else
+      redirect_to root_path
+    end
   end
 
   def set_tag

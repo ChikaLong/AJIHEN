@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Comments", type: :system do
   describe 'コメント機能のテスト' do
-    let(:user){ FactoryBot.create(:user) }
-    let(:post){ FactoryBot.create(:post) }
-    let!(:comment){ build(:comment, user_id: user.id, post_id: post.id) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:post) { FactoryBot.create(:post) }
+    let!(:comment) { build(:comment, user_id: user.id, post_id: post.id) }
 
     describe 'コメント投稿のテスト' do
       before do
@@ -47,7 +47,7 @@ RSpec.describe "Comments", type: :system do
         end
 
         it 'コメント削除確認用のモーダルが出力される' do
-          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: 'コメントの削除')
+          expect(find('.modal', visible: false)).to have_selector('.modal-title', text: 'コメントの削除')
         end
       end
 
@@ -61,7 +61,7 @@ RSpec.describe "Comments", type: :system do
           expect do
             find('.modal', visible: false)
             click_on "削除する"
-          end.to change{ Comment.count }.by(-1)
+          end.to change { Comment.count }.by(-1)
         end
       end
     end

@@ -6,7 +6,7 @@ RSpec.describe 'Categoryモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     subject { category.valid? }
 
-    let(:category){ FactoryBot.create(:category) }
+    let(:category) { FactoryBot.create(:category) }
 
     context 'nameカラム' do
       it '空欄でないこと' do

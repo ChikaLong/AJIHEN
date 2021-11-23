@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :confirm, :thanks]
-  before_action :if_not_admin, only: [:index]
 
   def index
-    @users = User.page(params[:page]).per(15)
+    if user_signed_in? && current_user.admin?
+      @users = User.page(params[:page]).per(15)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.includes(:comments, :favorites).page(params[:page]).per(10)
   end
 
   def edit
@@ -39,13 +42,13 @@ class UsersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(favorites)
+    @posts = Post.includes(:user, :comments, :favorites).find(favorites)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def comments
     comments = Comment.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(comments)
+    @posts = Post.includes(:user, :comments, :favorites).find(comments)
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
@@ -53,10 +56,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def if_not_admin
-    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 
   def user_params

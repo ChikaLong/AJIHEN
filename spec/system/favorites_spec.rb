@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Favorites", :type => :system do
   describe '気になる！（いいね機能）のテスト' do
-    let(:user){ FactoryBot.create(:user) }
-    let(:post){ FactoryBot.create(:post) }
-    let!(:favorite){ build(:favorite, user_id: user.id, post_id: post.id) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:post) { FactoryBot.create(:post) }
+    let!(:favorite) { build(:favorite, user_id: user.id, post_id: post.id) }
 
     describe '気になる！ボタンのテスト' do
       before do

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Notifications", type: :system do
   describe '通知機能のテスト' do
-    let(:user){ FactoryBot.create(:user) }
-    let(:post){ FactoryBot.create(:post) }
-    let(:comment){ FactoryBot.create(:comment) }
-    let!(:notification){ build(:notification, post_id: post.id) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:post) { FactoryBot.create(:post) }
+    let(:comment) { FactoryBot.create(:comment) }
+    let!(:notification) { build(:notification, post_id: post.id) }
 
     describe '通知画面のテスト' do
       before do

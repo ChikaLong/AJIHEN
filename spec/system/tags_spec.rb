@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Tags", type: :system do
   describe 'タグ関連のテスト' do
-    let!(:tag){ FactoryBot.create(:tag)}
+    let!(:tag) { FactoryBot.create(:tag) }
 
     describe 'タグ一覧画面のテスト' do
       it '遷移ができる' do
@@ -29,7 +29,7 @@ RSpec.describe "Tags", type: :system do
       end
 
       context '表示に関するテスト(admin)' do
-        let!(:user){ FactoryBot.create(:user, admin: true) }
+        let!(:user) { FactoryBot.create(:user, admin: true) }
 
         before do
           visit new_user_session_path
@@ -46,7 +46,7 @@ RSpec.describe "Tags", type: :system do
     end
 
     describe '新規登録に関するテスト' do
-      let!(:user){ FactoryBot.create(:user, admin: true) }
+      let!(:user) { FactoryBot.create(:user, admin: true) }
 
       before do
         visit new_user_session_path
@@ -97,7 +97,7 @@ RSpec.describe "Tags", type: :system do
     end
 
     describe 'タグ編集のテスト' do
-      let!(:user){ FactoryBot.create(:user, admin: true) }
+      let!(:user) { FactoryBot.create(:user, admin: true) }
 
       before do
         visit new_user_session_path
