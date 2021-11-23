@@ -1,13 +1,17 @@
 <%= render 'searches/form' %>
 
-<div class="offset-3 col-6">
+<%= render "posts/new_link" %>
+
+<div class="offset-lg-2 col-lg-8">
   <h2 class="text-center">タグ一覧</h2>
-  <table class="table">
-    <% @tags.each do |tag| %>
+  <table class="table table-borderless tag-table">
+    <% @tags.each_slice(3) do |tags| %>
       <tr>
-        <td align="center"><%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %></td>
-        <% if (user_signed_in?) && current_user.admin? %>
-          <td align="center"><%= link_to "編集", edit_tag_path(tag), class: "fas fa-edit btn btn-outline-danger" %></td>
+        <% tags.each do |tag| %>
+          <td><i class="fas fa-caret-right"></i>　<%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link" %></td>
+          <% if (user_signed_in?) && current_user.admin? %>
+            <td><%= link_to "編集", edit_tag_path(tag), class: "fas fa-edit btn btn-outline-danger" %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

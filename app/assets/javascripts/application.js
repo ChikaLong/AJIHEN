@@ -54,6 +54,36 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
+$(document).on("turbolinks:load", function(){
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#post_image").change(function(){
+    readURL(this);
+  });
+});
+
+$(document).on("turbolinks:load", function(){
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#pro_img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_profile_image").change(function(){
+    readURL(this);
+  });
+});
+
 // 星評価用
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
