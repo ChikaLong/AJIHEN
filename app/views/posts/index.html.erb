@@ -5,11 +5,11 @@
 <div class="row">
   <div class="offset-lg-1 col-lg-7">
 
-    <h2 class="text-center">みんなのレビュー</h2>
+    <h2 class="text-center">みんなの投稿</h2>
 
     <div class="text-center">
       <%= link_to "新着順", posts_path(sort_create: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "総合評価順", posts_path(sort_rate: "true"), class: "link", style: "text-decoration: underline;" %> |
+      <%= link_to "オススメ度順", posts_path(sort_rate: "true"), class: "link", style: "text-decoration: underline;" %> |
       <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link", style: "text-decoration: underline;" %> |
       <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link", style: "text-decoration: underline;" %>
     </div>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="col-lg-3">
+  <div class="col-lg-3 mt-5">
     <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
   </div>
 </div>

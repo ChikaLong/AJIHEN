@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Searches", type: :system do
   describe "検索機能のテスト" do
-    let(:user){ FactoryBot.create(:user) }
-    let!(:post){ FactoryBot.create(:post) }
-    let!(:tag){ FactoryBot.create(:tag)}
-    let!(:category){ FactoryBot.create(:category) }
+    let(:user) { FactoryBot.create(:user) }
+    let!(:post) { FactoryBot.create(:post) }
+    let!(:tag) { FactoryBot.create(:tag) }
+    let!(:category) { FactoryBot.create(:category) }
 
     describe 'キーワド検索のテスト' do
       before do
@@ -21,10 +21,10 @@ RSpec.describe "Searches", type: :system do
       end
 
       context 'キーワドを入力しなかった場合' do
-        it '全てのレビューが表示される' do
+        it '全ての投稿が表示される' do
           fill_in 'keyword', with: ""
           find('.btn-outline-secondary').click
-          expect(page).to have_content("全てのレビュー")
+          expect(page).to have_content("全ての投稿")
         end
       end
     end

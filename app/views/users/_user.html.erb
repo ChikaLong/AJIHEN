@@ -4,7 +4,7 @@
   <!--ユーザ情報-->
     <table class="table">
       <tr>
-        <td align="center"><%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "100x100", class: "rounded-circle" %></td>
+        <td align="center"><%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "100x100" %></td>
       </tr>
       <tr>
         <td align="center"><%= link_to user.name, user_path(user), class: "link" %></td>
@@ -16,7 +16,7 @@
         <td align="center"><%= link_to "マイ気になる！", favorites_user_path(user), class: "link" %></td>
       </tr>
       <tr>
-        <td align="center"><%= link_to "コメントしたレビュー", comments_user_path(user), class: "link" %></td>
+        <td align="center"><%= link_to "コメントした投稿", comments_user_path(user), class: "link" %></td>
       </tr>
       <% if (user_signed_in?) && (user.id == current_user.id) %>
         <tr>

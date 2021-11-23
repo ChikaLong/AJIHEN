@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   describe 'ユーザー認証のテスト' do
-    let(:user){ FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     describe 'ユーザー新規登録' do
       before do
         visit new_user_registration_path
       end
+
       context '新規登録画面に遷移' do
         it '新規登録に成功する' do
           fill_in 'ニックネーム', with: "テスト"
@@ -53,7 +54,7 @@ RSpec.describe "Users", type: :system do
   end
 
   describe 'ユーザー関連機能のテスト' do
-    let(:user){ FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     before do
       visit new_user_session_path
@@ -75,24 +76,20 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content('マイ気になる！')
       end
 
-      it 'コメントしたレビューのリンクが表示される' do
-        expect(page).to have_content('コメントしたレビュー')
+      it 'コメントした投稿のリンクが表示される' do
+        expect(page).to have_content('コメントした投稿')
       end
 
       it '通知のリンクが表示される' do
         expect(page).to have_content('通知')
       end
 
-      it 'コメントしたレビューのリンクが表示される' do
-        expect(page).to have_content('コメントしたレビュー')
-      end
-
       it 'プロフィール編集のリンクが表示される' do
         expect(page).to have_content('プロフィール編集')
       end
 
-      it 'レビューを書くのリンクが表示される' do
-        expect(page).to have_content('レビューを書く')
+      it '投稿するのリンクが表示される' do
+        expect(page).to have_content('投稿する')
       end
     end
 
@@ -115,8 +112,8 @@ RSpec.describe "Users", type: :system do
       end
     end
 
-    describe 'コメントしたレビューのテスト' do
-      context 'コメントしたレビュー画面へ遷移' do
+    describe 'コメントした投稿のテスト' do
+      context 'コメントした投稿画面へ遷移' do
         it 'ページ遷移ができる' do
           visit comments_user_path(user)
           expect(current_path).to eq comments_user_path(user)
@@ -128,8 +125,8 @@ RSpec.describe "Users", type: :system do
           visit comments_user_path(user)
         end
 
-        it 'マイ気になる！と表示される' do
-          expect(page).to have_content('コメントしたレビュー')
+        it 'コメントした投稿と表示される' do
+          expect(page).to have_content('コメントした投稿')
         end
       end
     end
@@ -267,7 +264,7 @@ RSpec.describe "Users", type: :system do
         end
 
         it 'モーダルが出力される' do
-          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '退会確認')
+          expect(find('.modal', visible: false)).to have_selector('.modal-title', text: '退会確認')
         end
       end
 
@@ -280,7 +277,7 @@ RSpec.describe "Users", type: :system do
           expect do
             find('.modal', visible: false)
             click_on "はい"
-          end.to change{ User.count }.by(-1)
+          end.to change { User.count }.by(-1)
         end
       end
     end
@@ -304,8 +301,8 @@ RSpec.describe "Users", type: :system do
   end
 
   describe '管理者側のテスト' do
-    let!(:other_user){ FactoryBot.create(:user) }
-    let!(:user){ FactoryBot.create(:user, admin: true) }
+    let!(:other_user) { FactoryBot.create(:user) }
+    let!(:user) { FactoryBot.create(:user, admin: true) }
 
     before do
       visit new_user_session_path
@@ -359,7 +356,7 @@ RSpec.describe "Users", type: :system do
         end
 
         it 'モーダルが出力される' do
-          expect( find('.modal', visible: false) ).to have_selector('.modal-title', text: '退会確認')
+          expect(find('.modal', visible: false)).to have_selector('.modal-title', text: '退会確認')
         end
       end
 
@@ -372,7 +369,7 @@ RSpec.describe "Users", type: :system do
           expect do
             find('.modal', visible: false)
             click_on "はい"
-          end.to change{ User.count }.by(-1)
+          end.to change { User.count }.by(-1)
         end
       end
     end

@@ -75,6 +75,10 @@ h2,h3,h4{
   color: orange;
 }
 
+.fa-caret-right{
+  color: #4D9966;
+}
+
 .fa-circle{
   position: absolute;
   padding-left: 1.5rem;
@@ -83,8 +87,9 @@ h2,h3,h4{
 }
 
 // profile-imageの形
-.rounded-circle{
-  object-fit: contain;
+.profile_image{
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 // トップに戻るボタン
@@ -107,7 +112,7 @@ h2,h3,h4{
   left: 20px;
   bottom: 25px;
   z-index: 100;
-  border-radius: 50%;
+  border-radius: 25%;
   border: 2px solid #005500;
 }
 

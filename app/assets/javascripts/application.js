@@ -22,7 +22,7 @@
 /*global $*/
 
 // トップに戻るボタン
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
@@ -51,6 +51,36 @@ $(document).on('turbolinks:load', function(){
   $('.top-post').slick({
     dots: true,
     centerMode: true,
+  });
+});
+
+$(document).on("turbolinks:load", function(){
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#post_image").change(function(){
+    readURL(this);
+  });
+});
+
+$(document).on("turbolinks:load", function(){
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#pro_img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_profile_image").change(function(){
+    readURL(this);
   });
 });
 

@@ -12,3 +12,8 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
+    - 'spec/**/*'
+    - 'app/helpers/*'
+
+Metrics/LineLength:
+  Max: 135

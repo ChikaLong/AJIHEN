@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Homes", type: :system do
-  let!(:category){ FactoryBot.create(:category) }
-  let!(:tag){ FactoryBot.create(:tag)}
+  let!(:category) { FactoryBot.create(:category) }
+  let!(:tag) { FactoryBot.create(:tag) }
 
   describe 'トップページのテスト' do
     before do
@@ -14,8 +14,8 @@ RSpec.describe "Homes", type: :system do
         expect(page).to have_link 'こちら', href: about_path
       end
 
-      it '新着レビューと表示される' do
-        expect(page).to have_content('新着レビュー')
+      it '新着投稿と表示される' do
+        expect(page).to have_content('新着投稿')
       end
 
       it '全ての投稿を見るの表示があり、リンク先が正しい' do
@@ -62,13 +62,13 @@ RSpec.describe "Homes", type: :system do
         expect(page).to have_link '会員登録する', href: new_user_registration_path
       end
 
-      it 'みんなのレビューを見るの表示があり、リンク先が正しい' do
-        expect(page).to have_link 'みんなのレビューを見る', href: posts_path
+      it 'みんなの投稿を見るの表示があり、リンク先が正しい' do
+        expect(page).to have_link 'みんなの投稿を見る', href: posts_path
       end
     end
 
     context '表示の確認：ログイン後' do
-      let(:user){ FactoryBot.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         visit new_user_session_path
@@ -82,8 +82,8 @@ RSpec.describe "Homes", type: :system do
         expect(page).to have_no_link '会員登録する'
       end
 
-      it 'みんなのレビューを見るの表示があり、リンク先が正しい' do
-        expect(page).to have_link 'みんなのレビューを見る', href: posts_path
+      it 'みんなの投稿を見るの表示があり、リンク先が正しい' do
+        expect(page).to have_link 'みんなの投稿を見る', href: posts_path
       end
     end
   end
