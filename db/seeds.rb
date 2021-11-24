@@ -68,18 +68,3 @@ Category.create!(
     {name: 'その他'}
   ]
 )
-
-20.times do
-  Post.create!(
-    user_id: 1,
-    category_id: 2,
-    image: File.open("#{Rails.root}/app/assets/images/logo.png"),
-    item_name: "塩",
-    review: "多用途で使える塩です",
-    country: "日本",
-    place: "スーパー",
-    price: "200円",
-    rate: "4.0",
-    tag_ids: [15,18],
-  )
-end
