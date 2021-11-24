@@ -13,13 +13,11 @@ User.create!(
   admin: true
 )
 
-15.times do |n|
-  User.create!(
-    name: "test#{n + 1}",
-    email: "test#{n + 1}@test.com",
-    password: "123456"
-  )
-end
+User.create!(
+  name: "test",
+  email: "test@test.com",
+  password: "123456"
+)
 
 Tag.create!(
   [
@@ -40,8 +38,7 @@ Tag.create!(
     {name: '多用途'},
     {name: 'コスパ◎'},
     {name: 'リピートしたい'},
-    {name: '隠し味に'},
-    {name: 'その他'}
+    {name: '隠し味に'}
   ]
 )
 
