@@ -2,7 +2,7 @@
 
 <div class="offset-lg-1 col-lg-4 my-4">
   <!--ユーザ情報-->
-    <table class="table">
+    <table class="table user-table">
       <tr>
         <td align="center"><%= attachment_image_tag user, :profile_image, :fill,100,100, fallback: "icon_gray.png", size: "100x100" %></td>
       </tr>
@@ -32,7 +32,7 @@
       <% end %>
     </table>
 
-    <table class="table mt-5">
+    <table class="table user-table mt-5">
       <tr>
         <td align="center">
           <% if (user_signed_in?) && (user.id == current_user.id) %>
@@ -53,7 +53,7 @@
     </table>
 
     <% if (user_signed_in?) && (current_user.admin?) && (user.id == current_user.id) %>
-      <table class="table mt-5">
+      <table class="table user-table mt-5">
         <tr align="center"><th>管理者専用</th></tr>
         <tr align="center"><td><%= link_to "全登録ユーザ", users_path, class: "fas fa-users btn btn-outline-info" %></td></tr>
         <tr align="center"><td><%= link_to "新規タグ追加", new_tag_path, class: "fas fa-tags btn btn-outline-info" %></td></tr>
