@@ -33,9 +33,9 @@
               <div class="dropdown-item"><%= link_to "マイページ", user_path(current_user), class: "link" %></div>
               <div class="dropdown-item">
                 <% if unchecked_notifications.any? %>
-                  <%= link_to "通知あり", notifications_path, class: "far fa-bell link", style: "color: red" %>
+                  <div class="text-danger"><i class="far fa-bell"></i><%= link_to "通知あり", notifications_path, class: "link", style: "color: red;" %></div>
                 <% else %>
-                  <%= link_to "通知", notifications_path, class: "far fa-bell link" %>
+                  <div><i class="far fa-bell"></i><%= link_to "通知", notifications_path, class: "link" %></div>
                 <% end %>
               </div>
               <div class="dropdown-item"><%= link_to "登録情報編集", edit_user_registration_path(user), class: "link" %></div>
