@@ -122,7 +122,7 @@ RSpec.describe "Posts", :type => :system do
         end
 
         it 'レビュー内容が表示されている(25文字以下)' do
-          expect(page).to have_content post.review, maximum: 25
+          expect(page).to have_content post.review, maximum: 15
         end
 
         it 'ユーザ名が表示されており、リンク先が正しい' do
