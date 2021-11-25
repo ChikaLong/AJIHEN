@@ -1,7 +1,7 @@
 <%= form_with model: post, local: true do |f| %>
   <div class="form-group">
     <%= f.label :image, "商品画像" %><br />
-    <%= attachment_image_tag post, :image, fallback: "no-image.png", id: "img_prev", size: "200x200" %><br />
+    <%= attachment_image_tag post, :image, :fill,200,200, fallback: "no-image.png", id: "img_prev", size: "200x200" %><br />
     <%= f.attachment_field :image, class: "mt-3" %>
   </div>
 
