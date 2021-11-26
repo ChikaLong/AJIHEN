@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.includes(:comments, :favorites).page(params[:page]).per(10)
+    @posts = @user.posts.includes(:comments, :favorites).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit

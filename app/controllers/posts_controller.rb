@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     elsif params[:sort_favorite]
       @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(10)
     else
-      @posts = Post.includes(:user, :comments, :favorites).page(params[:page]).per(10)
+      @posts = Post.includes(:user, :comments, :favorites).order(created_at: :desc).page(params[:page]).per(10)
     end
     # ランキング表示用
     @week_ranks = Post.week
