@@ -35,7 +35,7 @@
 
 ### **ER図**
 
-![PF ER drawio](https://user-images.githubusercontent.com/88714751/143669108-d0393469-5ccc-4c95-a2c2-953affe2cf83.png)
+![PF ER1 drawio](https://user-images.githubusercontent.com/88714751/143671085-f4117586-42a9-43ec-97c7-5691af5572c8.png)
 
 ---
 
