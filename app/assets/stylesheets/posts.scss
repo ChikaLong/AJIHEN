@@ -7,7 +7,7 @@ table tr,td{
   word-break: break-all;
 }
 
-// 星評価数
+// 星評価
 .p-rate{
   font-size: 23px;
   color: #FF4F02;
@@ -19,6 +19,14 @@ table tr,td{
 
 .fa-tag{
   color: #FF8C00;
+}
+
+.rate-title{
+  font-size: 12px;
+}
+
+.tag-box{
+  margin-right: 5px;
 }
 
 // ランキング関連
