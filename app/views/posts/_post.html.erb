@@ -12,6 +12,7 @@
           <%= link_to post_path(post.id), class: "link" do%>
             <h4 clas="card-title"><strong><%= truncate(post.item_name, length: 11) %></strong></h4>
           <% end %>
+          <span class="rate-title">オススメ度</span>
           <span id="star-rate-<%= post.id %>"></span>
           <script>
             $('#star-rate-<%= post.id %>').empty();
