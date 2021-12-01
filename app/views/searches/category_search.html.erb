@@ -3,14 +3,14 @@
 <%= render "posts/new_link" %>
 
 <div class="row">
-  <div class="offset-lg-1 col-lg-7">
+  <div class="col-lg-9">
     <h3 class="text-center">"<%= @category.name %>"カテゴリの投稿</h3>
 
     <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
         <p>該当する投稿がありません</p>
       <% else %>
-        <%= render 'posts/post' %>
+        <%= render 'posts/post', posts: @posts %>
       <% end %>
     </div>
     <div class="row mb-4" style="justify-content: center;">

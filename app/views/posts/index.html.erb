@@ -3,7 +3,7 @@
 <%= render "posts/new_link" %>
 
 <div class="row">
-  <div class="offset-lg-1 col-lg-7">
+  <div class="col-lg-9">
 
     <h2 class="text-center">みんなの投稿</h2>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div class="row" style="justify-content: center;" id="post-list">
-      <%= render 'posts/post' %>
+      <%= render 'posts/post', posts: @posts %>
     </div>
     <div class="row mb-4" style="justify-content: center;">
       <%= link_to_next_page @posts, "もっと見る", remote: true, id: "view_more", class: "more" %>

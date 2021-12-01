@@ -3,7 +3,7 @@
 <%= render "posts/new_link" %>
 
 <div class="row">
-  <div class="offset-lg-1 col-lg-7">
+  <div class="col-lg-9">
     <h2 class="text-center">
       <% if @keywords.empty? %>
         全ての投稿
@@ -16,7 +16,7 @@
       <% if @posts.empty? %>
         <p>該当する投稿はありません</p>
       <% else %>
-        <%= render 'posts/post' %>
+        <%= render 'posts/post', posts: @posts %>
       <% end %>
     </div>
     <div class="row mb-4" style="justify-content: center;">

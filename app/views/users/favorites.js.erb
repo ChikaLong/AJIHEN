@@ -1,0 +1,2 @@
+$('#post-list').append("<%= escape_javascript(render "users/user_posts", posts: @posts) %>");
+$("#view_more").replaceWith("<%= escape_javascript(link_to_next_page(@posts, 'もっと見る', remote: true, id: 'view_more', class: "more")) %>");

@@ -1,47 +1,27 @@
-<% @posts.each do |post| %>
+<% posts.each do |post| %>
   <div class="card m-2 post-item">
-    <div class="row">
+    <div class="row no-gutters">
       <div class="col-5">
         <%= link_to post_path(post.id), class: "link" do %>
-          <%= attachment_image_tag post, :image, :fill,200,200, class: "card-img-top" %>
+          <%= attachment_image_tag post, :image, class: "card-img-top" %>
         <% end %>
       </div>
 
       <div class="col-7">
-        <div class="card-body">
+        <div class="card-body ">
           <%= link_to post_path(post.id), class: "link" do%>
-            <h4 clas="card-title"><strong><%= truncate(post.item_name, length: 11) %></strong></h4>
+            <h5 clas="card-title"><strong><%= truncate(post.item_name, length: 10) %></strong></h5>
           <% end %>
           <span class="rate-title">オススメ度</span>
-          <span id="star-rate-<%= post.id %>"></span>
-          <script>
-            $('#star-rate-<%= post.id %>').empty();
-            $('#star-rate-<%= post.id %>').raty({
-              size: 36,
-              starOff: '<%= asset_path('star-off.png') %>',
-              starOn: '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              readOnly: true,
-              half: true,
-              score: <%= post.rate %>,
-            });
-          </script>
-          <span class="p-rate"><strong><%= post.rate %></strong></span>
+          <span class="p-rate"><%= image_tag('star-on.png', size: "25x25") %><strong><%= post.rate %></strong></span>
 
-          <div><%= truncate(post.review, length: 15) %></div>
 
-          <div class="row p-2">
-            <div>
-              <%= link_to user_path(post.user), class: "link" do %>
-                <%= attachment_image_tag post.user, :profile_image, :fill,25,25, fallback: "icon_gray.png", size: "25x25" %>
-                <%= post.user.name %>
-              <% end %>
-            </div>
+          <div class="row", style="font-size: 14px">
             <div class="ml-auto">投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></div>
           </div>
 
           <div class="row">
-            <div class="ml-auto">
+            <div class="ml-auto" style="font-size: 14px;">
               <i class="far fa-comment-alt"></i><%= post.comments.size %>コメント
               <i class="fas fa-star"></i><%= post.favorites.size %>気になる！
             </div>

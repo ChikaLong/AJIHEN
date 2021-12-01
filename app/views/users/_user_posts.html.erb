@@ -1,0 +1,7 @@
+<div class="row" style="justify-content: center;">
+  <% if posts.empty? %>
+    <p>まだ投稿がありません</p>
+  <% else %>
+    <%= render 'posts/post', posts: posts %>
+  <% end %>
+</div>
