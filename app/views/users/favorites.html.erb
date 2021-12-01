@@ -1,23 +1,40 @@
-<div class="offset-lg-1">
+<%= render "posts/new_link" %>
+
+<div>
   <% if (user_signed_in?) && (@user.id == current_user.id) %>
     <h1>マイページ</h1>
   <% else %>
-    <h1><%= @user.name %>さんのページ</h1>
+    <h1><%= @user.name %>さんのページ</h2>
   <% end %>
 </div>
 
 <div class="row">
   <%= render 'users/user', user: @user %>
 
-  <div class="col-lg-6">
-    <h3 class="text-center">マイ気になる！</h3>
+  <div class="col-lg-9">
     <div class="row" style="justify-content: center;">
+      <div class="tab no-tab">
+        <% if (user_signed_in?) && (@user.id == current_user.id) %>
+          <i class="far fa-clone"></i><%= link_to "投稿した調味料", user_path(@user), class: "link" %>
+        <% else %>
+          <%= link_to user_path(@user), class: "link" do %>
+            <i class="far fa-clone"></i><%= @user.name %>さんの投稿
+          <% end %>
+        <% end %>
+      </div>
+      <div class="tab tab2"><%= link_to "マイ気になる！", favorites_user_path(@user), class: "fas fa-star link" %></div>
+      <div class="tab no-tab"><i class="far fa-comment-alt"></i><%= link_to "コメントした投稿", comments_user_path(@user), class: "link" %></div>
+    </div>
+
+    <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
-        <p>まだ「気になる！」レビューがありません</p>
+        <p>まだ投稿がありません</p>
       <% else %>
-        <%= render 'posts/post' %>
+        <%= render 'posts/post', posts: @posts %>
       <% end %>
-      <div><%= paginate @posts %></div>
+    </div>
+    <div class="row mb-4" style="justify-content: center;">
+      <%= link_to_next_page @posts, "もっと見る", remote: true, id: "view_more", class: "more" %>
     </div>
   </div>
 </div>

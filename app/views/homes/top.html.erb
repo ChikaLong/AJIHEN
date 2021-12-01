@@ -18,7 +18,40 @@
   <div class="offset-lg-1 col-lg-7">
     <h2 class="text-center">新着投稿</h2>
     <div class="row top-post" style="justify-content: center;">
-      <%= render 'posts/post' %>
+      <% @posts.each do |post| %>
+        <div class="card m-2 post-item">
+          <div class="row no-gutters">
+            <div class="col-5">
+              <%= link_to post_path(post.id), class: "link" do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200, class: "card-img-top" %>
+              <% end %>
+            </div>
+
+            <div class="col-7">
+              <div class="card-body ">
+                <%= link_to post_path(post.id), class: "link" do%>
+                  <h5 clas="card-title"><strong><%= truncate(post.item_name, length: 10) %></strong></h5>
+                <% end %>
+                <span class="rate-title">オススメ度</span>
+                <span class="p-rate"><%= image_tag('star-on.png', size: "25x25") %><strong><%= post.rate %></strong></span>
+
+                <div><%= truncate(post.review, length: 15) %></div>
+
+                <div class="row", style="font-size: 14px">
+                  <div class="ml-auto">投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></div>
+                </div>
+
+                <div class="row">
+                  <div class="ml-auto" style="font-size: 14px;">
+                    <i class="far fa-comment-alt"></i><%= post.comments.size %>コメント
+                    <i class="fas fa-star"></i><%= post.favorites.size %>気になる！
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
     <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link", style: "text-decoration: underline;" %></div>
 

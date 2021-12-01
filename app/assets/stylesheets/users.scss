@@ -1,3 +1,40 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tab {
+  padding: 0.6em 3.2em;
+  margin-bottom: 0.3rem;
+}
+
+.tab:hover{
+  background-color: #D4EBDB;
+}
+
+.no-tab{
+  border-bottom: 3px solid #88C29B;
+}
+
+.tab1{
+  border: 3px solid #88C29B;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #D4EBDB;
+  border-bottom: none;
+}
+
+.tab2{
+  border: 3px solid #88C29B;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #D4EBDB;
+  border-bottom: none;
+}
+
+.tab3{
+  border: 3px solid #88C29B;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #D4EBDB;
+  border-bottom: none;
+}
