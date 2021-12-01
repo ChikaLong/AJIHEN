@@ -3,7 +3,7 @@
 <%= render "posts/new_link" %>
 
 <div class="offset-lg-1 mb-3">
-  <%= link_to user_path(@user), class: "link", style: "text-decoration: none;" do %>
+  <%= link_to user_path(@user), class: "link", style: "text-decoration: underline;" do %>
     <%= attachment_image_tag @user, :profile_image, :fill,50,50, fallback: "icon_gray.png", size: "50x50" %>
     <%= @post.user.name %>
   <% end %>
@@ -67,7 +67,20 @@
         </td>
       </tr>
       <tr>
-        <td><%= @post.review %></td>
+        <td><%= simple_format(@post.review) %></td>
+      </tr>
+      <tr>
+        <td align="right">
+          <div>
+            スコア：<%= @post.score %>
+          </div>
+          <details>
+          　<summary class="score-title">スコアとは？</summary>
+              <div class="score-text">
+                スコアはレビュー内容を分析し良い印象の内容であると高いスコアを示します。0.1~1の間の場合表示され、それ以下のスコアは表示されません。
+              </div>
+          </details>
+        </td>
       </tr>
     </table>
 

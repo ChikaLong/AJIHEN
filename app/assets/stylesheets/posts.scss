@@ -31,8 +31,28 @@ table tr,td{
   font-size: 12px;
 }
 
-.tag-box{
-  margin-right: 5px;
+.score-title{
+  color: #0080FF;
+}
+
+.score-text{
+  text-align: start;
+  width: 70%;
+  background-color: #E6FFE9;
+}
+
+.score-body{
+  background-color: #E6FFE9;
+  display: inline-block;
+}
+
+details summary{
+  list-style: none;
+}
+
+div > details summary {
+  list-style: none;
+  display : inline-block;
 }
 
 // ランキング関連

@@ -8,10 +8,21 @@
     <h2 class="text-center">みんなの投稿</h2>
 
     <div class="text-center">
-      <%= link_to "新着順", posts_path(sort_create: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "オススメ度順", posts_path(sort_rate: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link", style: "text-decoration: underline;" %>
+      並び替え：
+      <%= link_to "新着順", posts_path(sort_create: "true"), class: "sort-link" %> |
+      <%= link_to "オススメ度順", posts_path(sort_rate: "true"), class: "sort-link" %> |
+      <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "sort-link" %> |
+      <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "sort-link" %> |
+      <%= link_to "高スコア順", posts_path(sort_high: "true"), class: "sort-link" %>
+    </div>
+    <div>
+    <details>
+    　<summary class="offset-md-9 score-title">スコアとは？</summary>
+        <div class="offset-md-2 score-body">
+          スコアはレビュー内容を分析し良い印象の内容であると高いスコアを示しています。<br>
+          0.1~1の間の場合表示され、それ以下のスコアは表示されません。
+        </div>
+    </details>
     </div>
 
     <div class="row" style="justify-content: center;" id="post-list">

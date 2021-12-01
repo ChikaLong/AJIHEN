@@ -11,6 +11,8 @@ class PostsController < ApplicationController
       @posts = Kaminari.paginate_array(Post.many).page(params[:page]).per(20)
     elsif params[:sort_favorite]
       @posts = Kaminari.paginate_array(Post.like).page(params[:page]).per(20)
+    elsif params[:sort_high]
+      @posts = Post.high.includes(:user, :comments, :favorites).page(params[:page]).per(20)
     else
       @posts = Post.includes(:user, :comments, :favorites).order(created_at: :desc).page(params[:page]).per(20)
     end
@@ -35,6 +37,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.score = Language.get_data(post_params[:review])
     if @post.save
       redirect_to post_path(@post), notice: '投稿に成功しました'
     else
@@ -48,6 +51,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post.score = Language.get_data(post_params[:review])
     if @post.update(post_params)
       redirect_to post_path(@post), notice: '投稿内容を更新しました'
     else

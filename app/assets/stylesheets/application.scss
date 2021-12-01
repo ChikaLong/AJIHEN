@@ -134,6 +134,15 @@ h2,h3,h4{
 　text-decoration: underline;
 }
 
+.sort-link{
+  text-decoration: underline;
+  color: #444444;
+}
+
+.sort-link:hover{
+  background-color: #D4EBDB;
+}
+
 .navbar-nav .link,
 .dropdown-toggle{
   text-decoration: none;
