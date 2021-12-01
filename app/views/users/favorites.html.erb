@@ -28,7 +28,7 @@
 
     <div class="row" style="justify-content: center;" id="post-list">
       <% if @posts.empty? %>
-        <p>まだ投稿がありません</p>
+        <p>まだ気になる！した投稿がありません</p>
       <% else %>
         <%= render 'posts/post', posts: @posts %>
       <% end %>
