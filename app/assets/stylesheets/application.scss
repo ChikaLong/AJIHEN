@@ -31,13 +31,13 @@ html, body,{
 // 背景関連
 body{
   background-image: image-url('green1.jpeg');
-  z-index: -1000;
+  z-index: -2;
 }
 
 main .container-xl{
   background-color: rgba(255,255,255,1.0);
   min-height: 100vh;
-  z-index: -900;
+  z-index: -1;
 }
 
 header{
@@ -101,7 +101,7 @@ h2,h3,h4{
   position: fixed;
   right: 30px;
   bottom: 30px;
-  z-index: 100;
+  z-index: 1;
 }
 
 .t-btn{
@@ -115,7 +115,7 @@ h2,h3,h4{
   position: fixed;
   left: 20px;
   bottom: 25px;
-  z-index: 100;
+  z-index: 1;
   border-radius: 25%;
   border: 2px solid #008000;
 }
@@ -132,15 +132,6 @@ h2,h3,h4{
 
 .link:hover{
 　text-decoration: underline;
-}
-
-.sort-link{
-  text-decoration: underline;
-  color: #444444;
-}
-
-.sort-link:hover{
-  background-color: #D4EBDB;
 }
 
 .navbar-nav .link,
