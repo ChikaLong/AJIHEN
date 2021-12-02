@@ -1,6 +1,4 @@
-<%= render "posts/new_link" %>
-
-<div class="offset-lg-1 col-lg-4 my-4">
+<div class="col-lg-3 my-4">
   <!--ユーザ情報-->
     <table class="table user-table">
       <tr>
@@ -30,26 +28,6 @@
           </td>
         </tr>
       <% end %>
-    </table>
-
-    <table class="table user-table mt-5">
-      <tr>
-        <td align="center">
-          <% if (user_signed_in?) && (user.id == current_user.id) %>
-            <i class="far fa-clone"></i><%= link_to "投稿した調味料", user_path(user), class: "link" %>
-          <% else %>
-            <%= link_to user_path(user), class: "link" do %>
-              <i class="far fa-clone"></i><%= user.name %>さんの投稿
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td align="center"><%= link_to "マイ気になる！", favorites_user_path(user), class: "fas fa-star link" %></td>
-      </tr>
-      <tr>
-        <td align="center"><i class="far fa-comment-alt"></i><%= link_to "コメントした投稿", comments_user_path(user), class: "link" %></td>
-      </tr>
     </table>
 
     <% if (user_signed_in?) && (current_user.admin?) && (user.id == current_user.id) %>

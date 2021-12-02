@@ -1,5 +1,6 @@
+<div class="about-image">
 <div class="text-center">
-  <h1>AJIHENへようこそ</h1>
+  <h1>〜AJIHENへようこそ〜</h1>
 
   <p>「AJIHEN」は全国各地様々な調味料の情報を共有するためのサイトです。</p>
 
@@ -24,21 +25,12 @@
     気になる投稿をお気に入りにするなどできるようになります。
   </p>
 
-  <div class="offset-md-3 col-md-6">
-    <table class="table table-borderless star-table">
-      <tr><th colspan="2">オススメ度の目安</th></tr>
-      <tr><td><i class="fas fa-star">0.5~1</td><td>オススメではない</td></tr>
-      <tr><td><i class="fas fa-star">1.5~2</td><td>少しオススメ</td></tr>
-      <tr><td><i class="fas fa-star">2.5~3</td><td>オススメできる</td></tr>
-      <tr><td><i class="fas fa-star">3.5~4</td><td>かなりオススメ</td></tr>
-      <tr><td><i class="fas fa-star">4.5~5</td><td>絶対食べて欲しい！</td></tr>
-    </table>
+  <div class="mt-5">
+    <% unless user_signed_in? %>
+      <p><%= link_to "会員登録する＞", new_user_registration_path %></p>
+    <% end %>
+    <p><%= link_to "みんなの投稿を見る＞", posts_path %></p>
   </div>
 
-
-  <% unless user_signed_in? %>
-    <p><%= link_to "会員登録する＞", new_user_registration_path %></p>
-  <% end %>
-  <p><%= link_to "みんなの投稿を見る＞", posts_path %></p>
-
+</div>
 </div>

@@ -54,7 +54,6 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-
 // 画像プレビュー表示
 $(document).on("turbolinks:load", function(){
   $('#post_image').on('change', function (e) {

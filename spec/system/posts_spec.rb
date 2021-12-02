@@ -113,20 +113,12 @@ RSpec.describe "Posts", :type => :system do
       end
 
       context '表示の確認' do
-        it '商品名が表示されており(11文字以下)、リンク先が正しい' do
-          expect(page).to have_link post.item_name, maximum: 11, href: post_path(post)
+        it '商品名が表示されており(10文字以下)、リンク先が正しい' do
+          expect(page).to have_link post.item_name, maximum: 10, href: post_path(post)
         end
 
         it 'オススメ度が表示されている' do
           expect(page).to have_content post.rate
-        end
-
-        it 'レビュー内容が表示されている(25文字以下)' do
-          expect(page).to have_content post.review, maximum: 15
-        end
-
-        it 'ユーザ名が表示されており、リンク先が正しい' do
-          expect(page).to have_link post.user.name, href: user_path(post.user)
         end
 
         it '投稿日が表示されている' do
