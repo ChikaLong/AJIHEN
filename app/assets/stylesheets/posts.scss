@@ -41,6 +41,7 @@ table tr,td{
 
 .alert-success{
   display: inline-block;
+  width: 80%;
 }
 
 td > details summary{
@@ -58,35 +59,18 @@ div > details summary {
 }
 
 .sort-title{
-  padding: 0.3em 2.5em;
+  background-color: white;
+  padding: 0.3em 1.6rem;
   border: 1px solid black;
   border-radius: 5px;
 }
 
-.sort-list {
-  position: absolute;
-  width: 230px;
-  text-align: start;
-  z-index: 100;
-}
-
-.sort-item > li {
+.sort-item > div {
   padding: 0.3rem;
-  border: 1px solid black;
-  background-color: white;
+  text-align: center;
 }
 
-.sort-item > li:first-child {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.sort-item > li:last-child {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.sort-item > li:hover {
+.sort-item > div:hover {
   background-color: #D4EBDB;
 }
 
