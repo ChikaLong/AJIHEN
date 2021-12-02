@@ -158,8 +158,8 @@ RSpec.describe "Posts", :type => :system do
           expect(page).to have_content post.review
         end
 
-        it '総合評価への目安と表示されており、リンク先が正しい' do
-          expect(page).to have_link 'オススメ度の目安', href: about_path
+        it '総合評価への目安と表示されている' do
+          expect(page).to have_content 'オススメ度の目安'
         end
 
         it '原産国が表示されている' do
