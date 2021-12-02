@@ -69,7 +69,11 @@ td > details summary{
 
 div > details summary {
   list-style: none;
-  display : inline-block;
+  display : table;
+}
+
+.alert-success{
+  display: inline-block;
 }
 
 .sort-link{
