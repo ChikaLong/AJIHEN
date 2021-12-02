@@ -85,8 +85,12 @@
       <tr>
         <td align="right">
           <div>
-            <% if @post.score >= 0.1 %>
-              スコア：<%= @post.score %>
+            <% if @post.score >= 0.8 %>
+              スコア：<span class="sentiment-score1"><%= @post.score %></span>
+            <% elsif @post.score >= 0.4 %>
+              スコア：<span class="sentiment-score2"><%= @post.score %></span>
+            <% elsif @post.score >= 0.1 %>
+              スコア：<span class="sentiment-score3"><%= @post.score %></span>
             <% else %>
               スコア：ー
             <% end %>

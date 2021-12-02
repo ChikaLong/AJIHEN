@@ -34,6 +34,26 @@ table tr,td{
   font-size: 12px;
 }
 
+// スコアのフォントサイズ
+.sentiment-score1,
+.sentiment-score2,
+.sentiment-score3{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sentiment-score1{
+  color: green;
+}
+
+.sentiment-score2{
+  color: orange;
+}
+
+.sentiment-score3{
+  color: #B40404;
+}
+
 // details関連
 .score-title{
   color: #0080FF;
@@ -41,11 +61,6 @@ table tr,td{
 
 .score-text{
   text-align: start;
-}
-
-.alert-success{
-  display: inline-block;
-  width: 80%;
 }
 
 td > details summary{
