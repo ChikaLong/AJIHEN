@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_025924) do
+ActiveRecord::Schema.define(version: 2021_12_01_055207) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_025924) do
     t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "tags", force: :cascade do |t|

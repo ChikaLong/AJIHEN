@@ -7,7 +7,7 @@ table tr,td{
   word-break: break-all;
 }
 
-// 星評価
+// 投稿内容関連
 .p-rate{
   font-size: 23px;
   color: #FF4F02;
@@ -22,7 +22,6 @@ table tr,td{
   height: 100%;
 }
 
-
 .fa-tag{
   color: #FF8C00;
 }
@@ -31,8 +30,48 @@ table tr,td{
   font-size: 12px;
 }
 
-.tag-box{
-  margin-right: 5px;
+// details関連
+.score-title{
+  color: #0080FF;
+}
+
+.score-text{
+  text-align: start;
+}
+
+.alert-success{
+  display: inline-block;
+  width: 80%;
+}
+
+td > details summary{
+  list-style: none;
+}
+
+div > details summary {
+  list-style: none;
+  display : inline-block;
+}
+
+.sort-link{
+  text-decoration: underline;
+  color: #444444;
+}
+
+.sort-title{
+  background-color: white;
+  padding: 0.3em 1.6rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.sort-item > div {
+  padding: 0.3rem;
+  text-align: center;
+}
+
+.sort-item > div:hover {
+  background-color: #D4EBDB;
 }
 
 // ランキング関連

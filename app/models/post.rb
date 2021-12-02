@@ -35,6 +35,8 @@ class Post < ApplicationRecord
       includes(:user, :comments, :favorites)
   }
 
+  scope :high, -> { order(score: :desc) }
+
   # ランキング表示用
   scope :week, -> {
     find(

@@ -7,12 +7,26 @@
 
     <h2 class="text-center">みんなの投稿</h2>
 
-    <div class="text-center">
-      <%= link_to "新着順", posts_path(sort_create: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "オススメ度順", posts_path(sort_rate: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "link", style: "text-decoration: underline;" %> |
-      <%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "link", style: "text-decoration: underline;" %>
+    <div class="btn-group offset-1">
+      <button class="sort-title dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        並び替え
+      </button>
+      <div class="dropdown-menu sort-item">
+        <div><%= link_to "新着順", posts_path(sort_create: "true"), class: "sort-link" %></div>
+        <div><%= link_to "オススメ度順", posts_path(sort_rate: "true"), class: "sort-link" %></div>
+        <div><%= link_to "コメント多い順", posts_path(sort_comment: "true"), class: "sort-link" %></div>
+        <div><%= link_to "気になる！順", posts_path(sort_favorite: "true"), class: "sort-link" %></div>
+        <div><%= link_to "高スコア順", posts_path(sort_high: "true"), class: "sort-link" %></div>
+      </div>
     </div>
+
+    <details class="score-box">
+    　<summary class="offset-1 score-title">スコアとは？</summary>
+        <div class="offset-1 alert alert-success">
+          スコアはレビュー内容を分析し良い印象の内容であるほど高いスコアを示します。<br>
+          0.1~1の間の場合表示され、それ以下のスコアは表示されません。
+        </div>
+    </details>
 
     <div class="row" style="justify-content: center;" id="post-list">
       <%= render 'posts/post', posts: @posts %>
