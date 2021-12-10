@@ -69,11 +69,11 @@
             </div>
             <div class="dropdown-menu" style="width: 300px;">
               <table class="table table-borderless">
-                <tr><td><i class="fas fa-star">0.5~1</td><td>オススメではない</td></tr>
-                <tr><td><i class="fas fa-star">1.5~2</td><td>少しオススメ</td></tr>
-                <tr><td><i class="fas fa-star">2.5~3</td><td>オススメできる</td></tr>
-                <tr><td><i class="fas fa-star">3.5~4</td><td>かなりオススメ</td></tr>
                 <tr><td><i class="fas fa-star">4.5~5</td><td>絶対食べて欲しい！</td></tr>
+                <tr><td><i class="fas fa-star">3.5~4</td><td>かなりオススメ</td></tr>
+                <tr><td><i class="fas fa-star">2.5~3</td><td>オススメできる</td></tr>
+                <tr><td><i class="fas fa-star">1.5~2</td><td>少しオススメ</td></tr>
+                <tr><td><i class="fas fa-star">0.5~1</td><td>オススメではない</td></tr>
               </table>
             </div>
           </div>
@@ -84,6 +84,7 @@
       </tr>
       <tr>
         <td align="right">
+          <!--スコアによって色分けする-->
           <div>
             <% if @post.score >= 0.8 %>
               スコア：<span class="sentiment-score1"><%= @post.score %></span>
