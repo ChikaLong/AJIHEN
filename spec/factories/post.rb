@@ -9,5 +9,6 @@ FactoryBot.define do
     place { 'スーパー' }
     price { '300円' }
     rate { '3.5' }
+    score { '0.1' }
   end
 end

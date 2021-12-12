@@ -17,9 +17,13 @@ table tr,td{
   width: 350px;
 }
 
-.card-img-top{
+.index-card{
   width: 100%;
-  height: 100%;
+  height: 160px;
+}
+
+.top-card{
+  width: 100%;
 }
 
 .fa-tag{
@@ -28,6 +32,26 @@ table tr,td{
 
 .rate-title{
   font-size: 12px;
+}
+
+// スコアのフォントサイズ
+.sentiment-score1,
+.sentiment-score2,
+.sentiment-score3{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sentiment-score1{
+  color: green;
+}
+
+.sentiment-score2{
+  color: orange;
+}
+
+.sentiment-score3{
+  color: #B40404;
 }
 
 // details関連
@@ -39,18 +63,17 @@ table tr,td{
   text-align: start;
 }
 
-.alert-success{
-  display: inline-block;
-  width: 80%;
-}
-
 td > details summary{
   list-style: none;
 }
 
 div > details summary {
   list-style: none;
-  display : inline-block;
+  display : table;
+}
+
+.alert-success{
+  display: inline-block;
 }
 
 .sort-link{
