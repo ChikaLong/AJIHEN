@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJIHEN</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="all-content">
+      <%= render 'layouts/header', user: @user %>
+
+      <main>
+        <div class="main-content">
+          <div class="container-lg py-3">
+            <div><p class="text-success"><%= notice %></p></div>
+            <div><p class="text-danger"><%= alert %></p></div>
+
+            <%= yield %>
+          </div>
+          <!--TOPに戻るボタン-->
+          <span id="back">
+            <a href="">
+              <%= image_tag asset_path('top_button.png'), data: {"turbolinks"=>false}, class: "t-btn" %>
+            </a>
+          </span>
+        </div>
+      </main>
+
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
+</html>
