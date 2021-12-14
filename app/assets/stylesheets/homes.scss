@@ -43,6 +43,15 @@
   z-index: 100;
 }
 
+.top-item{
+  width: 15rem;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #68B66E !important;
+  opacity: 1 !important;
+}
+
 .category-list{
   margin-top: 5rem;
 }

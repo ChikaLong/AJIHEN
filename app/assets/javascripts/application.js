@@ -50,7 +50,7 @@ $(document).on('turbolinks:load', function(){
 $(document).on('turbolinks:load', function(){
   $('.top-post').slick({
     dots: true,
-    centerMode: true,
+    slidesToShow: 3,
   });
 });
 
