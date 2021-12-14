@@ -58,15 +58,15 @@
 
 
     <div class="category-list text-center">
-      <h3>カテゴリ一覧</h3>
+      <h3>カテゴリ</h3>
       <% @categories.each do |category| %>
-        <%= link_to category.name, category_search_path(category_id: category.id), class: "link", style: "text-decoration: underline;" %> |
+        <%= link_to category.name, category_search_path(category_id: category.id), class: "btn link_btn m-1" %>
       <% end %>
     </div>
     <div class="tag-list text-center">
-      <h3>タグ一覧</h3>
+      <h3>タグ</h3>
       <% @tags.each do |tag| %>
-        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline;" %> |
+        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "btn link_btn m-1" %>
       <% end %>
     </div>
   </div>
