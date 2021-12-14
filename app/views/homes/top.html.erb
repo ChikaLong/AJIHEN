@@ -19,34 +19,28 @@
     <h2 class="text-center">新着投稿</h2>
     <div class="row top-post" style="justify-content: center;">
       <% @posts.each do |post| %>
-        <div class="card m-2 post-item">
-          <div class="row no-gutters">
-            <div class="col-5">
-              <%= link_to post_path(post.id), class: "link" do %>
-                <%= attachment_image_tag post, :image, :fill, 200, 200, class: "card-img-top top-card" %>
-              <% end %>
+        <div class="card top-item m-2">
+          <div>
+            <%= link_to post_path(post.id), class: "link" do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, class: "card-img-top top-card" %>
+            <% end %>
+          </div>
+
+          <div class="card-body">
+            <%= link_to post_path(post.id), class: "link" do%>
+              <h5 clas="card-title"><strong><%= truncate(post.item_name, length: 6, omission: '..') %></strong></h5>
+            <% end %>
+            <span class="rate-title">オススメ度</span>
+            <span class="p-rate"><%= image_tag('star-on.png', size: "20x20") %><strong><%= post.rate %></strong></span>
+
+            <div class="row", style="font-size: 14px">
+              <div class="ml-auto">投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></div>
             </div>
 
-            <div class="col-7">
-              <div class="card-body ">
-                <%= link_to post_path(post.id), class: "link" do%>
-                  <h5 clas="card-title"><strong><%= truncate(post.item_name, length: 10) %></strong></h5>
-                <% end %>
-                <span class="rate-title">オススメ度</span>
-                <span class="p-rate"><%= image_tag('star-on.png', size: "25x25") %><strong><%= post.rate %></strong></span>
-
-                <div><%= truncate(post.review, length: 15) %></div>
-
-                <div class="row", style="font-size: 14px">
-                  <div class="ml-auto">投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></div>
-                </div>
-
-                <div class="row">
-                  <div class="ml-auto" style="font-size: 14px;">
-                    <i class="far fa-comment-alt"></i><%= post.comments.size %>コメント
-                    <i class="fas fa-star"></i><%= post.favorites.size %>気になる！
-                  </div>
-                </div>
+            <div class="row">
+              <div class="ml-auto" style="font-size: 14px;">
+                <i class="far fa-comment-alt"></i><%= post.comments.size %>コメント
+                <i class="fas fa-star"></i><%= post.favorites.size %>気になる！
               </div>
             </div>
           </div>
@@ -55,24 +49,21 @@
     </div>
     <div class="text-center"><%= link_to "全ての投稿を見る＞", posts_path, class: "link", style: "text-decoration: underline;" %></div>
 
-
-
     <div class="category-list text-center">
-      <h3>カテゴリ一覧</h3>
+      <h3>カテゴリ</h3>
       <% @categories.each do |category| %>
-        <%= link_to category.name, category_search_path(category_id: category.id), class: "link", style: "text-decoration: underline;" %> |
+        <%= link_to category.name, category_search_path(category_id: category.id), class: "btn link_btn m-1" %>
       <% end %>
     </div>
     <div class="tag-list text-center">
-      <h3>タグ一覧</h3>
+      <h3>タグ</h3>
       <% @tags.each do |tag| %>
-        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "link", style: "text-decoration: underline;" %> |
+        <%= link_to tag.name, tag_search_path(tag_id: tag.id), class: "btn link_btn m-1" %>
       <% end %>
     </div>
   </div>
 
-
-  <div class="col-lg-3">
+  <div class="offset-lg-1 col-lg-3">
     <%= render 'posts/rank', week_ranks: @week_ranks, month_ranks: @month_ranks %>
   </div>
 </div>
