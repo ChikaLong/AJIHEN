@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def index
     # ソート機能用
@@ -69,6 +70,12 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def ensure_current_user
+    unless user_signed_in? && current_user.id == @post.user_id
+      redirect_to root_path
+    end
   end
 
   def post_params

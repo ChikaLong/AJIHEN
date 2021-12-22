@@ -19,8 +19,12 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
     @comments = @post.comments.order(created_at: :desc).page(params[:page]).per(10)
-    @comment.destroy
-    redirect_to post_path(@post)
+    if current_user == @comment.user
+      @comment.destroy
+      redirect_to post_path(@post)
+    else
+      redirect_to root_path
+    end
   end
 
   private

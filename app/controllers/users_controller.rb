@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index, :confirm, :thanks]
+  before_action :ensure_current_user, only: [:edit, :update]
 
   def index
     if user_signed_in? && current_user.admin?
@@ -56,6 +57,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def ensure_current_user
+    unless user_signed_in? && current_user.id == @user.id
+      redirect_to root_path
+    end
   end
 
   def user_params
