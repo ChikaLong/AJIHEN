@@ -1,3 +1,19 @@
 // Place all the styles related to the favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.favorite_btn{
+  border: 2px solid #FF8C00 !important;
+  color: #FF8C00 !important;
+
+  &:hover{
+    background-color: #FF9933;
+    color: white !important;
+  }
+}
+
+.favorite_on_btn{
+  border: 2px solid #FF8C00 !important;
+  background-color: #FF9933 !important;
+  color: white !important;
+}

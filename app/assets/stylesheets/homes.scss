@@ -64,11 +64,12 @@
 .link_btn{
   border: 1px solid #68B66E !important;
   color: #004400 !important;
+
+  &:hover{
+    background-color: #91DE94 !important;
+  }
 }
 
-.link_btn:hover{
-  background-color: #91DE94 !important;
-}
 
 // aboutページの背景
 main .container-lg{
