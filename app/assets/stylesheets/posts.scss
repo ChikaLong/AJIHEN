@@ -84,17 +84,21 @@ div > details summary {
 .sort-title{
   background-color: white;
   padding: 0.3em 1.6rem;
-  border: 1px solid black;
+  border: 1px solid #008000;
   border-radius: 5px;
+
+  &:hover{
+    background-color: #D4EBDB;
+  }
 }
 
 .sort-item > div {
   padding: 0.3rem;
   text-align: center;
-}
 
-.sort-item > div:hover {
-  background-color: #D4EBDB;
+  &:hover{
+    background-color: #D4EBDB;
+  }
 }
 
 // ランキング関連
